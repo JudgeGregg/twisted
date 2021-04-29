@@ -7,11 +7,11 @@ implementation.
 """
 
 
-from twisted.web.template import Comment, CDATA, CharRef, Tag
+from twisted.web.template import Comment, CDATA, CharRef, Flattenable, Tag
 from twisted.trial.unittest import TestCase
 
 
-def proto(*a, **kw):
+def proto(*a: Flattenable, **kw: Flattenable) -> Tag:
     """
     Produce a new tag for testing.
     """
@@ -23,14 +23,14 @@ class TagTests(TestCase):
     Tests for L{Tag}.
     """
 
-    def test_fillSlots(self):
+    def test_fillSlots(self) -> None:
         """
         L{Tag.fillSlots} returns self.
         """
         tag = proto()
         self.assertIdentical(tag, tag.fillSlots(test="test"))
 
-    def test_cloneShallow(self):
+    def test_cloneShallow(self) -> None:
         """
         L{Tag.clone} copies all attributes and children of a tag, including its
         render attribute.  If the shallow flag is C{False}, that's where it
@@ -55,7 +55,7 @@ class TagTests(TestCase):
         self.assertEqual(clone.columnNumber, 12)
         self.assertEqual(clone.render, "aSampleMethod")
 
-    def test_cloneDeep(self):
+    def test_cloneDeep(self) -> None:
         """
         L{Tag.clone} copies all attributes and children of a tag, including its
         render attribute.  In its normal operating mode (where the deep flag is
@@ -89,7 +89,7 @@ class TagTests(TestCase):
         self.assertEqual(clone.columnNumber, 12)
         self.assertEqual(clone.render, "aSampleMethod")
 
-    def test_clear(self):
+    def test_clear(self) -> None:
         """
         L{Tag.clear} removes all children from a tag, but leaves its attributes
         in place.
@@ -99,7 +99,7 @@ class TagTests(TestCase):
         self.assertEqual(tag.children, [])
         self.assertEqual(tag.attributes, {"andSoIs": "this-attribute"})
 
-    def test_suffix(self):
+    def test_suffix(self) -> None:
         """
         L{Tag.__call__} accepts Python keywords with a suffixed underscore as
         the DOM attribute of that literal suffix.
@@ -109,21 +109,21 @@ class TagTests(TestCase):
         tag(class_="a")
         self.assertEqual(tag.attributes, {"class": "a"})
 
-    def test_commentReprPy3(self):
+    def test_commentReprPy3(self) -> None:
         """
         L{Comment.__repr__} returns a value which makes it easy to see what's
         in the comment.
         """
         self.assertEqual(repr(Comment("hello there")), "Comment('hello there')")
 
-    def test_cdataReprPy3(self):
+    def test_cdataReprPy3(self) -> None:
         """
         L{CDATA.__repr__} returns a value which makes it easy to see what's in
         the comment.
         """
         self.assertEqual(repr(CDATA("test data")), "CDATA('test data')")
 
-    def test_charrefRepr(self):
+    def test_charrefRepr(self) -> None:
         """
         L{CharRef.__repr__} returns a value which makes it easy to see what
         character is referred to.
