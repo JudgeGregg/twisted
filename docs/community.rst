@@ -8,7 +8,7 @@ Mail Lists
 
 If you want to participate in Twisted's community or development, you probably want to join the main mailing list:
 
-- `twisted-python <https://twistedmatrix.com/cgi-bin/mailman/listinfo/twisted-python>`_ - the main Twisted discussion list
+- `twisted-python <https://mail.python.org/mailman3/lists/twisted.python.org/>`_ - the main Twisted discussion list
 
 *Deprecated mailing lists:*
 
