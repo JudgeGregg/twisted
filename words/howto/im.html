@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Overview of Twisted IM &mdash; Twisted 22.8.0.post0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Using the Twisted IRC Client" href="ircclient.html" />
+    <link rel="prev" title="Developer Guides" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Twisted
+          </a>
+              <div class="version">
+                22.8
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Twisted Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Twisted Web</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Twisted Words (IRC and XMPP)</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Developer Guides</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Overview of Twisted IM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#code-flow">Code flow</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ircclient.html">Using the Twisted IRC Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ircserverclientcomm.html">Communicating With IRC Clients</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development of Twisted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors of Twisted</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Twisted</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Twisted Words (IRC and XMPP)</a> &raquo;</li>
+          <li><a href="index.html">Developer Guides</a> &raquo;</li>
+      <li>Overview of Twisted IM</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/words/howto/im.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="overview-of-twisted-im">
+<h1>Overview of Twisted IM<a class="headerlink" href="#overview-of-twisted-im" title="Permalink to this headline"></a></h1>
+<p>Twisted IM (Instance Messenger) is a multi-protocol chat
+framework, based on the Twisted framework we’ve all come to know
+and love. It’s fairly simple and extensible in two directions -
+it’s pretty easy to add new protocols, and it’s also quite easy
+to add new front-ends.</p>
+<section id="code-flow">
+<h2>Code flow<a class="headerlink" href="#code-flow" title="Permalink to this headline"></a></h2>
+<section id="accountmanager">
+<h3>AccountManager<a class="headerlink" href="#accountmanager" title="Permalink to this headline"></a></h3>
+<p>The control flow starts at the relevant subclass of <code class="xref py py-class docutils literal notranslate"><span class="pre">baseaccount.AccountManager</span></code> .
+The AccountManager is responsible for, well, managing accounts
+- remembering what accounts are available, their
+settings, adding and removal of accounts, and making accounts
+log on at startup.</p>
+<p>This would be a good place to start your interface, load a
+list of accounts from disk and tell them to login. Most of the
+method names in <code class="xref py py-class docutils literal notranslate"><span class="pre">AccountManager</span></code>
+are pretty self-explanatory, and your subclass can override
+whatever it wants, but you <em>need</em> to override <code class="docutils literal notranslate"><span class="pre">__init__</span></code> . Something like
+this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">chatui</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># Your subclass of basechat.ChatUI</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accounts</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># Load account list</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">accounts</span><span class="p">:</span>
+            <span class="n">a</span><span class="o">.</span><span class="n">logOn</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">chatui</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="chatui">
+<h3>ChatUI<a class="headerlink" href="#chatui" title="Permalink to this headline"></a></h3>
+<p>Account objects talk to the user via a subclass of <code class="xref py py-class docutils literal notranslate"><span class="pre">basechat.ChatUI</span></code> .
+This class keeps track of all the various conversations that
+are currently active, so that when an account receives and
+incoming message, it can put that message in its correct
+context.</p>
+<p>How much of this class you need to override depends on what
+you need to do. You will need to override
+<code class="docutils literal notranslate"><span class="pre">getConversation</span></code> (a one-on-one conversation, like
+an IRC DCC chat) and <code class="docutils literal notranslate"><span class="pre">getGroupConversation</span></code> (a
+multiple user conversation, like an IRC channel). You might
+want to override <code class="docutils literal notranslate"><span class="pre">getGroup</span></code> and
+<code class="docutils literal notranslate"><span class="pre">getPerson</span></code> .</p>
+<p>The main problem with the default versions of the above
+routines is that they take a parameter, <code class="docutils literal notranslate"><span class="pre">Class</span></code> ,
+which defaults to an abstract implementation of that class -
+for example, <code class="docutils literal notranslate"><span class="pre">getConversation</span></code> has a
+<code class="docutils literal notranslate"><span class="pre">Class</span></code> parameter that defaults to <code class="xref py py-class docutils literal notranslate"><span class="pre">basechat.Conversation</span></code> which
+raises a lot of <code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> s. In your
+subclass, override the method with a new method whose Class
+parameter defaults to your own implementation of
+<code class="docutils literal notranslate"><span class="pre">Conversation</span></code> , that simply calls the parent
+class’ implementation.</p>
+</section>
+<section id="conversation-and-groupconversation">
+<h3>Conversation and GroupConversation<a class="headerlink" href="#conversation-and-groupconversation" title="Permalink to this headline"></a></h3>
+<p>These classes are where your interface meets the chat
+protocol. Chat protocols get a message, find the appropriate
+<code class="docutils literal notranslate"><span class="pre">Conversation</span></code> or <code class="docutils literal notranslate"><span class="pre">GroupConversation</span></code>
+object, and call its methods when various interesting things
+happen.</p>
+<p>Override whatever methods you want to get the information
+you want to display. You must override the <code class="docutils literal notranslate"><span class="pre">hide</span></code>
+and <code class="docutils literal notranslate"><span class="pre">show</span></code> methods, however - they are called
+frequently and the default implementation raises
+<code class="docutils literal notranslate"><span class="pre">NotImplementedError</span></code> .</p>
+</section>
+<section id="accounts">
+<h3>Accounts<a class="headerlink" href="#accounts" title="Permalink to this headline"></a></h3>
+<p>An account is an instance of a subclass of <code class="xref py py-class docutils literal notranslate"><span class="pre">basesupport.AbstractAccount</span></code> .
+For more details and sample code, see the various
+<code class="docutils literal notranslate"><span class="pre">*support</span></code> files in <code class="docutils literal notranslate"><span class="pre">twisted.words.im</span></code> .</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Developer Guides" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ircclient.html" class="btn btn-neutral float-right" title="Using the Twisted IRC Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Twisted Matrix Labs. Ver 22.8.0.post0. Built on 2022-09-16.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

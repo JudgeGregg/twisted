@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Twisted’s Legacy Logging System: twisted.python.log &mdash; Twisted 22.4.0.post0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Symbolic Constants" href="constants.html" />
+    <link rel="prev" title="Logging with twisted.logger" href="logger.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Twisted
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                22.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Twisted Core</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Developer Guides</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="vision.html">The Vision For Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="servers.html">Writing Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clients.html">Writing Clients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trial.html">Test-driven development with Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/index.html">Twisted from Scratch, or The Evolution of Finger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/intro.html">The Evolution of Finger: building a simple finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/protocol.html">The Evolution of Finger: adding features to the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/style.html">The Evolution of Finger: cleaning up the finger code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/components.html">The Evolution of Finger: moving to a component based architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/backends.html">The Evolution of Finger: pluggable backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/web.html">The Evolution of Finger: a web frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/pb.html">The Evolution of Finger: Twisted client support using Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/factory.html">The Evolution of Finger: using a single factory for multiple protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/client.html">The Evolution of Finger: a Twisted finger client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/library.html">The Evolution of Finger: making a finger library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/configuration.html">The Evolution of Finger: configuration of the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quotes.html">Setting up the TwistedQuotes application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html">Designing Twisted Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="internet-overview.html">Overview of Twisted Internet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reactor-basics.html">Reactor Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ssl.html">Using TLS in Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udp.html">UDP Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">Using Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer-intro.html">Introduction to Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer.html">Deferred Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gendefer.html">Generating Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time.html">Scheduling tasks for the future</a></li>
+<li class="toctree-l3"><a class="reference internal" href="threading.html">Using Threads in Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="producers.html">Producers and Consumers: Efficient High-Volume Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="choosing-reactor.html">Choosing a Reactor and GUI Toolkit Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="endpoints.html">Getting Connected with Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="components.html">Components: Interfaces and Adapters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cred.html">Cred: Pluggable Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugin.html">The Twisted Plugin System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html">The Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application.html">Using the Twisted Application Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tap.html">Writing a twistd Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="systemd.html">Deploying Twisted with systemd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logger.html">Logging with twisted.logger</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Twisted’s Legacy Logging System: <code class="docutils literal notranslate"><span class="pre">twisted.python.log</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-usage">Basic usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#writing-log-observers">Writing log observers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#customizing-twistd-logging">Customizing <code class="docutils literal notranslate"><span class="pre">twistd</span></code>  logging</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="constants.html">Symbolic Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rdbms.html">twisted.enterprise.adbapi: Twisted RDBMS support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="options.html">Parsing command-lines with usage.Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dirdbm.html">DirDBM: Directory-based Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html">Writing tests for Twisted code using Trial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sendmsg.html">Extremely Low-Level Socket Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="amp.html">Asynchronous Messaging Protocol Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb.html">Overview of Twisted Spread</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-intro.html">Introduction to Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-usage.html">Using Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-clients.html">Managing Clients of Perspectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-copyable.html">PB Copyable: Passing Complex Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-cred.html">Authentication with Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-limits.html">PB Limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python3.html">Porting to Python 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="positioning.html">Twisted Positioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glossary.html">Twisted Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="debug-with-emacs.html">Debugging Python(Twisted) with Emacs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../specifications/index.html">Specifications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Twisted Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development of Twisted</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Twisted</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Twisted Core</a> &raquo;</li>
+        
+          <li><a href="index.html">Developer Guides</a> &raquo;</li>
+        
+      <li>Twisted’s Legacy Logging System: <code class="docutils literal notranslate"><span class="pre">twisted.python.log</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/core/howto/logging.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="twisted-s-legacy-logging-system-twisted-python-log">
+<h1>Twisted’s Legacy Logging System: <code class="docutils literal notranslate"><span class="pre">twisted.python.log</span></code><a class="headerlink" href="#twisted-s-legacy-logging-system-twisted-python-log" title="Permalink to this heading">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is now a new logging system in Twisted (<a class="reference internal" href="logger.html"><span class="doc">you can read about how to use it here</span></a> and <code class="xref py py-mod docutils literal notranslate"><span class="pre">its</span> <span class="pre">API</span> <span class="pre">reference</span> <span class="pre">here</span></code>) which is a replacement for <code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.python.log</span></code>.</p>
+<p>The old logging API, described here, remains for compatibility, and is now implemented as a client of the new logging system.</p>
+<p>New code should adopt the new API.</p>
+</div>
+<div class="section" id="basic-usage">
+<h2>Basic usage<a class="headerlink" href="#basic-usage" title="Permalink to this heading">¶</a></h2>
+<p>Twisted provides a simple and flexible logging system in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.python.log</span></code> module.  It has three commonly used
+functions:</p>
+<p><code class="xref py py-meth docutils literal notranslate"><span class="pre">msg</span></code></p>
+<blockquote>
+<div><p>Logs a new message.  For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.python</span> <span class="kn">import</span> <span class="n">log</span>
+<span class="n">log</span><span class="o">.</span><span class="n">msg</span><span class="p">(</span><span class="s1">&#39;Hello, world.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">err</span></code></p>
+<blockquote>
+<div><p>Writes a failure to the log, including traceback information (if any).
+You can pass it a <code class="xref py py-class docutils literal notranslate"><span class="pre">Failure</span></code> or Exception instance, or
+nothing.  If you pass something else, it will be converted to a string
+with <code class="docutils literal notranslate"><span class="pre">repr</span></code> and logged.</p>
+<p>If you pass nothing, it will construct a Failure from the
+currently active exception, which makes it convenient to use in an <code class="docutils literal notranslate"><span class="pre">except</span></code> clause:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+    <span class="n">log</span><span class="o">.</span><span class="n">err</span><span class="p">()</span>   <span class="c1"># will log the ZeroDivisionError</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">startLogging</span></code></p>
+<blockquote>
+<div><p>Starts logging to a given file-like object.  For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="o">.</span><span class="n">startLogging</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;/var/log/foo.log&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="o">.</span><span class="n">startLogging</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.python.logfile</span> <span class="kn">import</span> <span class="n">DailyLogFile</span>
+
+<span class="n">log</span><span class="o">.</span><span class="n">startLogging</span><span class="p">(</span><span class="n">DailyLogFile</span><span class="o">.</span><span class="n">fromFullPath</span><span class="p">(</span><span class="s2">&quot;/var/log/foo.log&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">startLogging</span></code> will also redirect anything written
+to <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code> and <code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code> to the log.  You
+can disable this by passing <code class="docutils literal notranslate"><span class="pre">setStdout=False</span></code> to
+<code class="docutils literal notranslate"><span class="pre">startLogging</span></code> .</p>
+</div></blockquote>
+<p>Before <code class="docutils literal notranslate"><span class="pre">startLogging</span></code> is called, log messages will be
+discarded and errors will be written to stderr.</p>
+<div class="section" id="logging-and-twistd">
+<h3>Logging and twistd<a class="headerlink" href="#logging-and-twistd" title="Permalink to this heading">¶</a></h3>
+<p>If you are using <code class="docutils literal notranslate"><span class="pre">twistd</span></code> to run your daemon, it
+will take care of calling <code class="docutils literal notranslate"><span class="pre">startLogging</span></code> for you, and will also
+rotate log files.  See <a class="reference internal" href="application.html#core-howto-application-twistd"><span class="std std-ref">twistd and tac</span></a>
+and the <code class="docutils literal notranslate"><span class="pre">twistd</span></code> man page for details of using
+twistd.</p>
+</div>
+<div class="section" id="log-files">
+<h3>Log files<a class="headerlink" href="#log-files" title="Permalink to this heading">¶</a></h3>
+<p>The <code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.python.logfile</span></code> module provides
+some standard classes suitable for use with <code class="docutils literal notranslate"><span class="pre">startLogging</span></code> , such
+as <code class="xref py py-class docutils literal notranslate"><span class="pre">DailyLogFile</span></code> ,
+which will rotate the log to a new file once per day.</p>
+</div>
+<div class="section" id="using-the-standard-library-logging-module">
+<h3>Using the standard library logging module<a class="headerlink" href="#using-the-standard-library-logging-module" title="Permalink to this heading">¶</a></h3>
+<p>If your application uses the
+Python <a class="reference external" href="http://docs.python.org/library/logging.html">standard    library logging module</a> or you want to use its easy configuration but
+don’t want to lose twisted-produced messages, the observer
+<code class="xref py py-class docutils literal notranslate"><span class="pre">PythonLoggingObserver</span></code>
+should be useful to you.</p>
+<p>You just start it like any other observer:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">observer</span> <span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="n">PythonLoggingObserver</span><span class="p">()</span>
+<span class="n">observer</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Then <a class="reference external" href="http://docs.python.org/library/logging.html">configure the    standard library logging module</a> to behave as you want.</p>
+<p>This method allows you to customize the log level received by the
+standard library logging module using the <code class="docutils literal notranslate"><span class="pre">logLevel</span></code> keyword:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">log</span><span class="o">.</span><span class="n">msg</span><span class="p">(</span><span class="s2">&quot;This is important!&quot;</span><span class="p">,</span> <span class="n">logLevel</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">CRITICAL</span><span class="p">)</span>
+<span class="n">log</span><span class="o">.</span><span class="n">msg</span><span class="p">(</span><span class="s2">&quot;Don&#39;t mind&quot;</span><span class="p">,</span> <span class="n">logLevel</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Unless <code class="docutils literal notranslate"><span class="pre">logLevel</span></code> is provided, logging.INFO is used for <code class="docutils literal notranslate"><span class="pre">log.msg</span></code>
+and <code class="docutils literal notranslate"><span class="pre">logging.ERROR</span></code> is used for <code class="docutils literal notranslate"><span class="pre">log.err</span></code> .</p>
+<p>One special care should be made when you use special configuration of
+the standard library logging module: some handlers (e.g. SMTP, HTTP) use the network and
+so can block inside the reactor loop. <em>Nothing</em> in <code class="docutils literal notranslate"><span class="pre">PythonLoggingObserver</span></code> is
+done to prevent that.</p>
+</div>
+</div>
+<div class="section" id="writing-log-observers">
+<h2>Writing log observers<a class="headerlink" href="#writing-log-observers" title="Permalink to this heading">¶</a></h2>
+<p>Log observers are the basis of the Twisted logging system.
+Whenever <code class="docutils literal notranslate"><span class="pre">log.msg</span></code> (or <code class="docutils literal notranslate"><span class="pre">log.err</span></code> ) is called, an
+event is emitted.  The event is passed to each observer which has been
+registered.  There can be any number of observers, and each can treat
+the event in any way desired.
+An example of
+a log observer in Twisted is the <code class="docutils literal notranslate"><span class="pre">emit</span></code> method of <code class="xref py py-class docutils literal notranslate"><span class="pre">FileLogObserver</span></code> .
+<code class="docutils literal notranslate"><span class="pre">FileLogObserver</span></code> , used by
+<code class="docutils literal notranslate"><span class="pre">startLogging</span></code> , writes events to a log file.  A log observer
+is just a callable that accepts a dictionary as its only argument.  You can
+then register it to receive all log events (in addition to any other
+observers):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">twisted</span><span class="o">.</span><span class="n">python</span><span class="o">.</span><span class="n">log</span><span class="o">.</span><span class="n">addObserver</span><span class="p">(</span><span class="n">yourCallable</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The dictionary will have at least two items:</p>
+<p>message</p>
+<blockquote>
+<div><p>The message (a list, usually of strings)
+for this log event, as passed to <code class="docutils literal notranslate"><span class="pre">log.msg</span></code> or the
+message in the failure passed to <code class="docutils literal notranslate"><span class="pre">log.err</span></code> .</p>
+</div></blockquote>
+<p>isError</p>
+<blockquote>
+<div><p>This is a boolean that will be true if this event came from a call to
+<code class="docutils literal notranslate"><span class="pre">log.err</span></code> .  If this is set, there may be a <code class="docutils literal notranslate"><span class="pre">failure</span></code>
+item in the dictionary as will, with a Failure object in it.</p>
+</div></blockquote>
+<p>Other items the built in logging functionality may add include:</p>
+<p>printed</p>
+<blockquote>
+<div><p>This message was captured from <code class="docutils literal notranslate"><span class="pre">sys.stdout</span></code> , i.e. this
+message came from a <code class="docutils literal notranslate"><span class="pre">print</span></code> statement.  If
+<code class="docutils literal notranslate"><span class="pre">isError</span></code> is also true, it came from
+<code class="docutils literal notranslate"><span class="pre">sys.stderr</span></code> .</p>
+</div></blockquote>
+<p>You can pass additional items to the event dictionary by passing keyword
+arguments to <code class="docutils literal notranslate"><span class="pre">log.msg</span></code> and <code class="docutils literal notranslate"><span class="pre">log.err</span></code> .  The standard
+log observers will ignore dictionary items they don’t use.</p>
+<p>Important notes:</p>
+<ul class="simple">
+<li><p>Never block in a log observer, as it may run in main Twisted thread.
+This means you can’t use socket or syslog standard library logging backends.</p></li>
+<li><p>The observer needs to be thread safe if you anticipate using threads
+in your program.</p></li>
+</ul>
+</div>
+<div class="section" id="customizing-twistd-logging">
+<h2>Customizing <code class="docutils literal notranslate"><span class="pre">twistd</span></code>  logging<a class="headerlink" href="#customizing-twistd-logging" title="Permalink to this heading">¶</a></h2>
+<p>The behavior of the logging that <code class="docutils literal notranslate"><span class="pre">twistd</span></code> does can be
+customized either with the <code class="docutils literal notranslate"><span class="pre">--logger</span></code> option or by setting the
+<code class="docutils literal notranslate"><span class="pre">ILogObserver</span></code> component on the application object.  See the <a class="reference internal" href="application.html"><span class="doc">Application document</span></a> for more information.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="constants.html" class="btn btn-neutral float-right" title="Symbolic Constants" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="logger.html" class="btn btn-neutral float-left" title="Logging with twisted.logger" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Twisted Matrix Labs. Ver 22.4.0.post0. Built on 2022-09-04.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

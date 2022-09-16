@@ -1,0 +1,692 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Parsing command-lines with usage.Options &mdash; Twisted 22.4.0.post0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DirDBM: Directory-based Storage" href="dirdbm.html" />
+    <link rel="prev" title="twisted.enterprise.adbapi: Twisted RDBMS support" href="rdbms.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Twisted
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                22.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Twisted Core</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Developer Guides</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="vision.html">The Vision For Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="servers.html">Writing Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clients.html">Writing Clients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trial.html">Test-driven development with Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/index.html">Twisted from Scratch, or The Evolution of Finger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/intro.html">The Evolution of Finger: building a simple finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/protocol.html">The Evolution of Finger: adding features to the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/style.html">The Evolution of Finger: cleaning up the finger code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/components.html">The Evolution of Finger: moving to a component based architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/backends.html">The Evolution of Finger: pluggable backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/web.html">The Evolution of Finger: a web frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/pb.html">The Evolution of Finger: Twisted client support using Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/factory.html">The Evolution of Finger: using a single factory for multiple protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/client.html">The Evolution of Finger: a Twisted finger client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/library.html">The Evolution of Finger: making a finger library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/configuration.html">The Evolution of Finger: configuration of the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quotes.html">Setting up the TwistedQuotes application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html">Designing Twisted Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="internet-overview.html">Overview of Twisted Internet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reactor-basics.html">Reactor Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ssl.html">Using TLS in Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udp.html">UDP Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">Using Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer-intro.html">Introduction to Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer.html">Deferred Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gendefer.html">Generating Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time.html">Scheduling tasks for the future</a></li>
+<li class="toctree-l3"><a class="reference internal" href="threading.html">Using Threads in Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="producers.html">Producers and Consumers: Efficient High-Volume Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="choosing-reactor.html">Choosing a Reactor and GUI Toolkit Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="endpoints.html">Getting Connected with Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="components.html">Components: Interfaces and Adapters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cred.html">Cred: Pluggable Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugin.html">The Twisted Plugin System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html">The Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application.html">Using the Twisted Application Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tap.html">Writing a twistd Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="systemd.html">Deploying Twisted with systemd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logger.html">Logging with twisted.logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging.html">Twisted’s Legacy Logging System: <code class="docutils literal notranslate"><span class="pre">twisted.python.log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="constants.html">Symbolic Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rdbms.html">twisted.enterprise.adbapi: Twisted RDBMS support</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Parsing command-lines with usage.Options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#boolean-options">Boolean Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#option-subcommands">Option Subcommands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generic-code-for-options">Generic Code For Options</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parsing-arguments">Parsing Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post-processing">Post Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#type-enforcement">Type enforcement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shell-tab-completion">Shell tab-completion</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="dirdbm.html">DirDBM: Directory-based Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html">Writing tests for Twisted code using Trial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sendmsg.html">Extremely Low-Level Socket Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="amp.html">Asynchronous Messaging Protocol Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb.html">Overview of Twisted Spread</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-intro.html">Introduction to Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-usage.html">Using Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-clients.html">Managing Clients of Perspectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-copyable.html">PB Copyable: Passing Complex Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-cred.html">Authentication with Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-limits.html">PB Limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python3.html">Porting to Python 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="positioning.html">Twisted Positioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glossary.html">Twisted Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="debug-with-emacs.html">Debugging Python(Twisted) with Emacs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../specifications/index.html">Specifications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Twisted Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development of Twisted</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Twisted</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Twisted Core</a> &raquo;</li>
+        
+          <li><a href="index.html">Developer Guides</a> &raquo;</li>
+        
+      <li>Parsing command-lines with usage.Options</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/core/howto/options.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="parsing-command-lines-with-usage-options">
+<h1>Parsing command-lines with usage.Options<a class="headerlink" href="#parsing-command-lines-with-usage-options" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h2>
+<p>There is frequently a need for programs to parse a UNIX-like
+command line program: options preceded by <code class="docutils literal notranslate"><span class="pre">-</span></code> or
+<code class="docutils literal notranslate"><span class="pre">--</span></code> , sometimes followed by a parameter, followed by
+a list of arguments. The <code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.python.usage</span></code> provides a class,
+<code class="docutils literal notranslate"><span class="pre">Options</span></code> , to facilitate such parsing.</p>
+<p>While Python has the <code class="docutils literal notranslate"><span class="pre">getopt</span></code> module for doing
+this, it provides a very low level of abstraction for options.
+Twisted has a higher level of abstraction, in the class <code class="xref py py-class docutils literal notranslate"><span class="pre">twisted.python.usage.Options</span></code> . It uses
+Python’s reflection facilities to provide an easy to use yet
+flexible interface to the command line. While most command line
+processors either force the application writer to write their own
+loops, or have arbitrary limitations on the command line (the
+most common one being not being able to have more than one
+instance of a specific option, thus rendering the idiom
+<code class="docutils literal notranslate"><span class="pre">program</span> <span class="pre">-v</span> <span class="pre">-v</span> <span class="pre">-v</span></code> impossible), Twisted allows the
+programmer to decide how much control they want.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Options</span></code> class is used by subclassing. Since
+a lot of time it will be used in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.tap</span></code> package, where the local
+conventions require the specific options parsing class to also
+be called <code class="docutils literal notranslate"><span class="pre">Options</span></code> , it is usually imported with</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.python</span> <span class="kn">import</span> <span class="n">usage</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="boolean-options">
+<h2>Boolean Options<a class="headerlink" href="#boolean-options" title="Permalink to this heading">¶</a></h2>
+<p>For simple boolean options, define the attribute
+<code class="docutils literal notranslate"><span class="pre">optFlags</span></code> like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Options</span><span class="p">(</span><span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="p">):</span>
+
+    <span class="n">optFlags</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;fast&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;Act quickly&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;safe&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="s2">&quot;Act safely&quot;</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">optFlags</span></code> should be a list of 3-lists. The first element
+is the long name, and will be used on the command line as
+<code class="docutils literal notranslate"><span class="pre">--fast</span></code> . The second one is the short name, and will be used
+on the command line as <code class="docutils literal notranslate"><span class="pre">-f</span></code> . The last element is a
+description of the flag and will be used to generate the usage
+information text.  The long name also determines the name of the key
+that will be set on the Options instance. Its value will be 1 if the
+option was seen, 0 otherwise. Here is an example for usage:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
+<span class="k">class</span> <span class="nc">Options</span><span class="p">(</span><span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="p">):</span>
+
+    <span class="n">optFlags</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s2">&quot;fast&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;Act quickly&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;good&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="s2">&quot;Act well&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;cheap&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;Act cheaply&quot;</span><span class="p">]</span>
+    <span class="p">]</span>
+
+<span class="n">command_line</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;-g&quot;</span><span class="p">,</span> <span class="s2">&quot;--fast&quot;</span><span class="p">]</span>
+
+<span class="n">options</span> <span class="o">=</span> <span class="n">Options</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">options</span><span class="o">.</span><span class="n">parseOptions</span><span class="p">(</span><span class="n">command_line</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">usage</span><span class="o">.</span><span class="n">UsageError</span> <span class="k">as</span> <span class="n">errortext</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">errortext</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">: Try --help for usage details.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fast&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;good&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;good&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">options</span><span class="p">[</span><span class="s1">&#39;cheap&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cheap&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>The above will print <code class="docutils literal notranslate"><span class="pre">fast</span> <span class="pre">good</span></code> .</p>
+<p>Note here that Options fully supports the mapping interface. You can
+access it mostly just like you can access any other dict. Options are stored
+as mapping items in the Options instance: parameters as ‘paramname’: ‘value’
+and flags as ‘flagname’: 1 or 0.</p>
+<div class="section" id="inheritance-or-how-i-learned-to-stop-worrying-and-love-the-superclass">
+<h3>Inheritance, Or: How I Learned to Stop Worrying and Love the Superclass<a class="headerlink" href="#inheritance-or-how-i-learned-to-stop-worrying-and-love-the-superclass" title="Permalink to this heading">¶</a></h3>
+<p>Sometimes there is a need for several option processors with a unifying core.
+Perhaps you want all your commands to understand <code class="docutils literal notranslate"><span class="pre">-q</span></code> /<code class="docutils literal notranslate"><span class="pre">--quiet</span></code> means to be quiet, or something similar.
+On the face of it, this looks impossible: in Python, the subclass’s <code class="docutils literal notranslate"><span class="pre">optFlags</span></code> would shadow the superclass’s.
+However, <code class="docutils literal notranslate"><span class="pre">usage.Options</span></code> uses special reflection code to get all of the <code class="docutils literal notranslate"><span class="pre">optFlags</span></code> defined in the hierarchy. So the following:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">BaseOptions</span><span class="p">(</span><span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="p">):</span>
+
+    <span class="n">optFlags</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;quiet&quot;</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">]]</span>
+
+<span class="k">class</span> <span class="nc">SpecificOptions</span><span class="p">(</span><span class="n">BaseOptions</span><span class="p">):</span>
+
+    <span class="n">optFlags</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s2">&quot;fast&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;good&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;cheap&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+<p>Is the same as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SpecificOptions</span><span class="p">(</span><span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="p">):</span>
+
+    <span class="n">optFlags</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s2">&quot;quiet&quot;</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">,</span> <span class="s2">&quot;Silence output&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;fast&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;Run quickly&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;good&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="s2">&quot;Don&#39;t validate input&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;cheap&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;Use cheap resources&quot;</span><span class="p">]</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this heading">¶</a></h2>
+<p>Parameters are specified using the attribute
+<code class="docutils literal notranslate"><span class="pre">optParameters</span></code> . They <em>must</em> be given a
+default. If you want to make sure you got the parameter from
+the command line, give a non-string default. Since the command
+line only has strings, this is completely reliable.</p>
+<p>Here is an example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
+<span class="kn">from</span> <span class="nn">twisted.python</span> <span class="kn">import</span> <span class="n">usage</span>
+
+<span class="k">class</span> <span class="nc">Options</span><span class="p">(</span><span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="p">):</span>
+
+    <span class="n">optFlags</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s2">&quot;fast&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;Run quickly&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;good&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="s2">&quot;Don&#39;t validate input&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;cheap&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;Use cheap resources&quot;</span><span class="p">]</span>
+    <span class="p">]</span>
+    <span class="n">optParameters</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;u&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s2">&quot;The user name&quot;</span><span class="p">]]</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Options</span><span class="p">()</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">config</span><span class="o">.</span><span class="n">parseOptions</span><span class="p">()</span> <span class="c1"># When given no argument, parses sys.argv[1:]</span>
+<span class="k">except</span> <span class="n">usage</span><span class="o">.</span><span class="n">UsageError</span> <span class="k">as</span> <span class="n">errortext</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">errortext</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">: Try --help for usage details.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello&quot;</span><span class="p">,</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;user&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;So, you want it:&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;fast&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;good&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;good&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;cheap&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;cheap&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Like <code class="docutils literal notranslate"><span class="pre">optFlags</span></code> , <code class="docutils literal notranslate"><span class="pre">optParameters</span></code> works
+smoothly with inheritance.</p>
+</div>
+<div class="section" id="option-subcommands">
+<h2>Option Subcommands<a class="headerlink" href="#option-subcommands" title="Permalink to this heading">¶</a></h2>
+<p>It is useful, on occasion, to group a set of options together based
+on the logical “action” to which they belong.  For this, the
+<code class="docutils literal notranslate"><span class="pre">usage.Options</span></code> class allows you to define a set of
+“subcommands” , each of which can provide its own
+<code class="docutils literal notranslate"><span class="pre">usage.Options</span></code> instance to handle its particular
+options.</p>
+<p>Here is an example for an Options class that might parse
+options like those the cvs program takes</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.python</span> <span class="kn">import</span> <span class="n">usage</span>
+
+<span class="k">class</span> <span class="nc">ImportOptions</span><span class="p">(</span><span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="p">):</span>
+    <span class="n">optParameters</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;module&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;vendor&#39;</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;release&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span>
+    <span class="p">]</span>
+
+<span class="k">class</span> <span class="nc">CheckoutOptions</span><span class="p">(</span><span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="p">):</span>
+    <span class="n">optParameters</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;module&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;tag&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]]</span>
+
+<span class="k">class</span> <span class="nc">Options</span><span class="p">(</span><span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="p">):</span>
+    <span class="n">subCommands</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;import&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">ImportOptions</span><span class="p">,</span> <span class="s2">&quot;Do an Import&quot;</span><span class="p">],</span>
+                   <span class="p">[</span><span class="s1">&#39;checkout&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">CheckoutOptions</span><span class="p">,</span> <span class="s2">&quot;Do a Checkout&quot;</span><span class="p">]]</span>
+
+    <span class="n">optParameters</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;compression&#39;</span><span class="p">,</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Use compression&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;repository&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="s1">&#39;Specify an alternate repository&#39;</span><span class="p">]</span>
+    <span class="p">]</span>
+
+<span class="n">config</span> <span class="o">=</span> <span class="n">Options</span><span class="p">();</span> <span class="n">config</span><span class="o">.</span><span class="n">parseOptions</span><span class="p">()</span>
+<span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">subCommand</span> <span class="o">==</span> <span class="s1">&#39;import&#39;</span><span class="p">:</span>
+    <span class="n">doImport</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">subOptions</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">config</span><span class="o">.</span><span class="n">subCommand</span> <span class="o">==</span> <span class="s1">&#39;checkout&#39;</span><span class="p">:</span>
+    <span class="n">doCheckout</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">subOptions</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">subCommands</span></code> attribute of <code class="docutils literal notranslate"><span class="pre">Options</span></code>
+directs the parser to the two other <code class="docutils literal notranslate"><span class="pre">Options</span></code> subclasses
+when the strings <code class="docutils literal notranslate"><span class="pre">&quot;import&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;checkout&quot;</span></code> are
+present on the command
+line.  All options after the given command string are passed to the
+specified Options subclass for further parsing.  Only one subcommand
+may be specified at a time.  After parsing has completed, the Options
+instance has two new attributes - <code class="docutils literal notranslate"><span class="pre">subCommand</span></code> and <code class="docutils literal notranslate"><span class="pre">subOptions</span></code> - which hold the command string and the Options
+instance used to parse the remaining options.</p>
+</div>
+<div class="section" id="generic-code-for-options">
+<h2>Generic Code For Options<a class="headerlink" href="#generic-code-for-options" title="Permalink to this heading">¶</a></h2>
+<p>Sometimes, just setting an attribute on the basis of the
+options is not flexible enough. In those cases, Twisted does
+not even attempt to provide abstractions such as “counts” or
+“lists” , but rather lets you call your own method, which will
+be called whenever the option is encountered.</p>
+<p>Here is an example of counting verbosity</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.python</span> <span class="kn">import</span> <span class="n">usage</span>
+
+<span class="k">class</span> <span class="nc">Options</span><span class="p">(</span><span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;verbosity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># default</span>
+
+    <span class="k">def</span> <span class="nf">opt_verbose</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;verbosity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;verbosity&#39;</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">opt_quiet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;verbosity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;verbosity&#39;</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span>
+
+    <span class="n">opt_v</span> <span class="o">=</span> <span class="n">opt_verbose</span>
+    <span class="n">opt_q</span> <span class="o">=</span> <span class="n">opt_quiet</span>
+</pre></div>
+</div>
+<p>Command lines that look like
+<code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">-v</span> <span class="pre">-v</span> <span class="pre">-v</span> <span class="pre">-v</span></code> will
+increase verbosity to 4, while
+<code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">-q</span> <span class="pre">-q</span> <span class="pre">-q</span></code> will decrease
+verbosity to -3.</p>
+<p>The <code class="xref py py-class docutils literal notranslate"><span class="pre">usage.Options</span></code>
+class knows that these are
+parameter-less options, since the methods do not receive an
+argument. Here is an example for a method with a parameter:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.python</span> <span class="kn">import</span> <span class="n">usage</span>
+
+<span class="k">class</span> <span class="nc">Options</span><span class="p">(</span><span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;symbols&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">opt_define</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">symbol</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;symbols&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+
+    <span class="n">opt_D</span> <span class="o">=</span> <span class="n">opt_define</span>
+</pre></div>
+</div>
+<p>This example is useful for the common idiom of having
+<code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">-DFOO</span> <span class="pre">-DBAR</span></code> to define symbols.</p>
+</div>
+<div class="section" id="parsing-arguments">
+<h2>Parsing Arguments<a class="headerlink" href="#parsing-arguments" title="Permalink to this heading">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">usage.Options</span></code> does not stop helping when the
+last parameter is gone. All the other arguments are sent into a
+function which should deal with them. Here is an example for a
+<code class="docutils literal notranslate"><span class="pre">cmp</span></code> like command.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.python</span> <span class="kn">import</span> <span class="n">usage</span>
+
+<span class="k">class</span> <span class="nc">Options</span><span class="p">(</span><span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="p">):</span>
+
+    <span class="n">optParameters</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;max_differences&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">]]</span>
+
+    <span class="k">def</span> <span class="nf">parseArgs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">origin</span><span class="p">,</span> <span class="n">changed</span><span class="p">):</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;origin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">origin</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;changed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">changed</span>
+</pre></div>
+</div>
+<p>The command should look like <code class="docutils literal notranslate"><span class="pre">command</span> <span class="pre">origin</span> <span class="pre">changed</span></code> .</p>
+<p>If you want to have a variable number of left-over
+arguments, just use <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">parseArgs(self,</span> <span class="pre">*args):</span></code> .
+This is useful for commands like the UNIX
+<code class="docutils literal notranslate"><span class="pre">cat(1)</span></code> .</p>
+</div>
+<div class="section" id="post-processing">
+<h2>Post Processing<a class="headerlink" href="#post-processing" title="Permalink to this heading">¶</a></h2>
+<p>Sometimes, you want to perform post processing of options to
+patch up inconsistencies, and the like. Here is an example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.python</span> <span class="kn">import</span> <span class="n">usage</span>
+
+<span class="k">class</span> <span class="nc">Options</span><span class="p">(</span><span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="p">):</span>
+
+    <span class="n">optFlags</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s2">&quot;fast&quot;</span><span class="p">,</span> <span class="s2">&quot;f&quot;</span><span class="p">,</span> <span class="s2">&quot;Run quickly&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;good&quot;</span><span class="p">,</span> <span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="s2">&quot;Don&#39;t validate input&quot;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s2">&quot;cheap&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;Use cheap resources&quot;</span><span class="p">]</span>
+    <span class="p">]</span>
+
+    <span class="k">def</span> <span class="nf">postOptions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;fast&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;good&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="bp">self</span><span class="p">[</span><span class="s1">&#39;cheap&#39;</span><span class="p">]:</span>
+            <span class="k">raise</span> <span class="n">usage</span><span class="o">.</span><span class="n">UsageError</span><span class="p">(</span><span class="s2">&quot;can&#39;t have it all, brother&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="type-enforcement">
+<h2>Type enforcement<a class="headerlink" href="#type-enforcement" title="Permalink to this heading">¶</a></h2>
+<p>By default, all options are handled as strings. You may want to
+enforce the type of your option in some specific case, the classic example
+being port number. Any callable can be specified in the fifth row of
+<code class="docutils literal notranslate"><span class="pre">optParameters</span></code> and will be called with the string value passed
+in parameter.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.python</span> <span class="kn">import</span> <span class="n">usage</span>
+
+<span class="k">class</span> <span class="nc">Options</span><span class="p">(</span><span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="p">):</span>
+    <span class="n">optParameters</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">[</span><span class="s2">&quot;shiny_integer&quot;</span><span class="p">,</span> <span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
+            <span class="p">[</span><span class="s2">&quot;dummy_float&quot;</span><span class="p">,</span> <span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="mf">3.14159</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+        <span class="p">]</span>
+</pre></div>
+</div>
+<p>Note that default values are not coerced, so you should either declare
+it with the good type (as above) or handle it when you use your
+options.</p>
+<p>The coerce function may have a coerceDoc attribute, the content of which
+will be printed after the documentation of the option. It’s particularly
+useful for reusing the function at multiple places.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">oneTwoThree</span><span class="p">(</span><span class="n">val</span><span class="p">):</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">val</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Not in range&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">val</span>
+<span class="n">oneTwoThree</span><span class="o">.</span><span class="n">coerceDoc</span> <span class="o">=</span> <span class="s2">&quot;Must be 1, 2 or 3.&quot;</span>
+
+<span class="kn">from</span> <span class="nn">twisted.python</span> <span class="kn">import</span> <span class="n">usage</span>
+
+<span class="k">class</span> <span class="nc">Options</span><span class="p">(</span><span class="n">usage</span><span class="o">.</span><span class="n">Options</span><span class="p">):</span>
+    <span class="n">optParameters</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;one_choice&quot;</span><span class="p">,</span> <span class="s2">&quot;o&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">oneTwoThree</span><span class="p">]]</span>
+</pre></div>
+</div>
+<p>This example code will print the following help when added to your program:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>python myprogram.py --help
+<span class="go">Usage: myprogram [options]</span>
+<span class="go">Options:</span>
+<span class="go">  -o, --one_choice=           [default: 0]. Must be 1, 2 or 3.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="shell-tab-completion">
+<h2>Shell tab-completion<a class="headerlink" href="#shell-tab-completion" title="Permalink to this heading">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Options</span></code> class may provide tab-completion to interactive
+command shells. Only <code class="docutils literal notranslate"><span class="pre">zsh</span></code> is supported at present, but there is
+some interest in supporting <code class="docutils literal notranslate"><span class="pre">bash</span></code> in the future.</p>
+<p>Support is automatic for all of the commands shipped with Twisted. Zsh
+has shipped, for a number of years, a completion function which ties in to
+the support provided by the <code class="docutils literal notranslate"><span class="pre">Options</span></code> class.</p>
+<p>If you are writing a <code class="docutils literal notranslate"><span class="pre">twistd</span></code> plugin, then tab-completion
+for your <code class="docutils literal notranslate"><span class="pre">twistd</span></code> sub-command is also automatic.</p>
+<p>For other commands you may easily provide zsh tab-completion support.
+Copy the file “twisted/python/twisted-completion.zsh” and name it something
+like “_mycommand”. A leading underscore with no extension is zsh’s
+convention for completion function files.</p>
+<p>Edit the new file and change the first line to refer only to your new
+command(s), like so:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span>compdef mycommand
+</pre></div>
+</div>
+<p>Then ensure this file is made available to the shell by placing it in
+one of the directories appearing in zsh’s $fpath. Restart zsh, and ensure
+advanced completion is enabled
+(<code class="docutils literal notranslate"><span class="pre">autoload</span> <span class="pre">-U</span> <span class="pre">compinit;</span> <span class="pre">compinit)</span></code> . You should then be able to
+type the name of your command and press Tab to have your command-line
+options completed.</p>
+<div class="section" id="completion-metadata">
+<h3>Completion metadata<a class="headerlink" href="#completion-metadata" title="Permalink to this heading">¶</a></h3>
+<p>Optionally, a special attribute, <code class="docutils literal notranslate"><span class="pre">compData</span></code> , may be defined
+on your <code class="docutils literal notranslate"><span class="pre">Options</span></code> subclass in order to provide more information
+to the shell-completion system. The attribute should be an instance of
+I DON’T KNOW WHAT TO DO WITH THIS LINK!</p>
+<p>In addition, <code class="docutils literal notranslate"><span class="pre">compData</span></code> may be defined on parent classes in
+your inheritance hiearchy. The information from each
+I DON’T KNOW WHAT TO DO WITH THIS LINK!</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="dirdbm.html" class="btn btn-neutral float-right" title="DirDBM: Directory-based Storage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="rdbms.html" class="btn btn-neutral float-left" title="twisted.enterprise.adbapi: Twisted RDBMS support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Twisted Matrix Labs. Ver 22.4.0.post0. Built on 2022-09-04.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

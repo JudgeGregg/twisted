@@ -1,0 +1,327 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Creating and working with a names (DNS) server &mdash; Twisted 22.4.0.post0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Creating a custom server" href="custom-server.html" />
+    <link rel="prev" title="A Guided Tour of twisted.names.client" href="client-tour.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Twisted
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                22.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Twisted Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Twisted Names (DNS)</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Developer Guides</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="client-tour.html">A Guided Tour of twisted.names.client</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Creating and working with a names (DNS) server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-non-authoritative-server">Creating a non-authoritative server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-an-authoritative-server">Creating an authoritative server</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="custom-server.html">Creating a custom server</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Twisted Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development of Twisted</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Twisted</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Twisted Names (DNS)</a> &raquo;</li>
+        
+          <li><a href="index.html">Developer Guides</a> &raquo;</li>
+        
+      <li>Creating and working with a names (DNS) server</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/names/howto/names.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="creating-and-working-with-a-names-dns-server">
+<h1>Creating and working with a names (DNS) server<a class="headerlink" href="#creating-and-working-with-a-names-dns-server" title="Permalink to this heading">¶</a></h1>
+<p>A Names server can be perform three basic operations:</p>
+<ul class="simple">
+<li><p>act as a recursive server, forwarding queries to other servers</p></li>
+<li><p>perform local caching of recursively discovered records</p></li>
+<li><p>act as the authoritative server for a domain</p></li>
+</ul>
+<div class="section" id="creating-a-non-authoritative-server">
+<h2>Creating a non-authoritative server<a class="headerlink" href="#creating-a-non-authoritative-server" title="Permalink to this heading">¶</a></h2>
+<p>The first two of these are easy, and you can create a server that performs them
+with the command <code class="docutils literal notranslate"><span class="pre">twistd</span> <span class="pre">-n</span> <span class="pre">dns</span> <span class="pre">--recursive</span> <span class="pre">--cache</span></code> .
+You may wish to run this as root since it will try to bind to UDP port 53.  Try
+performing a lookup with it, <code class="docutils literal notranslate"><span class="pre">dig</span> <span class="pre">twistedmatrix.com</span> <span class="pre">&#64;127.0.0.1</span></code> .</p>
+</div>
+<div class="section" id="creating-an-authoritative-server">
+<h2>Creating an authoritative server<a class="headerlink" href="#creating-an-authoritative-server" title="Permalink to this heading">¶</a></h2>
+<p>To act as the authority for a domain, two things are necessary: the address
+of the machine on which the domain name server will run must be registered
+as a nameserver for the domain; and the domain name server must be
+configured to act as the authority.  The first requirement is beyond the
+scope of this howto and will not be covered.</p>
+<p>To configure Names to act as the authority
+for <code class="docutils literal notranslate"><span class="pre">example-domain.com</span></code> , we first create a zone file for
+this domain.</p>
+<p><a class="reference download internal" download="" href="../../_downloads/13fe60453a6b0853b8402ad7af553a3a/example-domain.com"><code class="xref download docutils literal notranslate"><span class="pre">example-domain.com</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="n">zone</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">SOA</span><span class="p">(</span>
+        <span class="c1"># For whom we are the authority</span>
+        <span class="s1">&#39;example-domain.com&#39;</span><span class="p">,</span>
+
+        <span class="c1"># This nameserver&#39;s name</span>
+        <span class="n">mname</span> <span class="o">=</span> <span class="s2">&quot;ns1.example-domain.com&quot;</span><span class="p">,</span>
+        
+        <span class="c1"># Mailbox of individual who handles this</span>
+        <span class="n">rname</span> <span class="o">=</span> <span class="s2">&quot;root.example-domain.com&quot;</span><span class="p">,</span>
+
+        <span class="c1"># Unique serial identifying this SOA data</span>
+        <span class="n">serial</span> <span class="o">=</span> <span class="mi">2003010601</span><span class="p">,</span>        
+
+        <span class="c1"># Time interval before zone should be refreshed</span>
+        <span class="n">refresh</span> <span class="o">=</span> <span class="s2">&quot;1H&quot;</span><span class="p">,</span>             
+
+        <span class="c1"># Interval before failed refresh should be retried</span>
+        <span class="n">retry</span> <span class="o">=</span> <span class="s2">&quot;1H&quot;</span><span class="p">,</span>               
+
+        <span class="c1"># Upper limit on time interval before expiry</span>
+        <span class="n">expire</span> <span class="o">=</span> <span class="s2">&quot;1H&quot;</span><span class="p">,</span>              
+
+        <span class="c1"># Minimum TTL</span>
+        <span class="n">minimum</span> <span class="o">=</span> <span class="s2">&quot;1H&quot;</span>              
+    <span class="p">),</span>
+
+    <span class="n">A</span><span class="p">(</span><span class="s1">&#39;example-domain.com&#39;</span><span class="p">,</span> <span class="s1">&#39;127.0.0.1&#39;</span><span class="p">),</span>
+    <span class="n">NS</span><span class="p">(</span><span class="s1">&#39;example-domain.com&#39;</span><span class="p">,</span> <span class="s1">&#39;ns1.example-domain.com&#39;</span><span class="p">),</span>
+
+    <span class="n">CNAME</span><span class="p">(</span><span class="s1">&#39;www.example-domain.com&#39;</span><span class="p">,</span> <span class="s1">&#39;example-domain.com&#39;</span><span class="p">),</span>
+    <span class="n">CNAME</span><span class="p">(</span><span class="s1">&#39;ftp.example-domain.com&#39;</span><span class="p">,</span> <span class="s1">&#39;example-domain.com&#39;</span><span class="p">),</span>
+
+    <span class="n">MX</span><span class="p">(</span><span class="s1">&#39;example-domain.com&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;mail.example-domain.com&#39;</span><span class="p">),</span>
+    <span class="n">A</span><span class="p">(</span><span class="s1">&#39;mail.example-domain.com&#39;</span><span class="p">,</span> <span class="s1">&#39;123.0.16.43&#39;</span><span class="p">),</span>
+    <span class="n">PTR</span><span class="p">(</span><span class="s1">&#39;43.16.0.123.in-addr.arpa&#39;</span><span class="p">,</span> <span class="s1">&#39;mail.example-domain.com&#39;</span><span class="p">),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Next, run the command <code class="docutils literal notranslate"><span class="pre">twistd</span> <span class="pre">-n</span> <span class="pre">dns</span> <span class="pre">--pyzone</span> <span class="pre">example-domain.com</span></code> .  Now try querying the domain locally (again, with
+dig): <code class="docutils literal notranslate"><span class="pre">dig</span> <span class="pre">-t</span> <span class="pre">any</span> <span class="pre">example-domain.com</span> <span class="pre">&#64;127.0.0.1</span></code> .</p>
+<p>Names can also read a traditional, BIND-syntax zone file.  Specify these
+with the <code class="docutils literal notranslate"><span class="pre">--bindzone</span></code> parameter.  The $GENERATE and $INCLUDE
+directives are not yet supported.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="custom-server.html" class="btn btn-neutral float-right" title="Creating a custom server" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="client-tour.html" class="btn btn-neutral float-left" title="A Guided Tour of twisted.names.client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Twisted Matrix Labs. Ver 22.4.0.post0. Built on 2022-09-04.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

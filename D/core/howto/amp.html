@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asynchronous Messaging Protocol Overview &mdash; Twisted 22.8.0.post0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Overview of Twisted Spread" href="pb.html" />
+    <link rel="prev" title="Extremely Low-Level Socket Operations" href="sendmsg.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Twisted
+          </a>
+              <div class="version">
+                22.8
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Twisted Core</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Developer Guides</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="vision.html">The Vision For Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="servers.html">Writing Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clients.html">Writing Clients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trial.html">Test-driven development with Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/index.html">Twisted from Scratch, or The Evolution of Finger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/intro.html">The Evolution of Finger: building a simple finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/protocol.html">The Evolution of Finger: adding features to the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/style.html">The Evolution of Finger: cleaning up the finger code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/components.html">The Evolution of Finger: moving to a component based architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/backends.html">The Evolution of Finger: pluggable backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/web.html">The Evolution of Finger: a web frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/pb.html">The Evolution of Finger: Twisted client support using Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/factory.html">The Evolution of Finger: using a single factory for multiple protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/client.html">The Evolution of Finger: a Twisted finger client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/library.html">The Evolution of Finger: making a finger library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/configuration.html">The Evolution of Finger: configuration of the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quotes.html">Setting up the TwistedQuotes application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html">Designing Twisted Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="internet-overview.html">Overview of Twisted Internet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reactor-basics.html">Reactor Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ssl.html">Using TLS in Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udp.html">UDP Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">Using Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer-intro.html">Introduction to Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer.html">Deferred Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gendefer.html">Generating Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time.html">Scheduling tasks for the future</a></li>
+<li class="toctree-l3"><a class="reference internal" href="threading.html">Using Threads in Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="producers.html">Producers and Consumers: Efficient High-Volume Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="choosing-reactor.html">Choosing a Reactor and GUI Toolkit Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="endpoints.html">Getting Connected with Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="components.html">Components: Interfaces and Adapters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cred.html">Cred: Pluggable Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugin.html">The Twisted Plugin System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html">The Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application.html">Using the Twisted Application Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tap.html">Writing a twistd Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="systemd.html">Deploying Twisted with systemd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logger.html">Logging with twisted.logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging.html">Twisted’s Legacy Logging System: <code class="docutils literal notranslate"><span class="pre">twisted.python.log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="constants.html">Symbolic Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rdbms.html">twisted.enterprise.adbapi: Twisted RDBMS support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="options.html">Parsing command-lines with usage.Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dirdbm.html">DirDBM: Directory-based Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html">Writing tests for Twisted code using Trial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sendmsg.html">Extremely Low-Level Socket Operations</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Asynchronous Messaging Protocol Overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up">Setting Up</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commands">Commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#locators">Locators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#box-receivers">Box Receivers</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pb.html">Overview of Twisted Spread</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-intro.html">Introduction to Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-usage.html">Using Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-clients.html">Managing Clients of Perspectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-copyable.html">PB Copyable: Passing Complex Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-cred.html">Authentication with Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-limits.html">PB Limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python3.html">Porting to Python 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="positioning.html">Twisted Positioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glossary.html">Twisted Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="debug-with-emacs.html">Debugging Python(Twisted) with Emacs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../specifications/index.html">Specifications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Twisted Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development of Twisted</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Twisted</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Twisted Core</a> &raquo;</li>
+          <li><a href="index.html">Developer Guides</a> &raquo;</li>
+      <li>Asynchronous Messaging Protocol Overview</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/core/howto/amp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="asynchronous-messaging-protocol-overview">
+<h1>Asynchronous Messaging Protocol Overview<a class="headerlink" href="#asynchronous-messaging-protocol-overview" title="Permalink to this heading"></a></h1>
+<p>The purpose of this guide is to describe the uses for and usage of <code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.protocols.amp</span></code> beyond what is explained in the API documentation.  It will show you how to implement an AMP server which can respond to commands or interact directly with individual messages.  It will also show you how to implement an AMP client which can issue commands to a server.</p>
+<p>AMP is a bidirectional command/response-oriented protocol intended to be extended with application-specific request types and handlers.  Various simple data types are supported and support for new data types can be added by applications.</p>
+<section id="setting-up">
+<h2>Setting Up<a class="headerlink" href="#setting-up" title="Permalink to this heading"></a></h2>
+<p>AMP runs over a stream-oriented connection-based protocol, such as TCP or SSL.  Before you can use any features of the AMP protocol, you need a connection.  The protocol class to use to establish an AMP connection is <code class="xref py py-class docutils literal notranslate"><span class="pre">AMP</span></code> .  Connection setup works as it does for almost all protocols in Twisted.  For example, you can set up a listening AMP server using a server endpoint:</p>
+<p><a class="reference download internal" download="" href="../../_downloads/0e696784302105e2387500d21a0cb23f/basic_server.tac"><code class="xref download docutils literal notranslate"><span class="pre">basic_server.tac</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.application.internet</span> <span class="kn">import</span> <span class="n">StreamServerEndpointService</span>
+<span class="kn">from</span> <span class="nn">twisted.application.service</span> <span class="kn">import</span> <span class="n">Application</span>
+<span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span>
+<span class="kn">from</span> <span class="nn">twisted.internet.endpoints</span> <span class="kn">import</span> <span class="n">TCP4ServerEndpoint</span>
+<span class="kn">from</span> <span class="nn">twisted.internet.protocol</span> <span class="kn">import</span> <span class="n">Factory</span>
+<span class="kn">from</span> <span class="nn">twisted.protocols.amp</span> <span class="kn">import</span> <span class="n">AMP</span>
+
+<span class="n">application</span> <span class="o">=</span> <span class="n">Application</span><span class="p">(</span><span class="s2">&quot;basic AMP server&quot;</span><span class="p">)</span>
+
+<span class="n">endpoint</span> <span class="o">=</span> <span class="n">TCP4ServerEndpoint</span><span class="p">(</span><span class="n">reactor</span><span class="p">,</span> <span class="mi">8750</span><span class="p">)</span>
+<span class="n">factory</span> <span class="o">=</span> <span class="n">Factory</span><span class="p">()</span>
+<span class="n">factory</span><span class="o">.</span><span class="n">protocol</span> <span class="o">=</span> <span class="n">AMP</span>
+<span class="n">service</span> <span class="o">=</span> <span class="n">StreamServerEndpointService</span><span class="p">(</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">factory</span><span class="p">)</span>
+<span class="n">service</span><span class="o">.</span><span class="n">setServiceParent</span><span class="p">(</span><span class="n">application</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>And you can connect to an AMP server using a client endpoint:</p>
+<p><a class="reference download internal" download="" href="../../_downloads/d7013ef6d94e4079442435461e90d8f2/basic_client.py"><code class="xref download docutils literal notranslate"><span class="pre">basic_client.py</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">basic_client</span>
+
+    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">basic_client</span><span class="o">.</span><span class="n">main</span><span class="p">())</span>
+
+<span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">stdout</span>
+
+<span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span>
+<span class="kn">from</span> <span class="nn">twisted.internet.endpoints</span> <span class="kn">import</span> <span class="n">TCP4ClientEndpoint</span>
+<span class="kn">from</span> <span class="nn">twisted.internet.protocol</span> <span class="kn">import</span> <span class="n">Factory</span>
+<span class="kn">from</span> <span class="nn">twisted.protocols.amp</span> <span class="kn">import</span> <span class="n">AMP</span>
+<span class="kn">from</span> <span class="nn">twisted.python.log</span> <span class="kn">import</span> <span class="n">err</span><span class="p">,</span> <span class="n">startLogging</span>
+
+
+<span class="k">def</span> <span class="nf">connect</span><span class="p">():</span>
+    <span class="n">endpoint</span> <span class="o">=</span> <span class="n">TCP4ClientEndpoint</span><span class="p">(</span><span class="n">reactor</span><span class="p">,</span> <span class="s2">&quot;127.0.0.1&quot;</span><span class="p">,</span> <span class="mi">8750</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">endpoint</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">Factory</span><span class="o">.</span><span class="n">forProtocol</span><span class="p">(</span><span class="n">AMP</span><span class="p">))</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">startLogging</span><span class="p">(</span><span class="n">stdout</span><span class="p">)</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="n">connect</span><span class="p">()</span>
+    <span class="n">d</span><span class="o">.</span><span class="n">addErrback</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="s2">&quot;Connection failed&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">done</span><span class="p">(</span><span class="n">ignored</span><span class="p">):</span>
+        <span class="n">reactor</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+    <span class="n">d</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">done</span><span class="p">)</span>
+
+    <span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="commands">
+<h2>Commands<a class="headerlink" href="#commands" title="Permalink to this heading"></a></h2>
+<p>Either side of an AMP connection can issue a command to the other side.  Each kind of command is represented as a subclass of <code class="xref py py-class docutils literal notranslate"><span class="pre">Command</span></code> .  A <code class="docutils literal notranslate"><span class="pre">Command</span></code> defines arguments, response values, and error conditions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.protocols.amp</span> <span class="kn">import</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">Unicode</span><span class="p">,</span> <span class="n">Command</span>
+
+<span class="k">class</span> <span class="nc">UsernameUnavailable</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">RegisterUser</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">arguments</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="n">Unicode</span><span class="p">()),</span>
+                 <span class="p">(</span><span class="s1">&#39;publickey&#39;</span><span class="p">,</span> <span class="n">String</span><span class="p">())]</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;uid&#39;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">())]</span>
+
+    <span class="n">errors</span> <span class="o">=</span> <span class="p">{</span><span class="n">UsernameUnavailable</span><span class="p">:</span> <span class="s1">&#39;username-unavailable&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>The definition of the command’s signature - its arguments, response, and possible error conditions - is separate from the implementation of the behavior to execute when the command is received.  The <code class="docutils literal notranslate"><span class="pre">Command</span></code> subclass only defines the former.</p>
+<p>Commands are issued by calling <code class="docutils literal notranslate"><span class="pre">callRemote</span></code> on either side of the connection.  This method returns a <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> which eventually fires with the result of the command.</p>
+<p><a class="reference download internal" download="" href="../../_downloads/d56f5f8e0047abf9df5c2057bc61ed48/command_client.py"><code class="xref download docutils literal notranslate"><span class="pre">command_client.py</span></code></a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">command_client</span>
+
+    <span class="k">raise</span> <span class="ne">SystemExit</span><span class="p">(</span><span class="n">command_client</span><span class="o">.</span><span class="n">main</span><span class="p">())</span>
+
+<span class="kn">from</span> <span class="nn">sys</span> <span class="kn">import</span> <span class="n">stdout</span>
+
+<span class="kn">from</span> <span class="nn">basic_client</span> <span class="kn">import</span> <span class="n">connect</span>
+
+<span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span>
+<span class="kn">from</span> <span class="nn">twisted.protocols.amp</span> <span class="kn">import</span> <span class="n">Command</span><span class="p">,</span> <span class="n">Integer</span><span class="p">,</span> <span class="n">String</span><span class="p">,</span> <span class="n">Unicode</span>
+<span class="kn">from</span> <span class="nn">twisted.python.log</span> <span class="kn">import</span> <span class="n">err</span><span class="p">,</span> <span class="n">startLogging</span>
+
+
+<span class="k">class</span> <span class="nc">UsernameUnavailable</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">RegisterUser</span><span class="p">(</span><span class="n">Command</span><span class="p">):</span>
+    <span class="n">arguments</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="n">Unicode</span><span class="p">()),</span> <span class="p">(</span><span class="s2">&quot;publickey&quot;</span><span class="p">,</span> <span class="n">String</span><span class="p">())]</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;uid&quot;</span><span class="p">,</span> <span class="n">Integer</span><span class="p">())]</span>
+
+    <span class="n">errors</span> <span class="o">=</span> <span class="p">{</span><span class="n">UsernameUnavailable</span><span class="p">:</span> <span class="s2">&quot;username-unavailable&quot;</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">startLogging</span><span class="p">(</span><span class="n">stdout</span><span class="p">)</span>
+
+    <span class="n">d</span> <span class="o">=</span> <span class="n">connect</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">connected</span><span class="p">(</span><span class="n">protocol</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">protocol</span><span class="o">.</span><span class="n">callRemote</span><span class="p">(</span>
+            <span class="n">RegisterUser</span><span class="p">,</span>
+            <span class="n">username</span><span class="o">=</span><span class="s2">&quot;alice&quot;</span><span class="p">,</span>
+            <span class="n">publickey</span><span class="o">=</span><span class="s2">&quot;ssh-rsa AAAAB3NzaC1yc2 alice@actinium&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">d</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">connected</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">registered</span><span class="p">(</span><span class="n">result</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Registration result:&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+    <span class="n">d</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">registered</span><span class="p">)</span>
+
+    <span class="n">d</span><span class="o">.</span><span class="n">addErrback</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="s2">&quot;Failed to register&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">finished</span><span class="p">(</span><span class="n">ignored</span><span class="p">):</span>
+        <span class="n">reactor</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+    <span class="n">d</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">finished</span><span class="p">)</span>
+
+    <span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="locators">
+<h2>Locators<a class="headerlink" href="#locators" title="Permalink to this heading"></a></h2>
+<p>The logic for handling a command can be specified as an object separate from the <code class="docutils literal notranslate"><span class="pre">AMP</span></code> instance which interprets and formats bytes over the network.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.protocols.amp</span> <span class="kn">import</span> <span class="n">CommandLocator</span>
+<span class="kn">from</span> <span class="nn">twisted.python.filepath</span> <span class="kn">import</span> <span class="n">FilePath</span>
+
+<span class="k">class</span> <span class="nc">UsernameUnavailable</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">UserRegistration</span><span class="p">(</span><span class="n">CommandLocator</span><span class="p">):</span>
+    <span class="n">uidCounter</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="nd">@RegisterUser</span><span class="o">.</span><span class="n">responder</span>
+    <span class="k">def</span> <span class="nf">register</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">publickey</span><span class="p">):</span>
+        <span class="n">path</span> <span class="o">=</span> <span class="n">FilePath</span><span class="p">(</span><span class="n">username</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="n">UsernameUnavailable</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">uidCounter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">setContent</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1"> </span><span class="si">%s</span><span class="se">\n</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uidCounter</span><span class="p">,</span> <span class="n">publickey</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">uidCounter</span>
+</pre></div>
+</div>
+<p>When you define a separate <code class="docutils literal notranslate"><span class="pre">CommandLocator</span></code> subclass, use it by passing an instance of it to the <code class="docutils literal notranslate"><span class="pre">AMP</span></code> initializer.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">factory</span> <span class="o">=</span> <span class="n">Factory</span><span class="p">()</span>
+<span class="n">factory</span><span class="o">.</span><span class="n">protocol</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">AMP</span><span class="p">(</span><span class="n">locator</span><span class="o">=</span><span class="n">UserRegistration</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>If no locator is passed in, <code class="docutils literal notranslate"><span class="pre">AMP</span></code> acts as its own locator.  Command responders can be defined on an <code class="docutils literal notranslate"><span class="pre">AMP</span></code> subclass, just as the responder was defined on the <code class="docutils literal notranslate"><span class="pre">UserRegistration</span></code> example above.</p>
+</section>
+<section id="box-receivers">
+<h2>Box Receivers<a class="headerlink" href="#box-receivers" title="Permalink to this heading"></a></h2>
+<p>AMP conversations consist of an exchange of messages called <em>boxes</em> .  A <em>box</em> consists of a sequence of pairs of key and value (for example, the pair <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">alice</span></code> ).  Boxes are generally represented as <code class="docutils literal notranslate"><span class="pre">dict</span></code> instances.  Normally boxes are passed back and forth to implement the command request/response features described above.  The logic for handling each box can be specified as an object separate from the <code class="docutils literal notranslate"><span class="pre">AMP</span></code> instance.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zope.interface</span> <span class="kn">import</span> <span class="n">implementer</span>
+
+<span class="kn">from</span> <span class="nn">twisted.protocols.amp</span> <span class="kn">import</span> <span class="n">IBoxReceiver</span>
+
+<span class="nd">@implementer</span><span class="p">(</span><span class="n">IBoxReceiver</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">BoxReflector</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">startReceivingBoxes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">boxSender</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boxSender</span> <span class="o">=</span> <span class="n">boxSender</span>
+
+    <span class="k">def</span> <span class="nf">ampBoxReceived</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">box</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boxSender</span><span class="o">.</span><span class="n">sendBox</span><span class="p">(</span><span class="n">box</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">stopReceivingBoxes</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">reason</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">boxSender</span> <span class="o">=</span> <span class="kc">None</span>
+</pre></div>
+</div>
+<p>These methods parallel those of <code class="docutils literal notranslate"><span class="pre">IProtocol</span></code> .  Startup notification is given by <code class="docutils literal notranslate"><span class="pre">startReceivingBoxes</span></code> .  The argument passed to it is an <code class="docutils literal notranslate"><span class="pre">IBoxSender</span></code> provider, which can be used to send boxes back out over the network.  <code class="docutils literal notranslate"><span class="pre">ampBoxReceived</span></code> delivers notification for a complete box having been received.  And last, <code class="docutils literal notranslate"><span class="pre">stopReceivingBoxes</span></code> notifies the object that no more boxes will be received and no more can be sent.  The argument passed to it is a <code class="docutils literal notranslate"><span class="pre">Failure</span></code> which may contain details about what caused the conversation to end.</p>
+<p>To use a custom <code class="docutils literal notranslate"><span class="pre">IBoxReceiver</span></code> , pass it to the <code class="docutils literal notranslate"><span class="pre">AMP</span></code> initializer.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">factory</span> <span class="o">=</span> <span class="n">Factory</span><span class="p">()</span>
+<span class="n">factory</span><span class="o">.</span><span class="n">protocol</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">AMP</span><span class="p">(</span><span class="n">boxReceiver</span><span class="o">=</span><span class="n">BoxReflector</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>If no box receiver is passed in, <code class="docutils literal notranslate"><span class="pre">AMP</span></code> acts as its own box receiver.  It handles boxes by treating them as command requests or responses and delivering them to the appropriate responder or as a result to a <code class="docutils literal notranslate"><span class="pre">callRemote</span></code> <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> .</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="sendmsg.html" class="btn btn-neutral float-left" title="Extremely Low-Level Socket Operations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pb.html" class="btn btn-neutral float-right" title="Overview of Twisted Spread" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Twisted Matrix Labs. Ver 22.8.0.post0. Built on 2022-09-09.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

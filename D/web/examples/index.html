@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Examples &mdash; Twisted 22.8.0.post0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Twisted Words (IRC and XMPP)" href="../../words/index.html" />
+    <link rel="prev" title="Glossary" href="../howto/glossary.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Twisted
+          </a>
+              <div class="version">
+                22.8
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Twisted Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Twisted Web</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../howto/index.html">Developer Guides</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#twisted-web-client">twisted.web.client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#xml-rpc">XML-RPC</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#virtual-hosts-and-proxies">Virtual hosts and proxies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rpys-and-resourcetemplate">.rpys and ResourceTemplate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development of Twisted</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Twisted</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Twisted Web</a> &raquo;</li>
+      <li>Examples</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/web/examples/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="examples">
+<h1>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h1>
+<section id="twisted-web-client">
+<h2>twisted.web.client<a class="headerlink" href="#twisted-web-client" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/359c935a4ce9e7a03cfbe26a61877a74/httpclient.py"><code class="xref download docutils literal notranslate"><span class="pre">httpclient.py</span></code></a> - use <code class="docutils literal notranslate"><span class="pre">twisted.web.client.Agent</span></code> to download a web page.</p></li>
+<li><p>(deprecated) <a class="reference download internal" download="" href="../../_downloads/4507fee972fa50cd93ddda25e48847df/getpage.py"><code class="xref download docutils literal notranslate"><span class="pre">getpage.py</span></code></a> - use <code class="docutils literal notranslate"><span class="pre">twisted.web.client.getPage</span></code> to download a web page.</p></li>
+<li><p>(deprecated) <a class="reference download internal" download="" href="../../_downloads/dee98b7f7adbb6c3f57407c2452a491e/dlpage.py"><code class="xref download docutils literal notranslate"><span class="pre">dlpage.py</span></code></a> - add callbacks to <code class="docutils literal notranslate"><span class="pre">twisted.web.client.downloadPage</span></code> to display errors that occur when downloading a web page</p></li>
+</ul>
+</section>
+<section id="xml-rpc">
+<h2>XML-RPC<a class="headerlink" href="#xml-rpc" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/4b8357e83217bcb92d56fec97e6c5a6b/xmlrpcserver.py"><code class="xref download docutils literal notranslate"><span class="pre">xmlrpcserver.py</span></code></a> XML-RPC server with several methods, including echoing, faulting, returning deferreds and failed deferreds</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/9d85590fee459f134d912058d43e7f58/xmlrpcclient.py"><code class="xref download docutils literal notranslate"><span class="pre">xmlrpcclient.py</span></code></a> - use <code class="docutils literal notranslate"><span class="pre">twisted.web.xmlrpc.Proxy</span></code> to call remote XML-RPC methods</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/2039f529985faae2a46d392edd6a027e/xmlrpc-debug.py"><code class="xref download docutils literal notranslate"><span class="pre">xmlrpc-debug.py</span></code></a> - use <code class="docutils literal notranslate"><span class="pre">xmlrpc.Proxy</span></code>’s <code class="docutils literal notranslate"><span class="pre">queryFactory</span></code> to debug raw XML-RPC traffic</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/7ad8a6875edea39f433e082992cd73c6/advogato.py"><code class="xref download docutils literal notranslate"><span class="pre">advogato.py</span></code></a> - use <code class="docutils literal notranslate"><span class="pre">twisted.web.xmlrpc</span></code> to post a diary entry to advogato.org; requires an advogato account</p></li>
+</ul>
+</section>
+<section id="virtual-hosts-and-proxies">
+<h2>Virtual hosts and proxies<a class="headerlink" href="#virtual-hosts-and-proxies" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/c799da34dde20a89a8be93c40e2cbfda/proxy.py"><code class="xref download docutils literal notranslate"><span class="pre">proxy.py</span></code></a> - use <code class="docutils literal notranslate"><span class="pre">twisted.web.proxy.Proxy</span></code> to make the simplest proxy</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/08cb99a880f754e0f355841acceffef0/logging-proxy.py"><code class="xref download docutils literal notranslate"><span class="pre">logging-proxy.py</span></code></a> - example of subclassing the core classes of <code class="docutils literal notranslate"><span class="pre">twisted.web.proxy</span></code> to log requests through a proxy</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/87c851ca4e85a50d9bcb18d86b7077db/reverse-proxy.py"><code class="xref download docutils literal notranslate"><span class="pre">reverse-proxy.py</span></code></a> - use <code class="docutils literal notranslate"><span class="pre">twisted.web.proxy.ReverseProxyResource</span></code> to make any HTTP request to the proxy port get applied to a specified website</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/6de1084beb5a00a443600e5590578209/rootscript.py"><code class="xref download docutils literal notranslate"><span class="pre">rootscript.py</span></code></a> - example use of <code class="docutils literal notranslate"><span class="pre">twisted.web.vhost.NameVirtualHost</span></code></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/d54aa80214fa6e4122123a97e8292081/web.py"><code class="xref download docutils literal notranslate"><span class="pre">web.py</span></code></a> - an example of both using the <code class="docutils literal notranslate"><span class="pre">processors</span></code> attribute to set how certain file types are treated and using <code class="docutils literal notranslate"><span class="pre">twisted.web.vhost.VHostMonsterResource</span></code> to reverse proxy</p></li>
+</ul>
+</section>
+<section id="rpys-and-resourcetemplate">
+<h2>.rpys and ResourceTemplate<a class="headerlink" href="#rpys-and-resourcetemplate" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/954b9fbf90fc0fb087851f24b065c842/hello.rpy"><code class="xref download docutils literal notranslate"><span class="pre">hello.rpy</span></code></a> - use <code class="docutils literal notranslate"><span class="pre">twisted.web.static</span></code> to create a static resource to serve</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/3a9cf589e44579802f24dade6cbe2c88/fortune.rpy"><code class="xref download docutils literal notranslate"><span class="pre">fortune.rpy</span></code></a> - create a resource that returns the output of a process run on the server</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/204e9fb74de60ddade0dd212dbfe262f/report.rpy"><code class="xref download docutils literal notranslate"><span class="pre">report.rpy</span></code></a> - display various properties of a resource, including path, host, and port</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/2e41c86f341c381847f3dac75e0eaab1/users.rpy"><code class="xref download docutils literal notranslate"><span class="pre">users.rpy</span></code></a> - use <code class="docutils literal notranslate"><span class="pre">twisted.web.distrib</span></code> to publish user directories as for a “community web site”</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/77ddb0e69320a069994f9a1b02196100/simple.rtl"><code class="xref download docutils literal notranslate"><span class="pre">simple.rtl</span></code></a> - example use of <code class="docutils literal notranslate"><span class="pre">twisted.web.resource.ResourceTemplate</span></code></p></li>
+</ul>
+</section>
+<section id="miscellaneous">
+<h2>Miscellaneous<a class="headerlink" href="#miscellaneous" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../_downloads/cac4f092bc44368458c3f39039675d62/webguard.py"><code class="xref download docutils literal notranslate"><span class="pre">webguard.py</span></code></a> - pairing <code class="docutils literal notranslate"><span class="pre">twisted.web</span></code> with <code class="docutils literal notranslate"><span class="pre">twisted.cred</span></code> to guard resources against unauthenticated users</p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/a6db08f87cea5992a563bc077eea9801/silly-web.py"><code class="xref download docutils literal notranslate"><span class="pre">silly-web.py</span></code></a> - bare-bones distributed web setup with a master and slave using <code class="docutils literal notranslate"><span class="pre">twisted.web.distrib</span></code> and <code class="docutils literal notranslate"><span class="pre">twisted.spread.pb</span></code></p></li>
+<li><p><a class="reference download internal" download="" href="../../_downloads/38c251c6d1de0451018531285cf800bb/soap.py"><code class="xref download docutils literal notranslate"><span class="pre">soap.py</span></code></a> - use <code class="docutils literal notranslate"><span class="pre">twisted.web.soap</span></code> to publish SOAP methods</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../howto/glossary.html" class="btn btn-neutral float-left" title="Glossary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../words/index.html" class="btn btn-neutral float-right" title="Twisted Words (IRC and XMPP)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Twisted Matrix Labs. Ver 22.8.0.post0. Built on 2022-09-09.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

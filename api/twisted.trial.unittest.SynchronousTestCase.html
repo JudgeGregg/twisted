@@ -1,0 +1,1962 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  
+
+  <head>
+    
+    <title>twisted.trial.unittest.SynchronousTestCase</title>
+    <meta name="generator" content="pydoctor 22.7.0"> 
+        
+    </meta>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+    <link rel="stylesheet" type="text/css" href="readthedocstheme.css" />
+    <link rel="stylesheet" type="text/css" href="extra.css" />
+</head>
+
+  <body>
+
+    
+
+    <nav class="navbar navbar-default mainnavbar">
+      
+  
+  <div class="container-fluid">
+
+
+    <div class="navbar-header">
+      
+      <div class="navlinks">
+        <span class="navbar-brand">
+          <a href="https://twisted.org/" class="projecthome">Twisted</a> <a href="index.html">API Documentation</a>
+        </span>
+
+        <a href="moduleIndex.html">
+          Modules
+        </a>
+
+        <a href="classIndex.html">
+          Classes
+        </a>
+
+        <a href="nameIndex.html">
+          Names
+        </a>
+
+        <div id="search-box-container">
+          <div class="input-group">
+            <input id="search-box" type="search" name="search-query" placeholder="Search..." aria-label="Search" minlength="2" class="form-control" autocomplete="off" />
+            
+            <span class="input-group-btn">
+              <a style="display: none;" class="btn btn-default" id="search-clear-button" title="Clear" onclick="clearSearch()"><img src="fonts/x-circle.svg" alt="Clear" /></a>
+              <a class="btn btn-default" id="search-help-button" title="Help" onclick="toggleSearchHelpText()"><img src="fonts/info.svg" alt="Help" /></a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+    
+        <!-- Side navigation -->
+      <div class="sidebarcontainer">
+        <nav class="sidebar">
+  
+
+  <div>
+
+      <div class="thingTitle">
+        <span>Class</span>
+        <code class="thisobject"><a href="twisted.trial.unittest.SynchronousTestCase.html" class="internal-link" title="This class"><wbr></wbr>Synchronous<wbr></wbr>Test<wbr></wbr>Case</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        
+        
+
+        <div class="childrenKindTitle">Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__eq__" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.__eq__">__eq__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__hash__" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.__hash__">__hash__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#__init__" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.__init__">__init__</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#addCleanup" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.addCleanup">add<wbr></wbr>Cleanup</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#callDeprecated" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.callDeprecated">call<wbr></wbr>Deprecated</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#flushLoggedErrors" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.flushLoggedErrors">flush<wbr></wbr>Logged<wbr></wbr>Errors</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#flushWarnings" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.flushWarnings">flush<wbr></wbr>Warnings</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#getDeprecatedModuleAttribute" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.getDeprecatedModuleAttribute">get<wbr></wbr>Deprecated<wbr></wbr>Module<wbr></wbr>Attribute</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#getSkip" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.getSkip">get<wbr></wbr>Skip</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#getTodo" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.getTodo">get<wbr></wbr>Todo</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#mktemp" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.mktemp">mktemp</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#patch" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.patch">patch</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#run" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.run">run</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#runTest" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.runTest">run<wbr></wbr>Test</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#shortDescription" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.shortDescription">short<wbr></wbr>Description</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_getSkipReason" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._getSkipReason">_get<wbr></wbr>Skip<wbr></wbr>Reason</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_getSuppress" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._getSuppress">_get<wbr></wbr>Suppress</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_installObserver" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._installObserver">_install<wbr></wbr>Observer</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_removeObserver" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._removeObserver">_remove<wbr></wbr>Observer</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_run" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._run">_run</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_runCleanups" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._runCleanups">_run<wbr></wbr>Cleanups</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_runFixturesAndTest" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._runFixturesAndTest">_run<wbr></wbr>Fixtures<wbr></wbr>And<wbr></wbr>Test</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        <div class="childrenKindTitle">Inherited Methods</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertAlmostEqual" class="internal-link" title="twisted.trial._synctest._Assertions.assertAlmostEqual">assert<wbr></wbr>Almost<wbr></wbr>Equal</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertApproximates" class="internal-link" title="twisted.trial._synctest._Assertions.assertApproximates">assert<wbr></wbr>Approximates</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertEqual" class="internal-link" title="twisted.trial._synctest._Assertions.assertEqual">assert<wbr></wbr>Equal</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertFalse" class="internal-link" title="twisted.trial._synctest._Assertions.assertFalse">assert<wbr></wbr>False</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertIn" class="internal-link" title="twisted.trial._synctest._Assertions.assertIn">assert<wbr></wbr>In</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertIs" class="internal-link" title="twisted.trial._synctest._Assertions.assertIs">assert<wbr></wbr>Is</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertIsInstance" class="internal-link" title="twisted.trial._synctest._Assertions.assertIsInstance">assert<wbr></wbr>Is<wbr></wbr>Instance</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertIsNot" class="internal-link" title="twisted.trial._synctest._Assertions.assertIsNot">assert<wbr></wbr>Is<wbr></wbr>Not</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertNoResult" class="internal-link" title="twisted.trial._synctest._Assertions.assertNoResult">assert<wbr></wbr>No<wbr></wbr>Result</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertNotAlmostEqual" class="internal-link" title="twisted.trial._synctest._Assertions.assertNotAlmostEqual">assert<wbr></wbr>Not<wbr></wbr>Almost<wbr></wbr>Equal</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertNotEqual" class="internal-link" title="twisted.trial._synctest._Assertions.assertNotEqual">assert<wbr></wbr>Not<wbr></wbr>Equal</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertNotIn" class="internal-link" title="twisted.trial._synctest._Assertions.assertNotIn">assert<wbr></wbr>Not<wbr></wbr>In</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertNotIsInstance" class="internal-link" title="twisted.trial._synctest._Assertions.assertNotIsInstance">assert<wbr></wbr>Not<wbr></wbr>Is<wbr></wbr>Instance</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertNotSubstring" class="internal-link" title="twisted.trial._synctest._Assertions.assertNotSubstring">assert<wbr></wbr>Not<wbr></wbr>Substring</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertRaises" class="internal-link" title="twisted.trial._synctest._Assertions.assertRaises">assert<wbr></wbr>Raises</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertSubstring" class="internal-link" title="twisted.trial._synctest._Assertions.assertSubstring">assert<wbr></wbr>Substring</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertTrue" class="internal-link" title="twisted.trial._synctest._Assertions.assertTrue">assert<wbr></wbr>True</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#assertWarns" class="internal-link" title="twisted.trial._synctest._Assertions.assertWarns">assert<wbr></wbr>Warns</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#fail" class="internal-link" title="twisted.trial._synctest._Assertions.fail">fail</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#failureResultOf" class="internal-link" title="twisted.trial._synctest._Assertions.failureResultOf">failure<wbr></wbr>Result<wbr></wbr>Of</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial._synctest._Assertions.html#successResultOf" class="internal-link" title="twisted.trial._synctest._Assertions.successResultOf">success<wbr></wbr>Result<wbr></wbr>Of</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        <div class="childrenKindTitle">Attributes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#failureException" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.failureException">failure<wbr></wbr>Exception</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#skip" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.skip">skip</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#suppress" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.suppress">suppress</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#todo" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.todo">todo</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_cleanups" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._cleanups">_cleanups</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_observer" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._observer">_observer</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_parents" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._parents">_parents</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_passed" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._passed">_passed</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_testMethodName" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._testMethodName">_test<wbr></wbr>Method<wbr></wbr>Name</a></code>
+            </div>
+        
+
+    </li><li class="private">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="#_warnings" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._warnings">_warnings</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+        
+      </div>
+  </div><div>
+
+      <div class="thingTitle">
+        <span>Module</span>
+        <code><a href="twisted.trial.unittest.html" class="internal-link" title="The parent of this class">unittest</a></code> 
+      </div>
+      
+      <div>
+        
+
+        
+         
+
+        <div class="childrenKindTitle">Classes</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial.unittest.FailTest.html" class="internal-link" title="twisted.trial.unittest.FailTest"><wbr></wbr>Fail<wbr></wbr>Test</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial.unittest.PyUnitResultAdapter.html" class="internal-link" title="twisted.trial.unittest.PyUnitResultAdapter"><wbr></wbr>Py<wbr></wbr>Unit<wbr></wbr>Result<wbr></wbr>Adapter</a></code>
+            </div>
+        
+
+    </li><li class=" thisobject">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial.unittest.SynchronousTestCase.html" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase"><wbr></wbr>Synchronous<wbr></wbr>Test<wbr></wbr>Case</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial.unittest.TestCase.html" class="internal-link" title="twisted.trial.unittest.TestCase"><wbr></wbr>Test<wbr></wbr>Case</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial.unittest.TestDecorator.html" class="internal-link" title="twisted.trial.unittest.TestDecorator"><wbr></wbr>Test<wbr></wbr>Decorator</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial.unittest.TestSuite.html" class="internal-link" title="twisted.trial.unittest.TestSuite"><wbr></wbr>Test<wbr></wbr>Suite</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial.unittest.Todo.html" class="internal-link" title="twisted.trial.unittest.Todo"><wbr></wbr>Todo</a></code>
+            </div>
+        
+
+    </li>
+</ul>
+
+        <div class="childrenKindTitle">Functions</div>
+        <ul>
+    
+    <li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial.unittest.html#decorate" class="internal-link" title="twisted.trial.unittest.decorate">decorate</a></code>
+            </div>
+        
+
+    </li><li class="">
+        
+        
+        
+
+        
+            <div class="itemName"><code><a href="twisted.trial.unittest.html#makeTodo" class="internal-link" title="twisted.trial.unittest.makeTodo">make<wbr></wbr>Todo</a></code>
+            </div>
+        
+
+    </li>
+</ul> 
+
+        
+         
+
+        
+         
+
+        
+         
+        
+      </div>
+  </div>
+
+</nav>
+        <!-- No sidebar toggle for read the docs theme, the sidebar is always
+          visible when the screen is width enough.
+        -->
+      </div>
+
+    </nav>
+    
+    <div class="container-fluid">
+
+      <div id="main" class="">
+        
+
+        <div style="display: none" id="current-docs-container" class="container">
+  <div class="col-sm-12">
+    <a id="current-docs-link">
+      Go to the latest version of this document.
+    </a>
+  </div>
+
+  <!-- Google analytics, obviously. -->
+  <script src="//www.google-analytics.com/urchin.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    _uacct = "UA-99018-6";
+    urchinTracker();
+  </script>
+
+  <!-- If the documentation isn't current, insert a current link. -->
+  <script type="text/javascript">
+    if (window.location.pathname.indexOf('/current/') == -1) {
+      <!-- Give the user a link to this page, but in the current version of the docs. -->
+      var link = document.getElementById('current-docs-link');
+      link.href = window.location.pathname.replace(/\/\d+\.\d+\.\d+\/api\//, '/current/api/');
+      <!-- And make it visible -->
+      var container = document.getElementById('current-docs-container');
+      container.style.display = "";
+      delete link;
+      delete container;
+    }
+  </script>
+  
+</div>
+
+        <div id="search-results-container" style="display: none;">
+        
+          <div id="search-buttons">
+            <span class="label label-default" id="search-docstrings-button">
+            <label class="checkbox-inline">
+              <input type="checkbox" id="toggle-search-in-docstrings-checkbox" value="false" onclick="toggleSearchInDocstrings()">
+                search in docstrings
+              </input>
+            </label>
+            </span>
+            
+          </div>
+          
+          <noscript>
+              <h1>Cannot search: JavaScript is not supported/enabled in your browser.</h1>
+          </noscript>
+  
+          <div class="hint" id="search-help-box">
+            <p class="rst-last">
+        
+              Search bar offers the following options:
+              <ul>   
+                  <li>
+                    <strong>Term presence.</strong> The below example searches for documents that 
+                      must contain “foo”, might contain “bar” and must not contain “baz”: <code>+foo bar -baz</code>
+                  </li> 
+  
+                  <li>
+                    <strong>Wildcards.</strong> The below example searches for documents with words beginning with “foo”: <code>foo*</code>
+                  </li> 
+  
+                  <li>
+                    <strong>Search in specific fields.</strong> The following search matches all objects 
+                    in "twisted.mail" that matches “search”: <code>+qname:twisted.mail.* +search</code>
+  
+                    <p>
+                      Possible fields: 'name', 'qname' (fully qualified name), 'docstring', and 'kind'.
+                      Last two fields are only applicable if "search in docstrings" is enabled.
+                    </p>
+                  </li>
+  
+                  <li>
+                    <strong>Fuzzy matches.</strong> The following search matches all documents 
+                    that have a word within 1 edit distance of “foo”: <code>foo~1</code>
+                  </li>
+              </ul>
+  
+            </p>
+          </div>
+  
+          <div id="search-status"> </div>
+  
+          <div class="warning" id="search-warn-box" style="display: none;">
+            <p class="rst-last"><span id="search-warn"></span></p>
+          </div>
+  
+          <table id="search-results">
+            <!-- Filled dynamically by JS -->
+          </table>
+          
+          <div style="margin-top: 8px;">
+            <p>Results provided by <a href="https://lunrjs.com">Lunr.js</a></p>
+          </div>
+        </div>
+
+        <div class="page-header">
+          <h1 class="class"><code><code><a href="index.html" class="internal-link">twisted</a></code><wbr></wbr>.<code><a href="twisted.trial.html" class="internal-link" title="twisted.trial">trial</a></code><wbr></wbr>.<code><a href="twisted.trial.unittest.html" class="internal-link" title="twisted.trial.unittest">unittest</a></code><wbr></wbr>.<code><a href="twisted.trial.unittest.SynchronousTestCase.html" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase">SynchronousTestCase</a></code></code></h1>
+          <div id="showPrivate">
+            <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+          </div>
+        </div>
+
+        <div class="categoryHeader">
+          class documentation
+        </div>
+
+        <div class="extrasDocstring">
+          <p><code><span class="py-keyword">class</span> <span class="py-defname">SynchronousTestCase</span>(_Assertions): <a href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L894" class="sourceLink">(source)</a></code></p><p>Known subclasses: <code><a href="twisted.trial.unittest.TestCase.html" class="internal-link">twisted.trial.unittest.TestCase</a></code></p>
+          <p><a href="classIndex.html#twisted.trial.unittest.SynchronousTestCase">View In Hierarchy</a></p>
+        </div>
+
+        <div class="moduleDocstring">
+          <div><p>A unit test. The atom of the unit testing universe.</p>
+<p>This class extends <tt class="rst-docutils literal">unittest.TestCase</tt> from the standard library.  A number of convenient testing helpers are added, including logging and warning integration, monkey-patching support, and more.</p>
+<p>To write a unit test, subclass <tt class="rst-docutils literal">SynchronousTestCase</tt> and define a method (say, 'test_foo') on the subclass. To run the test, instantiate your subclass with the name of the method, and call <code><a href="#run" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.run">run</a></code> on the instance, passing a <code><a href="twisted.trial.reporter.TestResult.html" class="internal-link" title="twisted.trial.reporter.TestResult">TestResult</a></code> object.</p>
+<p>The <tt class="rst-docutils literal">trial</tt> script will automatically find any <tt class="rst-docutils literal">SynchronousTestCase</tt> subclasses defined in modules beginning with 'test_' and construct test cases for all methods beginning with 'test'.</p>
+<p>If an error is logged during the test run, the test will fail with an error. See <code><a href="twisted.python.log.html#err" class="internal-link" title="twisted.python.log.err">log.err</a></code>.</p>
+</div>
+        </div>
+
+        <div id="splitTables">
+          <table class="children sortable" id="id3108">
+  
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__eq__" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.__eq__">__eq__</a></code></td>
+    <td>Override the comparison defined by the base TestCase which considers instances of the same class with the same _testMethodName to be equal.  Since trial puts TestCase instances into a set, that definition of comparison makes it impossible to run the same test method twice...</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__hash__" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.__hash__">__hash__</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#__init__" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.__init__">__init__</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#addCleanup" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.addCleanup">add<wbr></wbr>Cleanup</a></code></td>
+    <td>Add the given function to a list of functions to be called after the test has run, but before <tt class="rst-docutils literal">tearDown</tt>.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#callDeprecated" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.callDeprecated">call<wbr></wbr>Deprecated</a></code></td>
+    <td>Call a function that should have been deprecated at a specific version and in favor of a specific alternative, and assert that it was thusly deprecated.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#flushLoggedErrors" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.flushLoggedErrors">flush<wbr></wbr>Logged<wbr></wbr>Errors</a></code></td>
+    <td>Remove stored errors received from the log.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#flushWarnings" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.flushWarnings">flush<wbr></wbr>Warnings</a></code></td>
+    <td>Remove stored warnings from the list of captured warnings and return them.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#getDeprecatedModuleAttribute" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.getDeprecatedModuleAttribute">get<wbr></wbr>Deprecated<wbr></wbr>Module<wbr></wbr>Attribute</a></code></td>
+    <td>Retrieve a module attribute which should have been deprecated, and assert that we saw the appropriate deprecation warning.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#getSkip" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.getSkip">get<wbr></wbr>Skip</a></code></td>
+    <td>Return the skip reason set on this test, if any is set. Checks on the instance first, then the class, then the module, then packages. As soon as it finds something with a <tt class="rst-docutils literal">skip</tt> attribute, returns that in a tuple (...</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#getTodo" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.getTodo">get<wbr></wbr>Todo</a></code></td>
+    <td>Return a <code><a href="twisted.trial.unittest.Todo.html" class="internal-link" title="twisted.trial.unittest.Todo">Todo</a></code> object if the test is marked todo. Checks on the instance first, then the class, then the module, then packages. As soon as it finds something with a <tt class="rst-docutils literal">todo</tt> attribute, returns that. Returns ...</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#mktemp" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.mktemp">mktemp</a></code></td>
+    <td>Create a new path name which can be used for a new file or directory.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#patch" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.patch">patch</a></code></td>
+    <td>Monkey patch an object for the duration of the test.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#run" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.run">run</a></code></td>
+    <td>Run the test case, storing the results in <tt class="rst-docutils literal">result</tt>.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#runTest" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.runTest">run<wbr></wbr>Test</a></code></td>
+    <td>If no <tt class="rst-docutils literal">methodName</tt> argument is passed to the constructor, <code><a href="twisted.trial.unittest.SynchronousTestCase.html#run" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.run">run</a></code> will treat this method as the thing with the actual test inside.</td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><code><a href="#shortDescription" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.shortDescription">short<wbr></wbr>Description</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#failureException" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.failureException">failure<wbr></wbr>Exception</a></code></td>
+    <td>An exception class, defaulting to <tt class="rst-docutils literal">FailTest</tt>. If the test method raises this exception, it will be reported as a failure, rather than an exception. All of the assertion methods raise this if the assertion fails.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#skip" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.skip">skip</a></code></td>
+    <td><code><a href="https://docs.python.org/3/library/constants.html#None" class="intersphinx-link">None</a></code> or a string explaining why this test is to be skipped. If defined, the test will not be run. Instead, it will be reported to the result object as 'skipped' (if the <tt class="rst-docutils literal">TestResult</tt> supports skipping).</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#suppress" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.suppress">suppress</a></code></td>
+    <td><code><a href="https://docs.python.org/3/library/constants.html#None" class="intersphinx-link">None</a></code> or a list of tuples of <tt class="rst-docutils literal">(args, kwargs)</tt> to be passed to <tt class="rst-docutils literal">warnings.filterwarnings</tt>. Use these to suppress warnings raised in a test. Useful for testing deprecated code. See also <code><a href="twisted.trial.util.html#suppress" class="internal-link" title="twisted.trial.util.suppress">util.suppress</a></code>.</td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#todo" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.todo">todo</a></code></td>
+    <td><code><a href="https://docs.python.org/3/library/constants.html#None" class="intersphinx-link">None</a></code>, a string or a tuple of <tt class="rst-docutils literal">(errors, reason)</tt> where <tt class="rst-docutils literal">errors</tt> is either an exception class or an iterable of exception classes, and <tt class="rst-docutils literal">reason</tt> is a string. See <code><a href="twisted.trial.unittest.Todo.html" class="internal-link" title="twisted.trial.unittest.Todo">Todo</a></code> or <code><a href="twisted.trial.unittest.html#makeTodo" class="internal-link" title="twisted.trial.unittest.makeTodo">makeTodo</a></code> for more information.</td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_getSkipReason" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._getSkipReason">_get<wbr></wbr>Skip<wbr></wbr>Reason</a></code></td>
+    <td>Return the reason to use for skipping a test method.</td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_getSuppress" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._getSuppress">_get<wbr></wbr>Suppress</a></code></td>
+    <td>Returns any warning suppressions set for this test. Checks on the instance first, then the class, then the module, then packages. As soon as it finds something with a <tt class="rst-docutils literal">suppress</tt> attribute, returns that. ...</td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_installObserver" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._installObserver">_install<wbr></wbr>Observer</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_removeObserver" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._removeObserver">_remove<wbr></wbr>Observer</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_run" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._run">_run</a></code></td>
+    <td>Run a single method, either a test method or fixture.</td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_runCleanups" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._runCleanups">_run<wbr></wbr>Cleanups</a></code></td>
+    <td>Synchronously run any cleanups which have been added.</td>
+  </tr><tr class="method private">
+    
+    <td>Method</td>
+    <td><code><a href="#_runFixturesAndTest" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._runFixturesAndTest">_run<wbr></wbr>Fixtures<wbr></wbr>And<wbr></wbr>Test</a></code></td>
+    <td>Run <tt class="rst-docutils literal">setUp</tt>, a test method, test cleanups, and <tt class="rst-docutils literal">tearDown</tt>.</td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_cleanups" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._cleanups">_cleanups</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_observer" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._observer">_observer</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_parents" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._parents">_parents</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_passed" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._passed">_passed</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_testMethodName" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._testMethodName">_test<wbr></wbr>Method<wbr></wbr>Name</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable private">
+    
+    <td>Instance Variable</td>
+    <td><code><a href="#_warnings" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase._warnings">_warnings</a></code></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+          
+            <p class="inheritedFrom">
+              Inherited from <code><a href="twisted.trial._synctest._Assertions.html" class="internal-link" title="twisted.trial._synctest._Assertions">_Assertions</a></code>:
+            </p>
+            <table class="children sortable" id="id3109">
+  
+  
+  <tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertAlmostEqual" class="internal-link" title="twisted.trial._synctest._Assertions.assertAlmostEqual">assert<wbr></wbr>Almost<wbr></wbr>Equal</a></code></td>
+    <td>Fail if the two objects are unequal as determined by their difference rounded to the given number of decimal places (default 7) and comparing to zero.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertApproximates" class="internal-link" title="twisted.trial._synctest._Assertions.assertApproximates">assert<wbr></wbr>Approximates</a></code></td>
+    <td>Fail if <tt class="rst-docutils literal">first</tt> - <tt class="rst-docutils literal">second</tt> &gt; <tt class="rst-docutils literal">tolerance</tt></td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertEqual" class="internal-link" title="twisted.trial._synctest._Assertions.assertEqual">assert<wbr></wbr>Equal</a></code></td>
+    <td>Fail the test if <tt class="rst-docutils literal">first</tt> and <tt class="rst-docutils literal">second</tt> are not equal.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertFalse" class="internal-link" title="twisted.trial._synctest._Assertions.assertFalse">assert<wbr></wbr>False</a></code></td>
+    <td>Fail the test if <tt class="rst-docutils literal">condition</tt> evaluates to True.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertIn" class="internal-link" title="twisted.trial._synctest._Assertions.assertIn">assert<wbr></wbr>In</a></code></td>
+    <td>Fail the test if <tt class="rst-docutils literal">containee</tt> is not found in <tt class="rst-docutils literal">container</tt>.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertIs" class="internal-link" title="twisted.trial._synctest._Assertions.assertIs">assert<wbr></wbr>Is</a></code></td>
+    <td>Fail the test if <tt class="rst-docutils literal">first</tt> is not <tt class="rst-docutils literal">second</tt>.  This is an obect-identity-equality test, not an object equality (i.e. <tt class="rst-docutils literal">__eq__</tt>) test.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertIsInstance" class="internal-link" title="twisted.trial._synctest._Assertions.assertIsInstance">assert<wbr></wbr>Is<wbr></wbr>Instance</a></code></td>
+    <td>Fail if <tt class="rst-docutils literal">instance</tt> is not an instance of the given class or of one of the given classes.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertIsNot" class="internal-link" title="twisted.trial._synctest._Assertions.assertIsNot">assert<wbr></wbr>Is<wbr></wbr>Not</a></code></td>
+    <td>Fail the test if <tt class="rst-docutils literal">first</tt> is <tt class="rst-docutils literal">second</tt>.  This is an obect-identity-equality test, not an object equality (i.e. <tt class="rst-docutils literal">__eq__</tt>) test.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertNoResult" class="internal-link" title="twisted.trial._synctest._Assertions.assertNoResult">assert<wbr></wbr>No<wbr></wbr>Result</a></code></td>
+    <td>Assert that <tt class="rst-docutils literal">deferred</tt> does not have a result at this point.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertNotAlmostEqual" class="internal-link" title="twisted.trial._synctest._Assertions.assertNotAlmostEqual">assert<wbr></wbr>Not<wbr></wbr>Almost<wbr></wbr>Equal</a></code></td>
+    <td>Fail if the two objects are equal as determined by their difference rounded to the given number of decimal places (default 7) and comparing to zero.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertNotEqual" class="internal-link" title="twisted.trial._synctest._Assertions.assertNotEqual">assert<wbr></wbr>Not<wbr></wbr>Equal</a></code></td>
+    <td>Fail the test if <tt class="rst-docutils literal">first</tt> == <tt class="rst-docutils literal">second</tt>.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertNotIn" class="internal-link" title="twisted.trial._synctest._Assertions.assertNotIn">assert<wbr></wbr>Not<wbr></wbr>In</a></code></td>
+    <td>Fail the test if <tt class="rst-docutils literal">containee</tt> is found in <tt class="rst-docutils literal">container</tt>.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertNotIsInstance" class="internal-link" title="twisted.trial._synctest._Assertions.assertNotIsInstance">assert<wbr></wbr>Not<wbr></wbr>Is<wbr></wbr>Instance</a></code></td>
+    <td>Fail if <tt class="rst-docutils literal">instance</tt> is an instance of the given class or of one of the given classes.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertNotSubstring" class="internal-link" title="twisted.trial._synctest._Assertions.assertNotSubstring">assert<wbr></wbr>Not<wbr></wbr>Substring</a></code></td>
+    <td>Fail if <tt class="rst-docutils literal">astring</tt> contains <tt class="rst-docutils literal">substring</tt>.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertRaises" class="internal-link" title="twisted.trial._synctest._Assertions.assertRaises">assert<wbr></wbr>Raises</a></code></td>
+    <td>Fail the test unless calling the function <tt class="rst-docutils literal">f</tt> with the given <tt class="rst-docutils literal">args</tt> and <tt class="rst-docutils literal">kwargs</tt> raises <tt class="rst-docutils literal">exception</tt>. The failure will report the traceback and call stack of the unexpected exception.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertSubstring" class="internal-link" title="twisted.trial._synctest._Assertions.assertSubstring">assert<wbr></wbr>Substring</a></code></td>
+    <td>Fail if <tt class="rst-docutils literal">substring</tt> does not exist within <tt class="rst-docutils literal">astring</tt>.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertTrue" class="internal-link" title="twisted.trial._synctest._Assertions.assertTrue">assert<wbr></wbr>True</a></code></td>
+    <td>Fail the test if <tt class="rst-docutils literal">condition</tt> evaluates to False.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#assertWarns" class="internal-link" title="twisted.trial._synctest._Assertions.assertWarns">assert<wbr></wbr>Warns</a></code></td>
+    <td>Fail if the given function doesn't generate the specified warning when called. It calls the function, checks the warning, and forwards the result of the function if everything is fine.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#fail" class="internal-link" title="twisted.trial._synctest._Assertions.fail">fail</a></code></td>
+    <td>Absolutely fail the test.  Do not pass go, do not collect $200.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#failureResultOf" class="internal-link" title="twisted.trial._synctest._Assertions.failureResultOf">failure<wbr></wbr>Result<wbr></wbr>Of</a></code></td>
+    <td>Return the current failure result of <tt class="rst-docutils literal">deferred</tt> or raise <tt class="rst-docutils literal">self.failureException</tt>.</td>
+  </tr><tr class="basemethod">
+    
+    <td>Method</td>
+    <td><code><a href="twisted.trial._synctest._Assertions.html#successResultOf" class="internal-link" title="twisted.trial._synctest._Assertions.successResultOf">success<wbr></wbr>Result<wbr></wbr>Of</a></code></td>
+    <td>Return the current success result of <tt class="rst-docutils literal">deferred</tt> or raise <tt class="rst-docutils literal">self.failureException</tt>.</td>
+  </tr>
+</table>
+            
+
+            
+        </div>
+
+        <div id="childList">
+          <div class="basemethod">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.__eq__">
+    
+  </a>
+  <a name="__eq__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__eq__</span>(self, other):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L945">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Override the comparison defined by the base TestCase which considers instances of the same class with the same _testMethodName to be equal.  Since trial puts TestCase instances into a set, that definition of comparison makes it impossible to run the same test method twice.  Most likely, trial should stop using a set to hold tests, but until it does, this is necessary on Python 2.6. -exarkun</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">other:</span><code><a href="https://docs.python.org/3/library/functions.html#object" class="intersphinx-link">object</a></code></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code><a href="https://docs.python.org/3/library/functions.html#bool" class="intersphinx-link">bool</a></code></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.__hash__">
+    
+  </a>
+  <a name="__hash__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__hash__</span>(self):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L959">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">__init__</span>(self, methodName=<span class="rst-variable-quote">'</span><span class="rst-variable-string">runTest</span><span class="rst-variable-quote">'</span>):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L937">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="twisted.trial.unittest.TestCase.html" class="internal-link">twisted.trial.unittest.TestCase</a></code></div>
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.addCleanup">
+    
+  </a>
+  <a name="addCleanup">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">addCleanup</span>(self, f, *args, **kwargs):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1050">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="twisted.trial.unittest.TestCase.html" class="internal-link">twisted.trial.unittest.TestCase</a></code></div>
+    <div><p>Add the given function to a list of functions to be called after the test has run, but before <tt class="rst-docutils literal">tearDown</tt>.</p>
+<p>Functions will be run in reverse order of being added. This helps ensure that tear down complements set up.</p>
+<p>As with all aspects of <code><a href="twisted.trial.unittest.SynchronousTestCase.html" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase">SynchronousTestCase</a></code>, Deferreds are not supported in cleanup functions.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.callDeprecated">
+    
+  </a>
+  <a name="callDeprecated">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">callDeprecated</span>(self, version, f, *args, **kwargs):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1234">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Call a function that should have been deprecated at a specific version and in favor of a specific alternative, and assert that it was thusly deprecated.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">version</span></td><td class="fieldArgDesc">A 2-sequence of (since, replacement), where <tt class="rst-docutils literal">since</tt> is a the first <code><a href="https://twisted.org/incremental/docs/incremental.Version.html" class="intersphinx-link">version</a></code> that <tt class="rst-docutils literal">f</tt> should have been deprecated since, and <tt class="rst-docutils literal">replacement</tt> is a suggested replacement for the deprecated functionality, as described by <code><a href="twisted.python.deprecate.html#deprecated" class="internal-link" title="twisted.python.deprecate.deprecated">twisted.python.deprecate.deprecated</a></code>.  If there is no suggested replacement, this parameter may also be simply a <code><a href="https://twisted.org/incremental/docs/incremental.Version.html" class="intersphinx-link">version</a></code> by itself.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">f</span></td><td class="fieldArgDesc">The deprecated function to call.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*args</span></td><td class="fieldArgDesc">The arguments to pass to <tt class="rst-docutils literal">f</tt>.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">**kwargs</span></td><td class="fieldArgDesc">The keyword arguments to pass to <tt class="rst-docutils literal">f</tt>.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">Whatever <tt class="rst-docutils literal">f</tt> returns.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code><a href="https://docs.python.org/3/library/exceptions.html#Exception" class="intersphinx-link">Exception</a></code></td><td>Whatever <tt class="rst-docutils literal">f</tt> raises.  If any exception is raised by <tt class="rst-docutils literal">f</tt>, though, no assertions will be made about emitted deprecations.</td></tr><tr><td class="fieldArgContainer"><code><a href="twisted.trial.unittest.FailTest.html" class="internal-link" title="twisted.trial.unittest.FailTest">FailTest</a></code></td><td>if no warnings were emitted by <tt class="rst-docutils literal">f</tt>, or if the <code><a href="https://docs.python.org/3/library/exceptions.html#DeprecationWarning" class="intersphinx-link">DeprecationWarning</a></code> emitted did not produce the canonical please-use-something-else message that is standard for Twisted deprecations according to the given version and replacement.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.flushLoggedErrors">
+    
+  </a>
+  <a name="flushLoggedErrors">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">flushLoggedErrors</span>(self, *errorTypes):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1083">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Remove stored errors received from the log.</p>
+<p><tt class="rst-docutils literal">TestCase</tt> stores each error logged during the run of the test and reports them as errors during the cleanup phase (after <tt class="rst-docutils literal">tearDown</tt>).</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">*error<wbr></wbr>Types</span></td><td class="fieldArgDesc">If unspecified, flush all errors. Otherwise, only flush errors that match the given types.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">A list of failures that have been removed.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.flushWarnings">
+    
+  </a>
+  <a name="flushWarnings">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">flushWarnings</span>(self, offendingFunctions=<a href="https://docs.python.org/3/library/constants.html#None" class="intersphinx-link">None</a>):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1097">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Remove stored warnings from the list of captured warnings and return them.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">offending<wbr></wbr>Functions:</span><code><a href="https://docs.python.org/3/library/constants.html#None" class="intersphinx-link">None</a></code> or <code><a href="https://docs.python.org/3/library/stdtypes.html#list" class="intersphinx-link">list</a></code> of functions or methods.</td><td class="fieldArgDesc">If <code><a href="https://docs.python.org/3/library/constants.html#None" class="intersphinx-link">None</a></code>, all warnings issued during the currently running test will be flushed.  Otherwise, only warnings which <em>point</em> to a function included in this list will be flushed. All warnings include a filename and source line number; if these parts of a warning point to a source line which is part of a function, then the warning <em>points</em> to that function.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2"><p>A <tt class="rst-docutils literal">list</tt>, each element of which is a <tt class="rst-docutils literal">dict</tt> giving information about one warning which was flushed by this call.  The keys of each <tt class="rst-docutils literal">dict</tt> are:</p>
+<ul class="rst-simple">
+<li><tt class="rst-docutils literal">'message'</tt>: The string which was passed as the <em>message</em> parameter to <code><a href="https://docs.python.org/3/library/warnings.html#warnings.warn" class="intersphinx-link">warnings.warn</a></code>.</li>
+<li><tt class="rst-docutils literal">'category'</tt>: The warning subclass which was passed as the <em>category</em> parameter to <code><a href="https://docs.python.org/3/library/warnings.html#warnings.warn" class="intersphinx-link">warnings.warn</a></code>.</li>
+<li><tt class="rst-docutils literal">'filename'</tt>: The name of the file containing the definition of the code object which was <tt class="rst-docutils literal">stacklevel</tt> frames above the call to <code><a href="https://docs.python.org/3/library/warnings.html#warnings.warn" class="intersphinx-link">warnings.warn</a></code>, where <tt class="rst-docutils literal">stacklevel</tt> is the value of the <tt class="rst-docutils literal">stacklevel</tt> parameter passed to <code><a href="https://docs.python.org/3/library/warnings.html#warnings.warn" class="intersphinx-link">warnings.warn</a></code>.</li>
+<li><tt class="rst-docutils literal">'lineno'</tt>: The source line associated with the active instruction of the code object object which was <tt class="rst-docutils literal">stacklevel</tt> frames above the call to <code><a href="https://docs.python.org/3/library/warnings.html#warnings.warn" class="intersphinx-link">warnings.warn</a></code>, where <tt class="rst-docutils literal">stacklevel</tt> is the value of the <tt class="rst-docutils literal">stacklevel</tt> parameter passed to <code><a href="https://docs.python.org/3/library/warnings.html#warnings.warn" class="intersphinx-link">warnings.warn</a></code>.</li>
+</ul>
+</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code><a href="https://docs.python.org/3/library/exceptions.html#ValueError" class="intersphinx-link">ValueError</a></code></td><td>If <tt class="rst-docutils literal">offendingFunctions</tt> is not <code><a href="https://docs.python.org/3/library/constants.html#None" class="intersphinx-link">None</a></code> and includes an object which is not a <code><a href="https://docs.python.org/3/library/types.html#types.FunctionType" class="intersphinx-link">types.FunctionType</a></code> or <code><a href="https://docs.python.org/3/library/types.html#types.MethodType" class="intersphinx-link">types.MethodType</a></code> instance.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.getDeprecatedModuleAttribute">
+    
+  </a>
+  <a name="getDeprecatedModuleAttribute">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">getDeprecatedModuleAttribute</span>(self, moduleName, name, version, message=<a href="https://docs.python.org/3/library/constants.html#None" class="intersphinx-link">None</a>):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1184">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Retrieve a module attribute which should have been deprecated, and assert that we saw the appropriate deprecation warning.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">module<wbr></wbr>Name:</span><tt class="rst-docutils literal">str</tt></td><td class="fieldArgDesc">Fully-qualified Python name of the module containing the deprecated attribute; if called from the same module as the attributes are being deprecated in, using the <tt class="rst-docutils literal">__name__</tt> global can be helpful</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">name:</span><tt class="rst-docutils literal">str</tt></td><td class="fieldArgDesc">Attribute name which we expect to be deprecated</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">version</span></td><td class="fieldArgDesc">The first <code><a href="https://twisted.org/incremental/docs/incremental.Version.html" class="intersphinx-link">version</a></code> that the module attribute was deprecated.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">message:</span><tt class="rst-docutils literal">str</tt></td><td class="fieldArgDesc">(optional) The expected deprecation message for the module attribute</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">The given attribute from the named module</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Raises</td></tr><tr><td class="fieldArgContainer"><code><a href="twisted.trial.unittest.FailTest.html" class="internal-link" title="twisted.trial.unittest.FailTest">FailTest</a></code></td><td>if no warnings were emitted on getattr, or if the <code><a href="https://docs.python.org/3/library/exceptions.html#DeprecationWarning" class="intersphinx-link">DeprecationWarning</a></code> emitted did not produce the canonical please-use-something-else message that is standard for Twisted deprecations according to the given version and replacement.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Present Since</td></tr><tr><td colspan="2">Twisted 21.2.0</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.getSkip">
+    
+  </a>
+  <a name="getSkip">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">getSkip</span>(self):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L968">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Return the skip reason set on this test, if any is set. Checks on the instance first, then the class, then the module, then packages. As soon as it finds something with a <tt class="rst-docutils literal">skip</tt> attribute, returns that in a tuple (<code><a href="https://docs.python.org/3/library/constants.html#True" class="intersphinx-link">True</a></code>, <code><a href="https://docs.python.org/3/library/stdtypes.html#str" class="intersphinx-link">str</a></code>). If the <tt class="rst-docutils literal">skip</tt> attribute does not exist, look for <tt class="rst-docutils literal">__unittest_skip__</tt> and <tt class="rst-docutils literal">__unittest_skip_why__</tt> attributes which are set by the standard library <code><a href="https://docs.python.org/3/library/unittest.html#unittest.skip" class="intersphinx-link">unittest.skip</a></code> function. Returns (<code><a href="https://docs.python.org/3/library/constants.html#False" class="intersphinx-link">False</a></code>, <code><a href="https://docs.python.org/3/library/constants.html#None" class="intersphinx-link">None</a></code>) if it cannot find anything. See <code><a href="twisted.trial.unittest.TestCase.html" class="internal-link" title="twisted.trial.unittest.TestCase">TestCase</a></code> docstring for more details.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><code>Tuple[<wbr></wbr><a href="https://docs.python.org/3/library/functions.html#bool" class="intersphinx-link">bool</a>, <wbr></wbr>Optional[<wbr></wbr><a href="https://docs.python.org/3/library/stdtypes.html#str" class="intersphinx-link">str</a>]]</code></td><td class="fieldArgDesc"><span class="undocumented">Undocumented</span></td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.getTodo">
+    
+  </a>
+  <a name="getTodo">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">getTodo</span>(self):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L988">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Return a <code><a href="twisted.trial.unittest.Todo.html" class="internal-link" title="twisted.trial.unittest.Todo">Todo</a></code> object if the test is marked todo. Checks on the instance first, then the class, then the module, then packages. As soon as it finds something with a <tt class="rst-docutils literal">todo</tt> attribute, returns that. Returns <code><a href="https://docs.python.org/3/library/constants.html#None" class="intersphinx-link">None</a></code> if it cannot find anything. See <code><a href="twisted.trial.unittest.TestCase.html" class="internal-link" title="twisted.trial.unittest.TestCase">TestCase</a></code> docstring for more details.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.mktemp">
+    
+  </a>
+  <a name="mktemp">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">mktemp</span>(self):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1284">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Create a new path name which can be used for a new file or directory.</p>
+<p>The result is a relative path that is guaranteed to be unique within the current working directory.  The parent of the path will exist, but the path will not.</p>
+<p>For a temporary directory call os.mkdir on the path.  For a temporary file just create the file (e.g. by opening the path for writing and then closing it).</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td class="fieldArgContainer"><tt class="rst-docutils literal">str</tt></td><td class="fieldArgDesc">The newly created path</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.patch">
+    
+  </a>
+  <a name="patch">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">patch</span>(self, obj, attribute, value):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1063">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Monkey patch an object for the duration of the test.</p>
+<p>The monkey patch will be reverted at the end of the test using the <code><a href="#addCleanup" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.addCleanup">addCleanup</a></code> mechanism.</p>
+<p>The <code><a href="twisted.python.monkey.MonkeyPatcher.html" class="internal-link" title="twisted.python.monkey.MonkeyPatcher">monkey.MonkeyPatcher</a></code> is returned so that users can restore and re-apply the monkey patch within their tests.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">obj</span></td><td class="fieldArgDesc">The object to monkey patch.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">attribute</span></td><td class="fieldArgDesc">The name of the attribute to change.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">value</span></td><td class="fieldArgDesc">The value to set the attribute to.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2">A <code><a href="twisted.python.monkey.MonkeyPatcher.html" class="internal-link" title="twisted.python.monkey.MonkeyPatcher">monkey.MonkeyPatcher</a></code> object.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.run">
+    
+  </a>
+  <a name="run">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">run</span>(self, result):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1007">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Run the test case, storing the results in <tt class="rst-docutils literal">result</tt>.</p>
+<p>First runs <tt class="rst-docutils literal">setUp</tt> on self, then runs the test method (defined in the constructor), then runs <tt class="rst-docutils literal">tearDown</tt>.  As with the standard library <code><a href="https://docs.python.org/3/library/unittest.html#unittest.TestCase" class="intersphinx-link">unittest.TestCase</a></code>, the return value of these methods is disregarded. In particular, returning a <code><a href="twisted.internet.defer.Deferred.html" class="internal-link" title="twisted.internet.defer.Deferred">Deferred</a></code> has no special additional consequences.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">result</span></td><td class="fieldArgDesc">A <code><a href="twisted.trial.reporter.TestResult.html" class="internal-link" title="twisted.trial.reporter.TestResult">TestResult</a></code> object.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.runTest">
+    
+  </a>
+  <a name="runTest">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">runTest</span>(self):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1001">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>If no <tt class="rst-docutils literal">methodName</tt> argument is passed to the constructor, <code><a href="#run" class="internal-link" title="twisted.trial.unittest.SynchronousTestCase.run">run</a></code> will treat this method as the thing with the actual test inside.</p>
+</div>
+  </div>
+</div><div class="basemethod">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.shortDescription">
+    
+  </a>
+  <a name="shortDescription">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">shortDescription</span>(self):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L962">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.failureException">
+    
+  </a>
+  <a name="failureException">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">failureException</span> =
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L914">
+      
+      (source)
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p>An exception class, defaulting to <tt class="rst-docutils literal">FailTest</tt>. If the test method raises this exception, it will be reported as a failure, rather than an exception. All of the assertion methods raise this if the assertion fails.</p>
+</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.skip">
+    
+  </a>
+  <a name="skip">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">skip</span> =
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L919">
+      
+      (source)
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p><code><a href="https://docs.python.org/3/library/constants.html#None" class="intersphinx-link">None</a></code> or a string explaining why this test is to be skipped. If defined, the test will not be run. Instead, it will be reported to the result object as 'skipped' (if the <tt class="rst-docutils literal">TestResult</tt> supports skipping).</p>
+</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.suppress">
+    
+  </a>
+  <a name="suppress">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">suppress</span> =
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L929">
+      
+      (source)
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p><code><a href="https://docs.python.org/3/library/constants.html#None" class="intersphinx-link">None</a></code> or a list of tuples of <tt class="rst-docutils literal">(args, kwargs)</tt> to be passed to <tt class="rst-docutils literal">warnings.filterwarnings</tt>. Use these to suppress warnings raised in a test. Useful for testing deprecated code. See also <code><a href="twisted.trial.util.html#suppress" class="internal-link" title="twisted.trial.util.suppress">util.suppress</a></code>.</p>
+</div>
+    
+  </div>
+</div><div class="baseinstancevariable">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase.todo">
+    
+  </a>
+  <a name="todo">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">todo</span> =
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L924">
+      
+      (source)
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p><code><a href="https://docs.python.org/3/library/constants.html#None" class="intersphinx-link">None</a></code>, a string or a tuple of <tt class="rst-docutils literal">(errors, reason)</tt> where <tt class="rst-docutils literal">errors</tt> is either an exception class or an iterable of exception classes, and <tt class="rst-docutils literal">reason</tt> is a string. See <code><a href="twisted.trial.unittest.Todo.html" class="internal-link" title="twisted.trial.unittest.Todo">Todo</a></code> or <code><a href="twisted.trial.unittest.html#makeTodo" class="internal-link" title="twisted.trial.unittest.makeTodo">makeTodo</a></code> for more information.</p>
+</div>
+    
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase._getSkipReason">
+    
+  </a>
+  <a name="_getSkipReason">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_getSkipReason</span>(self, method, skip):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1320">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Return the reason to use for skipping a test method.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">method</span></td><td class="fieldArgDesc">The method which produced the skip.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">skip</span></td><td class="fieldArgDesc">A <code><a href="https://docs.python.org/3/library/unittest.html#unittest.SkipTest" class="intersphinx-link">unittest.SkipTest</a></code> instance raised by <tt class="rst-docutils literal">method</tt>.</td></tr></table></div>
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase._getSuppress">
+    
+  </a>
+  <a name="_getSuppress">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_getSuppress</span>(self):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1310">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Returns any warning suppressions set for this test. Checks on the instance first, then the class, then the module, then packages. As soon as it finds something with a <tt class="rst-docutils literal">suppress</tt> attribute, returns that. Returns any empty list (i.e. suppress no warnings) if it cannot find anything. See <code><a href="twisted.trial.unittest.TestCase.html" class="internal-link" title="twisted.trial.unittest.TestCase">TestCase</a></code> docstring for more details.</p>
+</div>
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase._installObserver">
+    
+  </a>
+  <a name="_installObserver">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_installObserver</span>(self):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1424">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase._removeObserver">
+    
+  </a>
+  <a name="_removeObserver">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_removeObserver</span>(self):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1428">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase._run">
+    
+  </a>
+  <a name="_run">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_run</span>(self, suppress, todo, method, result):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1337">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="twisted.trial.unittest.TestCase.html" class="internal-link">twisted.trial.unittest.TestCase</a></code></div>
+    <div><p>Run a single method, either a test method or fixture.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">suppress</span></td><td class="fieldArgDesc">Any warnings to suppress, as defined by the <tt class="rst-docutils literal">suppress</tt> attribute on this method, test case, or the module it is defined in.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">todo</span></td><td class="fieldArgDesc">Any expected failure or failures, as defined by the <tt class="rst-docutils literal">todo</tt> attribute on this method, test case, or the module it is defined in.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">method</span></td><td class="fieldArgDesc">The method to run.</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">result</span></td><td class="fieldArgDesc">The TestResult instance to which to report results.</td></tr><tr class="fieldStart"><td class="fieldName" colspan="2">Returns</td></tr><tr><td colspan="2"><tt class="rst-docutils literal">True</tt> if the method fails and no further method/fixture calls should be made, <tt class="rst-docutils literal">False</tt> otherwise.</td></tr></table></div>
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase._runCleanups">
+    
+  </a>
+  <a name="_runCleanups">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_runCleanups</span>(self, result):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1412">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    
+    <div><p>Synchronously run any cleanups which have been added.</p>
+</div>
+  </div>
+</div><div class="basemethod private">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase._runFixturesAndTest">
+    
+  </a>
+  <a name="_runFixturesAndTest">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-keyword">def</span> <span class="py-defname">_runFixturesAndTest</span>(self, result):
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1380">
+      
+      (source)
+    </a>
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="twisted.trial.unittest.TestCase.html" class="internal-link">twisted.trial.unittest.TestCase</a></code></div>
+    <div><p>Run <tt class="rst-docutils literal">setUp</tt>, a test method, test cleanups, and <tt class="rst-docutils literal">tearDown</tt>.</p>
+<table class="fieldTable"><tr class="fieldStart"><td class="fieldName" colspan="2">Parameters</td></tr><tr><td class="fieldArgContainer"><span class="fieldArg">result</span></td><td class="fieldArgDesc">The TestResult instance to which to report results.</td></tr></table></div>
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase._cleanups">
+    
+  </a>
+  <a name="_cleanups">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_cleanups</span>: <code><a href="https://docs.python.org/3/library/stdtypes.html#list" class="intersphinx-link">list</a></code> =
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L940">
+      
+      (source)
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase._observer">
+    
+  </a>
+  <a name="_observer">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_observer</span> =
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1425">
+      
+      (source)
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase._parents">
+    
+  </a>
+  <a name="_parents">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_parents</span> =
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L943">
+      
+      (source)
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase._passed">
+    
+  </a>
+  <a name="_passed">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_passed</span>: <code><a href="https://docs.python.org/3/library/functions.html#bool" class="intersphinx-link">bool</a></code> =
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L939">
+      
+      (source)
+    </a>
+  </div>
+  <div class="functionBody">
+    <div class="interfaceinfo">overridden in <code><a href="twisted.trial.unittest.TestCase.html" class="internal-link">twisted.trial.unittest.TestCase</a></code></div>
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase._testMethodName">
+    
+  </a>
+  <a name="_testMethodName">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_testMethodName</span> =
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L941">
+      
+      (source)
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div><div class="baseinstancevariable private">
+  
+  
+  <a name="twisted.trial.unittest.SynchronousTestCase._warnings">
+    
+  </a>
+  <a name="_warnings">
+    
+  </a>
+  <div class="functionHeader">
+    
+    <span class="py-defname">_warnings</span>: <code><a href="https://docs.python.org/3/library/stdtypes.html#list" class="intersphinx-link">list</a></code> =
+    <a class="sourceLink" href="https://github.com/twisted/twisted/tree/11652-migrate-community-doc-page-rst
+/src/twisted/trial/_synctest.py#L1033">
+      
+      (source)
+    </a>
+  </div>
+  <div class="functionBody">
+    
+    <div><p class="undocumented">Undocumented</p></div>
+    
+  </div>
+</div>
+        </div>
+      
+      </div>
+    </div>
+
+    <footer class="navbar navbar-default">
+    <hr />
+    
+    
+    <div class="container">
+      <a href="index.html">API Documentation</a> for <a href="https://twisted.org/" class="projecthome">Twisted</a>,
+    generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a>
+      22.7.0 at 2022-09-09 15:23:38.
+    </div>
+    
+    <script src="ajax.js" type="text/javascript"></script>
+    <script src="searchlib.js" type="text/javascript"></script>
+    <script src="search.js" type="text/javascript"></script>
+  
+  </footer>
+  
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asynchronous Responses &mdash; Twisted 22.8.0.post0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Asynchronous Responses (via Deferred)" href="asynchronous-deferred.html" />
+    <link rel="prev" title="rpy scripts (or, how to save yourself some typing)" href="rpy-scripts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Twisted
+          </a>
+              <div class="version">
+                22.8
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Twisted Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Twisted Web</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Developer Guides</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../web-overview.html">Overview of Twisted Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../using-twistedweb.html">Configuring and Using the Twisted Web Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../web-development.html">Web Application Development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../twisted-templates.html">HTML Templating with twisted.web.template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../xmlrpc.html">Creating XML-RPC Servers and Clients with Twisted</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Twisted Web In 60 Seconds</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="static-content.html">Serving Static Content From a Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamic-content.html">Generating a Page Dynamically</a></li>
+<li class="toctree-l4"><a class="reference internal" href="static-dispatch.html">Static URL Dispatch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="dynamic-dispatch.html">Dynamic URL Dispatch</a></li>
+<li class="toctree-l4"><a class="reference internal" href="error-handling.html">Error Handling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="custom-codes.html">Custom Response Codes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="handling-posts.html">Handling POSTs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="other-request-bodies.html">Other Request Bodies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="rpy-scripts.html">rpy scripts (or, how to save yourself some typing)</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Asynchronous Responses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="asynchronous-deferred.html">Asynchronous Responses (via Deferred)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="interrupted.html">Interrupted Responses</a></li>
+<li class="toctree-l4"><a class="reference internal" href="logging-errors.html">Logging Errors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="access-logging.html">Access Logging</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wsgi.html">WSGI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="http-auth.html">HTTP Authentication</a></li>
+<li class="toctree-l4"><a class="reference internal" href="session-basics.html">Session Basics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="session-store.html">Storing Objects in the Session</a></li>
+<li class="toctree-l4"><a class="reference internal" href="session-endings.html">Session Endings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../resource-templates.html">Light Weight Templating With Resource Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../client.html">Using the Twisted Web Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../glossary.html">Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../development/index.html">Development of Twisted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../sponsors/index.html">Sponsors of Twisted</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Twisted</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Twisted Web</a> &raquo;</li>
+          <li><a href="../index.html">Developer Guides</a> &raquo;</li>
+          <li><a href="index.html">Twisted Web In 60 Seconds</a> &raquo;</li>
+      <li>Asynchronous Responses</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/web/howto/web-in-60/asynchronous.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="asynchronous-responses">
+<h1>Asynchronous Responses<a class="headerlink" href="#asynchronous-responses" title="Permalink to this headline"></a></h1>
+<p>In all of the previous examples, the resource examples presented generated
+responses immediately. One of the features of prime interest of Twisted Web,
+though, is the ability to generate a response over a longer period of time while
+leaving the server free to respond to other requests. In other words,
+asynchronously. In this installment, we’ll write a resource like this.</p>
+<p>A resource that generates a response asynchronously looks like one that
+generates a response synchronously in many ways. The same base
+class, <code class="xref py py-class docutils literal notranslate"><span class="pre">Resource</span></code> , is used
+either way; the same render methods are used. There are three basic differences,
+though.</p>
+<p>First, instead of returning the string which will be used as the
+body of the response, the resource uses <code class="xref py py-meth docutils literal notranslate"><span class="pre">Request.write</span></code> . This method can be
+called repeatedly. Each call appends another string to the response
+body. Second, when the entire response body has been passed
+to <code class="docutils literal notranslate"><span class="pre">Request.write</span></code> , the application must
+call <code class="xref py py-meth docutils literal notranslate"><span class="pre">Request.finish</span></code> . As you might expect
+from the name, this ends the response. Finally, in order to make
+Twisted Web not end the response as soon as the render method returns,
+the render method must return <code class="docutils literal notranslate"><span class="pre">NOT_DONE_YET</span></code> . Consider this
+example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.web.resource</span> <span class="kn">import</span> <span class="n">Resource</span>
+<span class="kn">from</span> <span class="nn">twisted.web.server</span> <span class="kn">import</span> <span class="n">NOT_DONE_YET</span>
+<span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span>
+
+<span class="k">class</span> <span class="nc">DelayedResource</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_delayedRender</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;&lt;html&gt;&lt;body&gt;Sorry to keep you waiting.&lt;/body&gt;&lt;/html&gt;&quot;</span><span class="p">)</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">render_GET</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">reactor</span><span class="o">.</span><span class="n">callLater</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delayedRender</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">NOT_DONE_YET</span>
+</pre></div>
+</div>
+<p>If you’re not familiar with the reactor <code class="xref py py-meth docutils literal notranslate"><span class="pre">callLater</span></code>
+method, all you really need to know about it to understand this
+example is that the above usage of it arranges to
+have <code class="docutils literal notranslate"><span class="pre">self._delayedRender(request)</span></code> run about 5 seconds
+after <code class="docutils literal notranslate"><span class="pre">callLater</span></code> is invoked from this render method and
+that it returns immediately.</p>
+<p>All three of the elements mentioned earlier can be seen in this
+example. The resource uses <code class="docutils literal notranslate"><span class="pre">Request.write</span></code> to set the
+response body. It uses <code class="docutils literal notranslate"><span class="pre">Request.finish</span></code> after the entire
+body has been specified (all with just one call to write in this
+case). Lastly, it returns <code class="docutils literal notranslate"><span class="pre">NOT_DONE_YET</span></code> from its render
+method. So there you have it, asynchronous rendering with Twisted
+Web.</p>
+<p>Here’s a complete rpy script based on this resource class (see the <a class="reference internal" href="rpy-scripts.html"><span class="doc">previous example</span></a> if you need a reminder about rpy
+scripts):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.web.resource</span> <span class="kn">import</span> <span class="n">Resource</span>
+<span class="kn">from</span> <span class="nn">twisted.web.server</span> <span class="kn">import</span> <span class="n">NOT_DONE_YET</span>
+<span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span>
+
+<span class="k">class</span> <span class="nc">DelayedResource</span><span class="p">(</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_delayedRender</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;&lt;html&gt;&lt;body&gt;Sorry to keep you waiting.&lt;/body&gt;&lt;/html&gt;&quot;</span><span class="p">)</span>
+        <span class="n">request</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">render_GET</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">reactor</span><span class="o">.</span><span class="n">callLater</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delayedRender</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">NOT_DONE_YET</span>
+
+<span class="n">resource</span> <span class="o">=</span> <span class="n">DelayedResource</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Drop this source into a <code class="docutils literal notranslate"><span class="pre">.rpy</span></code> file and fire up a server
+using <code class="docutils literal notranslate"><span class="pre">twistd</span> <span class="pre">-n</span> <span class="pre">web</span> <span class="pre">--path</span> <span class="pre">/directory/containing/script/.</span></code>
+You’ll see that loading the page takes 5 seconds. If you try to load a
+second before the first completes, it will also take 5 seconds from
+the time you request it (but it won’t be delayed by any other
+outstanding requests).</p>
+<p>Something else to consider when generating responses asynchronously is that
+the client may not wait around to get the response to its
+request. A <a class="reference internal" href="interrupted.html"><span class="doc">subsequent example</span></a> demonstrates how
+to detect that the client has abandoned the request and that the server
+shouldn’t bother to finish generating its response.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="rpy-scripts.html" class="btn btn-neutral float-left" title="rpy scripts (or, how to save yourself some typing)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="asynchronous-deferred.html" class="btn btn-neutral float-right" title="Asynchronous Responses (via Deferred)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Twisted Matrix Labs. Ver 22.8.0.post0. Built on 2022-09-16.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

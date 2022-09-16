@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Connected with Endpoints &mdash; Twisted 22.8.0.post0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Components: Interfaces and Adapters" href="components.html" />
+    <link rel="prev" title="Choosing a Reactor and GUI Toolkit Integration" href="choosing-reactor.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Twisted
+          </a>
+              <div class="version">
+                22.8
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Twisted Core</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Developer Guides</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="vision.html">The Vision For Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="servers.html">Writing Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clients.html">Writing Clients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trial.html">Test-driven development with Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/index.html">Twisted from Scratch, or The Evolution of Finger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/intro.html">The Evolution of Finger: building a simple finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/protocol.html">The Evolution of Finger: adding features to the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/style.html">The Evolution of Finger: cleaning up the finger code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/components.html">The Evolution of Finger: moving to a component based architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/backends.html">The Evolution of Finger: pluggable backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/web.html">The Evolution of Finger: a web frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/pb.html">The Evolution of Finger: Twisted client support using Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/factory.html">The Evolution of Finger: using a single factory for multiple protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/client.html">The Evolution of Finger: a Twisted finger client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/library.html">The Evolution of Finger: making a finger library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/configuration.html">The Evolution of Finger: configuration of the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quotes.html">Setting up the TwistedQuotes application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html">Designing Twisted Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="internet-overview.html">Overview of Twisted Internet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reactor-basics.html">Reactor Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ssl.html">Using TLS in Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udp.html">UDP Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">Using Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer-intro.html">Introduction to Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer.html">Deferred Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gendefer.html">Generating Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time.html">Scheduling tasks for the future</a></li>
+<li class="toctree-l3"><a class="reference internal" href="threading.html">Using Threads in Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="producers.html">Producers and Consumers: Efficient High-Volume Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="choosing-reactor.html">Choosing a Reactor and GUI Toolkit Integration</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Getting Connected with Endpoints</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#constructing-and-using-endpoints">Constructing and Using Endpoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getting-the-active-client">Getting The Active Client</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reporting-an-initial-failure">Reporting an Initial Failure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#retry-policies">Retry Policies</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#maximizing-the-return-on-your-endpoint-investment">Maximizing the Return on your Endpoint Investment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#endpoint-types-included-with-twisted">Endpoint Types Included With Twisted</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="components.html">Components: Interfaces and Adapters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cred.html">Cred: Pluggable Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugin.html">The Twisted Plugin System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html">The Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application.html">Using the Twisted Application Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tap.html">Writing a twistd Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="systemd.html">Deploying Twisted with systemd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logger.html">Logging with twisted.logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging.html">Twisted’s Legacy Logging System: <code class="docutils literal notranslate"><span class="pre">twisted.python.log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="constants.html">Symbolic Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rdbms.html">twisted.enterprise.adbapi: Twisted RDBMS support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="options.html">Parsing command-lines with usage.Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dirdbm.html">DirDBM: Directory-based Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html">Writing tests for Twisted code using Trial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sendmsg.html">Extremely Low-Level Socket Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="amp.html">Asynchronous Messaging Protocol Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb.html">Overview of Twisted Spread</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-intro.html">Introduction to Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-usage.html">Using Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-clients.html">Managing Clients of Perspectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-copyable.html">PB Copyable: Passing Complex Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-cred.html">Authentication with Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-limits.html">PB Limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python3.html">Porting to Python 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="positioning.html">Twisted Positioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glossary.html">Twisted Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="debug-with-emacs.html">Debugging Python(Twisted) with Emacs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../specifications/index.html">Specifications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Twisted Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development of Twisted</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Twisted</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Twisted Core</a> &raquo;</li>
+          <li><a href="index.html">Developer Guides</a> &raquo;</li>
+      <li>Getting Connected with Endpoints</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/core/howto/endpoints.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-connected-with-endpoints">
+<h1>Getting Connected with Endpoints<a class="headerlink" href="#getting-connected-with-endpoints" title="Permalink to this heading"></a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
+<p>On a network, one can think of any given connection as a long wire, stretched between two points.
+Lots of stuff can happen along the length of that wire - routers, switches, network address translation, and so on, but that is usually invisible to the application passing data across it.
+Twisted strives to make the nature of the “wire” as transparent as possible, with highly abstract interfaces for passing and receiving data, such as <code class="xref py py-class docutils literal notranslate"><span class="pre">ITransport</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">IProtocol</span></code>.</p>
+<p>However, the application can’t be completely ignorant of the wire.
+In particular, it must do something to <em>start</em> the connection, and
+to do so, it must identify the <em>end points</em> of the wire. There are
+different names for the roles of each end point - “initiator” and
+“responder”, “connector” and “listener”, or “client” and “server” - but the
+common theme is that one side of the connection waits around for someone to
+connect to it, and the other side does the connecting.</p>
+<p>In Twisted 10.1, several new interfaces were introduced to describe each of these roles for stream-oriented connections: <code class="xref py py-class docutils literal notranslate"><span class="pre">IStreamServerEndpoint</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">IStreamClientEndpoint</span></code>.
+The word “stream”, in this case, refers to endpoints which treat a connection as a continuous stream of bytes, rather than a sequence of discrete datagrams:
+TCP is a “stream” protocol whereas UDP is a “datagram” protocol.</p>
+</section>
+<section id="constructing-and-using-endpoints">
+<h2>Constructing and Using Endpoints<a class="headerlink" href="#constructing-and-using-endpoints" title="Permalink to this heading"></a></h2>
+<p>In both <a class="reference internal" href="servers.html"><span class="doc">Writing Servers</span></a> and <a class="reference internal" href="clients.html"><span class="doc">Writing Clients</span></a>, we covered basic usage of endpoints;
+you construct an appropriate type of server or client endpoint, and then call <code class="docutils literal notranslate"><span class="pre">listen</span></code> (for servers) or <code class="docutils literal notranslate"><span class="pre">connect</span></code> (for clients).</p>
+<p>In both of those tutorials, we constructed specific types of endpoints directly.
+However, in most programs, you will want to allow the user to specify where to listen or connect, in a way which will allow the user to request different strategies, without having to adjust your program.
+In order to allow this, you should use <code class="xref py py-func docutils literal notranslate"><span class="pre">clientFromString</span></code> or <code class="xref py py-func docutils literal notranslate"><span class="pre">serverFromString</span></code>.</p>
+<section id="there-s-not-much-to-it">
+<h3>There’s Not Much To It<a class="headerlink" href="#there-s-not-much-to-it" title="Permalink to this heading"></a></h3>
+<p>Each type of endpoint is just an interface with a single method that
+takes an argument. <code class="docutils literal notranslate"><span class="pre">serverEndpoint.listen(factory)</span></code> will start
+listening on that endpoint with your protocol factory, and <code class="docutils literal notranslate"><span class="pre">clientEndpoint.connect(factory)</span></code> will start a single connection
+attempt. Each of these APIs returns a value, though, which can be important.</p>
+<p>However, if you are not already, you <em>should</em> be very familiar with <a class="reference internal" href="defer.html"><span class="doc">Deferreds</span></a>, as they are returned by both <code class="docutils literal notranslate"><span class="pre">connect</span></code> and <code class="docutils literal notranslate"><span class="pre">listen</span></code> methods, to indicate when the connection has connected or the listening port is up and running.</p>
+</section>
+<section id="servers-and-stopping">
+<h3>Servers and Stopping<a class="headerlink" href="#servers-and-stopping" title="Permalink to this heading"></a></h3>
+<p><code class="xref py py-meth docutils literal notranslate"><span class="pre">IStreamServerEndpoint.listen</span></code> returns a <code class="xref py py-class docutils literal notranslate"><span class="pre">Deferred</span></code> that fires with an <code class="xref py py-class docutils literal notranslate"><span class="pre">IListeningPort</span></code>.
+Note that this deferred may errback.
+The most common cause of such an error would be that another program is already using the requested port number, but the exact cause may vary depending on what type of endpoint you are listening on.
+If you receive such an error, it means that your application is not actually listening, and will not receive any incoming connections.
+It’s important to somehow alert an administrator of your server, in this case, especially if you only have one listening port!</p>
+<p>Note also that once this has succeeded, it will continue listening forever.
+If you need to <em>stop</em> listening for some reason, in response to anything other than a full server shutdown (<code class="docutils literal notranslate"><span class="pre">reactor.stop</span></code> and / or <code class="docutils literal notranslate"><span class="pre">twistd</span></code> will usually handle that case for you), make sure you keep a reference around to that listening port object so you can call <code class="xref py py-meth docutils literal notranslate"><span class="pre">IListeningPort.stopListening</span></code> on it.
+Finally, keep in mind that <code class="docutils literal notranslate"><span class="pre">stopListening</span></code> itself returns a <code class="docutils literal notranslate"><span class="pre">Deferred</span></code>, and the port may not have fully stopped listening until that <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> has fired.</p>
+<p>Most server applications will not need to worry about these details.
+One example of a case where you would need to be concerned with all of these events would be an implementation of a protocol like non-<code class="docutils literal notranslate"><span class="pre">PASV</span></code> FTP, where new listening ports need to be bound for the lifetime of a particular action, then disposed of.</p>
+</section>
+<section id="clients-and-cancelling">
+<h3>Clients and Cancelling<a class="headerlink" href="#clients-and-cancelling" title="Permalink to this heading"></a></h3>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">connectProtocol</span></code> connects a <code class="xref py py-class docutils literal notranslate"><span class="pre">Protocol</span></code> instance to a given <code class="xref py py-class docutils literal notranslate"><span class="pre">IStreamClientEndpoint</span></code>. It returns a <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> which fires with the <code class="docutils literal notranslate"><span class="pre">Protocol</span></code> once the connection has been made.
+Connection attempts may fail, and so that <code class="xref py py-class docutils literal notranslate"><span class="pre">Deferred</span></code> may also errback.
+If it does so, you will have to try again; no further attempts will be made.
+See the <a class="reference internal" href="clients.html"><span class="doc">client documentation</span></a> for an example use.</p>
+<p><code class="xref py py-func docutils literal notranslate"><span class="pre">connectProtocol</span></code> is a wrapper around a lower-level API:
+<code class="xref py py-meth docutils literal notranslate"><span class="pre">IStreamClientEndpoint.connect</span></code> will use a protocol factory for a new outgoing connection attempt.
+It returns a <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> which fires with the <code class="docutils literal notranslate"><span class="pre">IProtocol</span></code> returned from the factory’s <code class="docutils literal notranslate"><span class="pre">buildProtocol</span></code> method, or errbacks with the connection failure.</p>
+<p>Connection attempts may also take a long time, and your users may become bored and wander off.
+If this happens, and your code decides, for whatever reason, that you’ve been waiting for the connection too long, you can call <code class="xref py py-meth docutils literal notranslate"><span class="pre">Deferred.cancel</span></code> on the <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> returned from <code class="xref py py-meth docutils literal notranslate"><span class="pre">connect</span></code> or <code class="xref py py-func docutils literal notranslate"><span class="pre">connectProtocol</span></code>, and the underlying machinery should give up on the connection.
+This should cause the <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> to errback, usually with <code class="xref py py-class docutils literal notranslate"><span class="pre">CancelledError</span></code>;
+although you should consult the documentation for your particular endpoint type to see if it may do something different.</p>
+<p>Although some endpoint types may imply a built-in timeout, the
+interface does not guarantee one. If you don’t have any way for the
+application to cancel a wayward connection attempt, the attempt may just
+keep waiting forever.  For example, a very simple 30-second timeout could be
+implemented like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">attempt</span> <span class="o">=</span> <span class="n">connectProtocol</span><span class="p">(</span><span class="n">myEndpoint</span><span class="p">,</span> <span class="n">myProtocol</span><span class="p">)</span>
+<span class="n">reactor</span><span class="o">.</span><span class="n">callLater</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="n">attempt</span><span class="o">.</span><span class="n">cancel</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you’ve used <code class="docutils literal notranslate"><span class="pre">ClientFactory</span></code> before, keep in mind that the <code class="docutils literal notranslate"><span class="pre">connect</span></code> method takes a <code class="docutils literal notranslate"><span class="pre">Factory</span></code>, not a <code class="docutils literal notranslate"><span class="pre">ClientFactory</span></code>.
+Even if you pass a <code class="docutils literal notranslate"><span class="pre">ClientFactory</span></code> to <code class="docutils literal notranslate"><span class="pre">endpoint.connect</span></code>, its <code class="docutils literal notranslate"><span class="pre">clientConnectionFailed</span></code> and <code class="docutils literal notranslate"><span class="pre">clientConnectionLost</span></code> methods will not be called.
+In particular, clients that extend <code class="docutils literal notranslate"><span class="pre">ReconnectingClientFactory</span></code> won’t reconnect. The next section describes how to set up reconnecting clients on endpoints.</p>
+</div>
+</section>
+<section id="persistent-client-connections">
+<h3>Persistent Client Connections<a class="headerlink" href="#persistent-client-connections" title="Permalink to this heading"></a></h3>
+<p><code class="xref py py-class docutils literal notranslate"><span class="pre">twisted.application.internet.ClientService</span></code> can maintain a persistent outgoing connection to a server which can be started and stopped along with your application.</p>
+<p>One popular protocol to maintain a long-lived client connection to is IRC, so for an example of <code class="docutils literal notranslate"><span class="pre">ClientService</span></code>, here’s how you would make a long-lived encrypted connection to an IRC server (other details, like how to authenticate, omitted for brevity):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.internet.protocol</span> <span class="kn">import</span> <span class="n">Factory</span>
+<span class="kn">from</span> <span class="nn">twisted.internet.endpoints</span> <span class="kn">import</span> <span class="n">clientFromString</span>
+<span class="kn">from</span> <span class="nn">twisted.words.protocols.irc</span> <span class="kn">import</span> <span class="n">IRCClient</span>
+<span class="kn">from</span> <span class="nn">twisted.application.internet</span> <span class="kn">import</span> <span class="n">ClientService</span>
+<span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span>
+
+<span class="n">myEndpoint</span> <span class="o">=</span> <span class="n">clientFromString</span><span class="p">(</span><span class="n">reactor</span><span class="p">,</span> <span class="s2">&quot;tls:example.com:6997&quot;</span><span class="p">)</span>
+<span class="n">myFactory</span> <span class="o">=</span> <span class="n">Factory</span><span class="o">.</span><span class="n">forProtocol</span><span class="p">(</span><span class="n">IRCClient</span><span class="p">)</span>
+
+<span class="n">myReconnectingService</span> <span class="o">=</span> <span class="n">ClientService</span><span class="p">(</span><span class="n">myEndpoint</span><span class="p">,</span> <span class="n">myFactory</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you already have a parent service, you can add the reconnecting service as a child service:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">parentService</span><span class="o">.</span><span class="n">addService</span><span class="p">(</span><span class="n">myReconnectingService</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you do not have a parent service, you can start and stop the reconnecting service using its <code class="docutils literal notranslate"><span class="pre">startService</span></code> and <code class="docutils literal notranslate"><span class="pre">stopService</span></code> methods.</p>
+<p><code class="docutils literal notranslate"><span class="pre">ClientService.stopService</span></code> returns a <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> that fires once the current connection closes or the current connection attempt is cancelled.</p>
+</section>
+</section>
+<section id="getting-the-active-client">
+<h2>Getting The Active Client<a class="headerlink" href="#getting-the-active-client" title="Permalink to this heading"></a></h2>
+<p>When maintaining a long-lived connection, it’s often useful to be able to get the current connection (if the connection is active) or wait for the next connection (if a connection attempt is currently in progress).
+For example, we might want to pass our <code class="docutils literal notranslate"><span class="pre">ClientService</span></code> from the previous example to some code that can send IRC notifications in response to some external event.
+The <code class="docutils literal notranslate"><span class="pre">ClientService.whenConnected</span></code> method returns a <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> that fires with the next available <code class="docutils literal notranslate"><span class="pre">Protocol</span></code> instance.
+You can use it like so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">waitForConnection</span> <span class="o">=</span> <span class="n">myReconnectingService</span><span class="o">.</span><span class="n">whenConnected</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">connectedNow</span><span class="p">(</span><span class="n">clientForIRC</span><span class="p">):</span>
+    <span class="n">clientForIRC</span><span class="o">.</span><span class="n">say</span><span class="p">(</span><span class="s2">&quot;#bot-test&quot;</span><span class="p">,</span> <span class="s2">&quot;hello, world!&quot;</span><span class="p">)</span>
+<span class="n">waitForConnection</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">connectedNow</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Keep in mind that you may need to wrap this up for your particular application, since when no existing connection is available, the callback is executed just as soon as the connection is established.
+For example, that little snippet is slightly oversimplified: at the time <code class="docutils literal notranslate"><span class="pre">connectedNow</span></code> is run, the bot hasn’t authenticated or joined the channel yet, so its message will be refused.
+A real-life IRC bot would need to have its own method for waiting until the connection is fully ready for chat before chatting.</p>
+</section>
+<section id="reporting-an-initial-failure">
+<h2>Reporting an Initial Failure<a class="headerlink" href="#reporting-an-initial-failure" title="Permalink to this heading"></a></h2>
+<p>Often times, a failure of the very first connection attempt is special.
+It may indicate a problem that won’t go away by just trying harder.
+The service may be configured with the wrong hostname, or the user may not have an internet connection at all (perhaps they forgot to turn on their wifi adapter).</p>
+<p>Applications can ask <code class="docutils literal notranslate"><span class="pre">whenConnected</span></code> to make their <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> fail if the service makes one or more connection attempts in a row without success.
+You can pass the <code class="docutils literal notranslate"><span class="pre">failAfterFailures</span></code> parameter into <code class="docutils literal notranslate"><span class="pre">ClientService</span></code> to set this threshold.</p>
+<p>By calling <code class="docutils literal notranslate"><span class="pre">whenConnected(failAfterFailures=1)</span></code> when the service is first started (just before or just after <code class="docutils literal notranslate"><span class="pre">startService</span></code>), your application will get notification of an initial connection failure.</p>
+<p>Setting it to 1 makes it fail after a single connection failure.
+Setting it to 2 means it will try once, wait a bit, try again, and then either fail or succeed depending upon the outcome of the second connection attempt.
+You can use 3 or more too, if you’re feeling particularly patient.
+The default of <code class="docutils literal notranslate"><span class="pre">None</span></code> means it will wait forever for a successful connection.</p>
+<p>Regardless of <code class="docutils literal notranslate"><span class="pre">failAfterFailures</span></code>, the <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> will always fail with <code class="xref py py-class docutils literal notranslate"><span class="pre">CancelledError</span></code> if the service is stopped before a connection is made.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">waitForConnection</span> <span class="o">=</span> <span class="n">myReconnectingService</span><span class="o">.</span><span class="n">whenConnected</span><span class="p">(</span><span class="n">failAfterFailures</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">connectedNow</span><span class="p">(</span><span class="n">clientForIRC</span><span class="p">):</span>
+    <span class="n">clientForIRC</span><span class="o">.</span><span class="n">say</span><span class="p">(</span><span class="s2">&quot;#bot-test&quot;</span><span class="p">,</span> <span class="s2">&quot;hello, world!&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">failed</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;initial connection failed: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">f</span><span class="p">,))</span>
+    <span class="c1"># now you should stop the service and report the error upwards</span>
+<span class="n">waitForConnection</span><span class="o">.</span><span class="n">addCallbacks</span><span class="p">(</span><span class="n">connectedNow</span><span class="p">,</span> <span class="n">failed</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="retry-policies">
+<h2>Retry Policies<a class="headerlink" href="#retry-policies" title="Permalink to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">ClientService</span></code> will immediately attempt an outgoing connection when <code class="docutils literal notranslate"><span class="pre">startService</span></code> is called.
+If that connection attempt fails for any reason (name resolution, connection refused, network unreachable, and so on), it will retry according to the policy specified in the <code class="docutils literal notranslate"><span class="pre">retryPolicy</span></code> constructor argument.
+By default, <code class="docutils literal notranslate"><span class="pre">ClientService</span></code> will use an exponential backoff algorithm with a minimum delay of 1 second and a maximum delay of 1 minute, and a jitter of up to 1 additional second to prevent stampeding-herd performance cascades.
+This is a good default, and if you do not have highly specialized requirements, you probably want to use it.
+If you need to tune these parameters, you have two options:</p>
+<ol class="arabic">
+<li><p>You can pass your own timeout policy to <code class="docutils literal notranslate"><span class="pre">ClientService</span></code>’s constructor.
+A timeout policy is a callable that takes the number of failed attempts, and computes a delay until the next connection attempt.
+So, for example, if you are <em>really really sure</em> that you want to reconnect <em>every single second</em> if the service you are talking to goes down, you can do this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">myReconnectingService</span> <span class="o">=</span> <span class="n">ClientService</span><span class="p">(</span><span class="n">myEndpoint</span><span class="p">,</span> <span class="n">myFactory</span><span class="p">,</span> <span class="n">retryPolicy</span><span class="o">=</span><span class="k">lambda</span> <span class="n">ignored</span><span class="p">:</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Of course, unless you have only one client and only one server and they’re both on localhost, this sort of policy is likely to cause massive performance degradation and thundering herd resource contention in the event of your server’s failure, so you probably want to take the second option…</p>
+</li>
+<li><p>You can tweak the default exponential backoff policy with a few parameters by passing the result of <code class="xref py py-func docutils literal notranslate"><span class="pre">twisted.application.internet.backoffPolicy()</span></code> to the <code class="docutils literal notranslate"><span class="pre">retryPolicy</span></code> argument.
+For example, if you want to make it triple the delay between attempts, but start with a faster connection interval (half a second instead of one second), you could do it like so:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">myReconnectingService</span> <span class="o">=</span> <span class="n">ClientService</span><span class="p">(</span>
+    <span class="n">myEndpoint</span><span class="p">,</span> <span class="n">myFactory</span><span class="p">,</span>
+    <span class="n">retryPolicy</span><span class="o">=</span><span class="n">backoffPolicy</span><span class="p">(</span><span class="n">initialDelay</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mf">3.0</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Before endpoints, reconnecting clients were created as subclasses of <code class="docutils literal notranslate"><span class="pre">ReconnectingClientFactory</span></code>.
+These subclasses were required to call <code class="docutils literal notranslate"><span class="pre">resetDelay</span></code>.
+One of the many advantages of using endpoints is that these special subclasses are no longer needed.
+<code class="docutils literal notranslate"><span class="pre">ClientService</span></code> accepts ordinary <code class="docutils literal notranslate"><span class="pre">IProtocolFactory</span></code> providers.</p>
+</div>
+</section>
+<section id="maximizing-the-return-on-your-endpoint-investment">
+<h2>Maximizing the Return on your Endpoint Investment<a class="headerlink" href="#maximizing-the-return-on-your-endpoint-investment" title="Permalink to this heading"></a></h2>
+<p>Directly constructing an endpoint in your application is rarely the
+best option, because it ties your application to a particular type of
+transport. The strength of the endpoints API is in separating the
+construction of the endpoint (figuring out where to connect or listen) and
+its activation (actually connecting or listening).</p>
+<p>If you are implementing a library that needs to listen for
+connections or make outgoing connections, when possible, you should write
+your code to accept client and server endpoints as parameters to functions
+or to your objects’ constructors. That way, application code that calls
+your library can provide whatever endpoints are appropriate.</p>
+<p>If you are writing an application and you need to construct endpoints yourself, you can allow users to specify arbitrary endpoints described by a string using the <code class="xref py py-func docutils literal notranslate"><span class="pre">clientFromString</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">serverFromString</span></code> APIs.
+Since these APIs just take a string, they provide flexibility:
+if Twisted adds support for new types of endpoints (for example, IPv6 endpoints, or WebSocket endpoints), your application will automatically be able to take advantage of them with no changes to its code.</p>
+<section id="endpoints-aren-t-always-the-answer">
+<h3>Endpoints Aren’t Always the Answer<a class="headerlink" href="#endpoints-aren-t-always-the-answer" title="Permalink to this heading"></a></h3>
+<p>For many use-cases, especially the common case of a <code class="docutils literal notranslate"><span class="pre">twistd</span></code> plugin which runs a long-running server that just binds a simple port, you might not want to use the endpoints APIs directly.
+Instead, you may want to construct an <code class="xref py py-class docutils literal notranslate"><span class="pre">IService</span></code>, using <code class="xref py py-func docutils literal notranslate"><span class="pre">strports.service</span></code>, which will fit neatly into the required structure of <a class="reference internal" href="plugin.html"><span class="doc">the twistd plugin API</span></a>.
+This doesn’t give your application much control - the port starts listening at startup and stops listening at shutdown - but it does provide the same flexibility in terms of what type of server endpoint your application will support.</p>
+<p>It is, however, almost always preferable to use an endpoint rather than calling a lower-level APIs like <code class="xref py py-meth docutils literal notranslate"><span class="pre">connectTCP</span></code>, <code class="xref py py-meth docutils literal notranslate"><span class="pre">listenTCP</span></code>, etc, directly.
+By accepting an arbitrary endpoint rather than requiring a specific reactor interface, you leave your application open to lots of interesting transport-layer extensibility for the future.</p>
+</section>
+</section>
+<section id="endpoint-types-included-with-twisted">
+<h2>Endpoint Types Included With Twisted<a class="headerlink" href="#endpoint-types-included-with-twisted" title="Permalink to this heading"></a></h2>
+<p>The parser used by <code class="docutils literal notranslate"><span class="pre">clientFromString</span></code> and <code class="docutils literal notranslate"><span class="pre">serverFromString</span></code> is extensible via third-party plugins, so the endpoints available on your system depend on what packages you have installed.
+However, Twisted itself includes a set of basic endpoints that will always be available.</p>
+<section id="clients">
+<h3>Clients<a class="headerlink" href="#clients" title="Permalink to this heading"></a></h3>
+<dl>
+<dt>TCP</dt><dd><p>Supported arguments: <code class="docutils literal notranslate"><span class="pre">host</span></code>, <code class="docutils literal notranslate"><span class="pre">port</span></code>, <code class="docutils literal notranslate"><span class="pre">timeout</span></code>.
+<code class="docutils literal notranslate"><span class="pre">timeout</span></code> is optional.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">tcp:host=twistedmatrix.com:port=80:timeout=15</span></code>.</p>
+</dd>
+<dt>TLS</dt><dd><p>Required arguments: <code class="docutils literal notranslate"><span class="pre">host</span></code>, <code class="docutils literal notranslate"><span class="pre">port</span></code>.</p>
+<p>Optional arguments: <code class="docutils literal notranslate"><span class="pre">timeout</span></code>, <code class="docutils literal notranslate"><span class="pre">bindAddress</span></code>, <code class="docutils literal notranslate"><span class="pre">certificate</span></code>, <code class="docutils literal notranslate"><span class="pre">privateKey</span></code>, <code class="docutils literal notranslate"><span class="pre">trustRoots</span></code>, <code class="docutils literal notranslate"><span class="pre">endpoint</span></code>.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">host</span></code> is a (UTF-8 encoded) hostname to connect to, as well as the host name to verify against.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">port</span></code> is a numeric port number to connect to.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timeout</span></code> and <code class="docutils literal notranslate"><span class="pre">bindAddress</span></code> have the same meaning as the <code class="docutils literal notranslate"><span class="pre">timeout</span></code> and <code class="docutils literal notranslate"><span class="pre">bindAddress</span></code> for TCP clients.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">certificate</span></code> is the certificate to use for the client; it should be the path name of a PEM file containing a certificate for which <code class="docutils literal notranslate"><span class="pre">privateKey</span></code> is the private key.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">privateKey</span></code> is the client’s private key, matching the certificate specified by <code class="docutils literal notranslate"><span class="pre">certificate</span></code>.
+It should be the path name of a PEM file containing an X.509 client certificate.
+If <code class="docutils literal notranslate"><span class="pre">certificate</span></code> is specified but <code class="docutils literal notranslate"><span class="pre">privateKey</span></code> is unspecified, Twisted will look for the certificate in the same file as specified by <code class="docutils literal notranslate"><span class="pre">certificate</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">trustRoots</span></code> specifies a path to a directory of PEM-encoded certificate files.  If you leave this unspecified, Twisted will do its best to use the platform default set of trust roots, which should be the default WebTrust set.</p></li>
+<li><p>the optional <code class="docutils literal notranslate"><span class="pre">endpoint</span></code> parameter changes the meaning of the <code class="docutils literal notranslate"><span class="pre">tls:</span></code> endpoint slightly.
+Rather than the default of connecting over TCP with the same hostname used for verification, you can connect over <em>any</em> endpoint type.
+If you specify the endpoint here, <code class="docutils literal notranslate"><span class="pre">host</span></code> and <code class="docutils literal notranslate"><span class="pre">port</span></code> are used for certificate verification purposes only.
+Bear in mind you will need to backslash-escape the colons in the endpoint description here.</p></li>
+</ul>
+<p>This client connects to the supplied hostname, validates the server’s hostname against the supplied hostname, and then upgrades to TLS immediately after validation succeeds.</p>
+<p>The simplest example of this would be: <code class="docutils literal notranslate"><span class="pre">tls:example.com:443</span></code>.</p>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">endpoint:</span></code> feature with TCP if you want to connect to a host name; for example, if your DNS is not working, but you know that the IP address 7.6.5.4 points to <code class="docutils literal notranslate"><span class="pre">awesome.site.example.com</span></code>, you could specify: <code class="docutils literal notranslate"><span class="pre">tls:awesome.site.example.com:443:endpoint=tcp\:7.6.5.4\:443</span></code>.</p>
+<p>You can use it with any other endpoint type as well, though; for example, if you had a local UNIX socket that established a tunnel to <code class="docutils literal notranslate"><span class="pre">awesome.site.example.com</span></code> in <code class="docutils literal notranslate"><span class="pre">/var/run/awesome.sock</span></code>, you could instead do <code class="docutils literal notranslate"><span class="pre">tls:awesome.site.example.com:443:endpoint=unix\:/var/run/awesome.sock</span></code>.</p>
+<p>Or, from python code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wrapped</span> <span class="o">=</span> <span class="n">HostnameEndpoint</span><span class="p">(</span><span class="s1">&#39;example.com&#39;</span><span class="p">,</span> <span class="mi">443</span><span class="p">)</span>
+<span class="n">contextFactory</span> <span class="o">=</span> <span class="n">optionsForClientTLS</span><span class="p">(</span><span class="n">hostname</span><span class="o">=</span><span class="sa">u</span><span class="s1">&#39;example.com&#39;</span><span class="p">)</span>
+<span class="n">endpoint</span> <span class="o">=</span> <span class="n">wrapClientTLS</span><span class="p">(</span><span class="n">contextFactory</span><span class="p">,</span> <span class="n">wrapped</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">endpoint</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">Factory</span><span class="o">.</span><span class="n">forProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd>
+<dt>UNIX</dt><dd><p>Supported arguments: <code class="docutils literal notranslate"><span class="pre">path</span></code>, <code class="docutils literal notranslate"><span class="pre">timeout</span></code>, <code class="docutils literal notranslate"><span class="pre">checkPID</span></code>.
+<code class="docutils literal notranslate"><span class="pre">path</span></code> gives a filesystem path to a listening UNIX domain socket server.
+<code class="docutils literal notranslate"><span class="pre">checkPID</span></code> (optional) enables a check of the lock file Twisted-based UNIX domain socket servers use to prove they are still running.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">unix:path=/var/run/web.sock</span></code>.</p>
+</dd>
+<dt>TCP (Hostname)</dt><dd><p>Supported arguments: <code class="docutils literal notranslate"><span class="pre">host</span></code>, <code class="docutils literal notranslate"><span class="pre">port</span></code>, <code class="docutils literal notranslate"><span class="pre">timeout</span></code>.
+<code class="docutils literal notranslate"><span class="pre">host</span></code> is a hostname to connect to.
+<code class="docutils literal notranslate"><span class="pre">timeout</span></code> is optional.
+It is a name-based TCP endpoint that returns the connection which is established first amongst the resolved addresses.</p>
+<p>For example,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">endpoint</span> <span class="o">=</span> <span class="n">HostnameEndpoint</span><span class="p">(</span><span class="n">reactor</span><span class="p">,</span> <span class="s2">&quot;twistedmatrix.com&quot;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">endpoint</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">Factory</span><span class="o">.</span><span class="n">forProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">))</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>SSL (Deprecated)</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You should generally prefer the “TLS” client endpoint, above, unless you need to work with versions of Twisted older than 16.0.
+Among other things:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>the <code class="docutils literal notranslate"><span class="pre">ssl:</span></code> client endpoint requires that you pass ‘’both’’ <code class="docutils literal notranslate"><span class="pre">hostname=</span></code> (for hostname verification) as well as <code class="docutils literal notranslate"><span class="pre">host=</span></code> (for a TCP connection address) in order to get hostname verification, which is required for security, whereas <code class="docutils literal notranslate"><span class="pre">tls:</span></code> does the correct thing by default by using the same hostname for both.</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">ssl:</span></code> client endpoint doesn’t work with IPv6, and the <code class="docutils literal notranslate"><span class="pre">tls:</span></code> endpoint does.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<p>All TCP arguments are supported, plus: <code class="docutils literal notranslate"><span class="pre">certKey</span></code>, <code class="docutils literal notranslate"><span class="pre">privateKey</span></code>, <code class="docutils literal notranslate"><span class="pre">caCertsDir</span></code>.
+<code class="docutils literal notranslate"><span class="pre">certKey</span></code> (optional) gives a filesystem path to a certificate (PEM format).
+<code class="docutils literal notranslate"><span class="pre">privateKey</span></code> (optional) gives a filesystem path to a private key (PEM format).
+<code class="docutils literal notranslate"><span class="pre">caCertsDir</span></code> (optional) gives a filesystem path to a directory containing trusted CA certificates to use to verify the server certificate.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">ssl:host=twistedmatrix.com:port=443:caCertsDir=/etc/ssl/certs</span></code>.</p>
+</div></blockquote>
+</section>
+<section id="servers">
+<h3>Servers<a class="headerlink" href="#servers" title="Permalink to this heading"></a></h3>
+<dl>
+<dt>TCP (IPv4)</dt><dd><p>Supported arguments: <code class="docutils literal notranslate"><span class="pre">port</span></code>, <code class="docutils literal notranslate"><span class="pre">interface</span></code>, <code class="docutils literal notranslate"><span class="pre">backlog</span></code>.
+<code class="docutils literal notranslate"><span class="pre">interface</span></code> and <code class="docutils literal notranslate"><span class="pre">backlog</span></code> are optional.
+<code class="docutils literal notranslate"><span class="pre">interface</span></code> is an IP address (belonging to the IPv4 address family) to bind to.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">tcp:port=80:interface=192.168.1.1</span></code>.</p>
+</dd>
+<dt>TCP (IPv6)</dt><dd><p>All TCP (IPv4) arguments are supported, with <code class="docutils literal notranslate"><span class="pre">interface</span></code> taking an IPv6 address literal instead.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">tcp6:port=80:interface=2001\:0DB8\:f00e\:eb00\:\:1</span></code>.</p>
+</dd>
+<dt>SSL</dt><dd><p>All TCP arguments are supported, plus: <code class="docutils literal notranslate"><span class="pre">certKey</span></code>, <code class="docutils literal notranslate"><span class="pre">privateKey</span></code>, <code class="docutils literal notranslate"><span class="pre">extraCertChain</span></code>, <code class="docutils literal notranslate"><span class="pre">sslmethod</span></code>, and <code class="docutils literal notranslate"><span class="pre">dhParameters</span></code>.
+<code class="docutils literal notranslate"><span class="pre">certKey</span></code> (optional, defaults to the value of privateKey) gives a filesystem path to a certificate (PEM format).
+<code class="docutils literal notranslate"><span class="pre">privateKey</span></code> gives a filesystem path to a private key (PEM format).
+<code class="docutils literal notranslate"><span class="pre">extraCertChain</span></code> gives a filesystem path to a file with one or more concatenated certificates in PEM format that establish the chain from a root CA to the one that signed your certificate.
+<code class="docutils literal notranslate"><span class="pre">sslmethod</span></code> indicates which SSL/TLS version to use (a value like <code class="docutils literal notranslate"><span class="pre">TLSv1_3_METHOD</span></code>).
+<code class="docutils literal notranslate"><span class="pre">dhParameters</span></code> gives a filesystem path to a file in PEM format with parameters that are required for Diffie-Hellman key exchange.
+Since the this is required for the <code class="docutils literal notranslate"><span class="pre">DHE</span></code>-family of ciphers that offer perfect forward secrecy (PFS), it is recommended to specify one.
+Such a file can be created using <code class="docutils literal notranslate"><span class="pre">openssl</span> <span class="pre">dhparam</span> <span class="pre">-out</span> <span class="pre">dh_param_1024.pem</span> <span class="pre">-2</span> <span class="pre">1024</span></code>.
+Please refer to <a class="reference external" href="http://www.openssl.org/docs/apps/dhparam.html">OpenSSL’s documentation on dhparam</a> for further details.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">ssl:port=443:privateKey=/etc/ssl/server.pem:extraCertChain=/etc/ssl/chain.pem:sslmethod=SSLv3_METHOD:dhParameters=dh_param_1024.pem</span></code>.</p>
+</dd>
+<dt>UNIX</dt><dd><p>Supported arguments: <code class="docutils literal notranslate"><span class="pre">address</span></code>, <code class="docutils literal notranslate"><span class="pre">mode</span></code>, <code class="docutils literal notranslate"><span class="pre">backlog</span></code>, <code class="docutils literal notranslate"><span class="pre">lockfile</span></code>.
+<code class="docutils literal notranslate"><span class="pre">address</span></code> gives a filesystem path to listen on with a UNIX domain socket server.
+<code class="docutils literal notranslate"><span class="pre">mode</span></code> (optional) gives the filesystem permission/mode (in octal) to apply to that socket.
+<code class="docutils literal notranslate"><span class="pre">lockfile</span></code> enables use of a separate lock file to prove the server is still running.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">unix:address=/var/run/web.sock:lockfile=1</span></code>.</p>
+</dd>
+<dt>systemd</dt><dd><p>Supported arguments: <code class="docutils literal notranslate"><span class="pre">domain</span></code>, <code class="docutils literal notranslate"><span class="pre">index</span></code>.
+<code class="docutils literal notranslate"><span class="pre">domain</span></code> indicates which socket domain the inherited file descriptor belongs to (eg INET, INET6).
+<code class="docutils literal notranslate"><span class="pre">index</span></code> indicates an offset into the array of file descriptors which have been inherited from systemd.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">systemd:domain=INET6:index=3</span></code>.</p>
+<p>See also <a class="reference internal" href="systemd.html"><span class="doc">Deploying Twisted with systemd</span></a>.</p>
+</dd>
+<dt>PROXY</dt><dd><p>The PROXY protocol is a stream wrapper and can be applied any of the other server endpoints by placing <code class="docutils literal notranslate"><span class="pre">haproxy:</span></code> in front of a normal port definition.</p>
+<p>For example, <code class="docutils literal notranslate"><span class="pre">haproxy:tcp:port=80:interface=192.168.1.1</span></code> or <code class="docutils literal notranslate"><span class="pre">haproxy:ssl:port=443:privateKey=/etc/ssl/server.pem:extraCertChain=/etc/ssl/chain.pem:sslmethod=SSLv3_METHOD:dhParameters=dh_param_1024.pem</span></code>.</p>
+<p>The PROXY protocol provides a way for load balancers and reverse proxies to send down the real IP of a connection’s source and destination without relying on X-Forwarded-For headers. A Twisted service using this endpoint wrapper must run behind a service that sends valid PROXY protocol headers. For more on the protocol see <a class="reference external" href="http://www.haproxy.org/download/1.5/doc/proxy-protocol.txt">the formal specification</a>. Both version one and two of the protocol are currently supported.</p>
+</dd>
+</dl>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="choosing-reactor.html" class="btn btn-neutral float-left" title="Choosing a Reactor and GUI Toolkit Integration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="components.html" class="btn btn-neutral float-right" title="Components: Interfaces and Adapters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Twisted Matrix Labs. Ver 22.8.0.post0. Built on 2022-09-09.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

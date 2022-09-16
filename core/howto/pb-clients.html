@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Managing Clients of Perspectives &mdash; Twisted 22.8.0.post0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="PB Copyable: Passing Complex Types" href="pb-copyable.html" />
+    <link rel="prev" title="Using Perspective Broker" href="pb-usage.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Twisted
+          </a>
+              <div class="version">
+                22.8
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Twisted Core</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Developer Guides</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="vision.html">The Vision For Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="servers.html">Writing Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clients.html">Writing Clients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trial.html">Test-driven development with Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/index.html">Twisted from Scratch, or The Evolution of Finger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/intro.html">The Evolution of Finger: building a simple finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/protocol.html">The Evolution of Finger: adding features to the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/style.html">The Evolution of Finger: cleaning up the finger code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/components.html">The Evolution of Finger: moving to a component based architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/backends.html">The Evolution of Finger: pluggable backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/web.html">The Evolution of Finger: a web frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/pb.html">The Evolution of Finger: Twisted client support using Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/factory.html">The Evolution of Finger: using a single factory for multiple protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/client.html">The Evolution of Finger: a Twisted finger client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/library.html">The Evolution of Finger: making a finger library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/configuration.html">The Evolution of Finger: configuration of the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quotes.html">Setting up the TwistedQuotes application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html">Designing Twisted Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="internet-overview.html">Overview of Twisted Internet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reactor-basics.html">Reactor Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ssl.html">Using TLS in Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udp.html">UDP Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">Using Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer-intro.html">Introduction to Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer.html">Deferred Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gendefer.html">Generating Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time.html">Scheduling tasks for the future</a></li>
+<li class="toctree-l3"><a class="reference internal" href="threading.html">Using Threads in Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="producers.html">Producers and Consumers: Efficient High-Volume Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="choosing-reactor.html">Choosing a Reactor and GUI Toolkit Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="endpoints.html">Getting Connected with Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="components.html">Components: Interfaces and Adapters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cred.html">Cred: Pluggable Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugin.html">The Twisted Plugin System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html">The Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application.html">Using the Twisted Application Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tap.html">Writing a twistd Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="systemd.html">Deploying Twisted with systemd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logger.html">Logging with twisted.logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging.html">Twisted’s Legacy Logging System: <code class="docutils literal notranslate"><span class="pre">twisted.python.log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="constants.html">Symbolic Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rdbms.html">twisted.enterprise.adbapi: Twisted RDBMS support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="options.html">Parsing command-lines with usage.Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dirdbm.html">DirDBM: Directory-based Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html">Writing tests for Twisted code using Trial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sendmsg.html">Extremely Low-Level Socket Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="amp.html">Asynchronous Messaging Protocol Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb.html">Overview of Twisted Spread</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-intro.html">Introduction to Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-usage.html">Using Perspective Broker</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Managing Clients of Perspectives</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#managing-avatars">Managing Avatars</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#managing-clients">Managing Clients</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="pb-copyable.html">PB Copyable: Passing Complex Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-cred.html">Authentication with Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-limits.html">PB Limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python3.html">Porting to Python 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="positioning.html">Twisted Positioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glossary.html">Twisted Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="debug-with-emacs.html">Debugging Python(Twisted) with Emacs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../specifications/index.html">Specifications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Twisted Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development of Twisted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors of Twisted</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Twisted</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Twisted Core</a> &raquo;</li>
+          <li><a href="index.html">Developer Guides</a> &raquo;</li>
+      <li>Managing Clients of Perspectives</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/core/howto/pb-clients.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="managing-clients-of-perspectives">
+<h1>Managing Clients of Perspectives<a class="headerlink" href="#managing-clients-of-perspectives" title="Permalink to this headline"></a></h1>
+<dl class="field-list simple">
+<dt class="field-odd">Author</dt>
+<dd class="field-odd"><p>Kevin Turner</p>
+</dd>
+</dl>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<p>In all the <code class="xref py py-class docutils literal notranslate"><span class="pre">IPerspective</span></code> uses
+we have shown so far, we ignored the <code class="docutils literal notranslate"><span class="pre">mind</span></code> argument and created
+a new <code class="docutils literal notranslate"><span class="pre">Avatar</span></code> for every connection. This is usually an easy
+design choice, and it works well for simple cases.</p>
+<p>In more complicated cases, for example an <code class="docutils literal notranslate"><span class="pre">Avatar</span></code> that
+represents a player object which is persistent in the game universe,
+we will want connections from the same player to use the same <code class="docutils literal notranslate"><span class="pre">Avatar</span></code> .</p>
+<p>Another thing which is necessary in more complicated scenarios
+is notifying a player asynchronously. While it is possible, of
+course, to allow a player to call <code class="docutils literal notranslate"><span class="pre">perspective_remoteListener(referencable)</span></code> that would
+mean both duplication of code and a higher latency in logging in,
+both bad.</p>
+<p>In previous sections all realms looked to be identical.
+In this one we will show the usefulness of realms in accomplishing
+those two objectives.</p>
+</section>
+<section id="managing-avatars">
+<h2>Managing Avatars<a class="headerlink" href="#managing-avatars" title="Permalink to this headline"></a></h2>
+<p>The simplest way to manage persistent avatars is to use a straight-forward
+caching mechanism:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zope.interface</span> <span class="kn">import</span> <span class="n">implementer</span>
+
+<span class="k">class</span> <span class="nc">SimpleAvatar</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">Avatar</span><span class="p">):</span>
+    <span class="n">greetings</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="k">def</span> <span class="nf">perspective_greet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">greetings</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;</span><span class="si">%d</span><span class="s2">&gt;hello </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">greetings</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="nd">@implementer</span><span class="p">(</span><span class="n">portal</span><span class="o">.</span><span class="n">IRealm</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">CachingRealm</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">avatars</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">requestAvatar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">avatarId</span><span class="p">,</span> <span class="n">mind</span><span class="p">,</span> <span class="o">*</span><span class="n">interfaces</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">pb</span><span class="o">.</span><span class="n">IPerspective</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">interfaces</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+        <span class="k">if</span> <span class="n">avatarId</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">avatars</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">avatars</span><span class="p">[</span><span class="n">avatarId</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">avatars</span><span class="p">[</span><span class="n">avatarId</span><span class="p">]</span> <span class="o">=</span> <span class="n">SimpleAvatar</span><span class="p">(</span><span class="n">avatarId</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pb</span><span class="o">.</span><span class="n">IPerspective</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span><span class="kc">None</span>
+</pre></div>
+</div>
+<p>This gives us a perspective which counts the number of greetings it
+sent its client. Implementing a caching strategy, as opposed to generating
+a realm with the correct avatars already in it, is usually easier. This
+makes adding new checkers to the portal, or adding new users to a checker
+database, transparent. Otherwise, careful synchronization is needed between
+the checker and avatar is needed (much like the synchronization between
+UNIX’s <code class="docutils literal notranslate"><span class="pre">/etc/shadow</span></code> and <code class="docutils literal notranslate"><span class="pre">/etc/passwd</span></code> ).</p>
+<p>Sometimes, however, an avatar will need enough per-connection state
+that it would be easier to generate a new avatar and cache something
+else. Here is an example of that:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zope.interface</span> <span class="kn">import</span> <span class="n">implementer</span>
+
+<span class="k">class</span> <span class="nc">Greeter</span><span class="p">:</span>
+    <span class="n">greetings</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">greetings</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;</span><span class="si">%d</span><span class="s2">&gt;hello&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">greetings</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">SimpleAvatar</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">Avatar</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">greeter</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">greeter</span> <span class="o">=</span> <span class="n">greeter</span>
+    <span class="k">def</span> <span class="nf">perspective_greet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">greeter</span><span class="o">.</span><span class="n">hello</span><span class="p">()</span><span class="o">+</span><span class="s1">&#39; &#39;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span>
+
+<span class="nd">@implementer</span><span class="p">(</span><span class="n">portal</span><span class="o">.</span><span class="n">IRealm</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">CachingRealm</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">greeters</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">requestAvatar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">avatarId</span><span class="p">,</span> <span class="n">mind</span><span class="p">,</span> <span class="o">*</span><span class="n">interfaces</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">pb</span><span class="o">.</span><span class="n">IPerspective</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">interfaces</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+        <span class="k">if</span> <span class="n">avatarId</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">greeters</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">greeters</span><span class="p">[</span><span class="n">avatarId</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">greeters</span><span class="p">[</span><span class="n">avatarId</span><span class="p">]</span> <span class="o">=</span> <span class="n">Greeter</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">pb</span><span class="o">.</span><span class="n">IPerspective</span><span class="p">,</span> <span class="n">SimpleAvatar</span><span class="p">(</span><span class="n">avatarId</span><span class="p">,</span> <span class="n">p</span><span class="p">),</span> <span class="k">lambda</span><span class="p">:</span><span class="kc">None</span>
+</pre></div>
+</div>
+<p>It might seem tempting to use this pattern to have an avatar which
+is notified of new connections. However, the problems here are twofold:
+it would lead to a thin class which needs to forward all of its methods,
+and it would be impossible to know when disconnections occur. Luckily,
+there is a better pattern:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zope.interface</span> <span class="kn">import</span> <span class="n">implementer</span>
+
+<span class="k">class</span> <span class="nc">SimpleAvatar</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">Avatar</span><span class="p">):</span>
+    <span class="n">greetings</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">connections</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connections</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connections</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">perspective_greet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">greetings</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;</span><span class="si">%d</span><span class="s2">&gt;hello </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">greetings</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="nd">@implementer</span><span class="p">(</span><span class="n">portal</span><span class="o">.</span><span class="n">IRealm</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">CachingRealm</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">avatars</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="nf">requestAvatar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">avatarId</span><span class="p">,</span> <span class="n">mind</span><span class="p">,</span> <span class="o">*</span><span class="n">interfaces</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">pb</span><span class="o">.</span><span class="n">IPerspective</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">interfaces</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+        <span class="k">if</span> <span class="n">avatarId</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">avatars</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">avatars</span><span class="p">[</span><span class="n">avatarId</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">avatars</span><span class="p">[</span><span class="n">avatarId</span><span class="p">]</span> <span class="o">=</span> <span class="n">SimpleAvatar</span><span class="p">(</span><span class="n">avatarId</span><span class="p">)</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">pb</span><span class="o">.</span><span class="n">IPerspective</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">disconnect</span>
+</pre></div>
+</div>
+<p>It is possible to use such a pattern to define an arbitrary limit for
+the number of concurrent connections:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zope.interface</span> <span class="kn">import</span> <span class="n">implementer</span>
+
+<span class="k">class</span> <span class="nc">SimpleAvatar</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">Avatar</span><span class="p">):</span>
+    <span class="n">greetings</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">connections</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+    <span class="k">def</span> <span class="nf">connect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connections</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">disconnect</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">connections</span> <span class="o">-=</span> <span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">perspective_greet</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">greetings</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;</span><span class="si">%d</span><span class="s2">&gt;hello </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">greetings</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+
+<span class="nd">@implementer</span><span class="p">(</span><span class="n">portal</span><span class="o">.</span><span class="n">IRealm</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">CachingRealm</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">avatars</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max</span> <span class="o">=</span> <span class="nb">max</span>
+
+    <span class="k">def</span> <span class="nf">requestAvatar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">avatarId</span><span class="p">,</span> <span class="n">mind</span><span class="p">,</span> <span class="o">*</span><span class="n">interfaces</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">pb</span><span class="o">.</span><span class="n">IPerspective</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">interfaces</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+        <span class="k">if</span> <span class="n">avatarId</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">avatars</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">avatars</span><span class="p">[</span><span class="n">avatarId</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">p</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">avatars</span><span class="p">[</span><span class="n">avatarId</span><span class="p">]</span> <span class="o">=</span> <span class="n">SimpleAvatar</span><span class="p">(</span><span class="n">avatarId</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">connections</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;too many connections&quot;</span><span class="p">)</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">pb</span><span class="o">.</span><span class="n">IPerspective</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">disconnect</span>
+</pre></div>
+</div>
+</section>
+<section id="managing-clients">
+<h2>Managing Clients<a class="headerlink" href="#managing-clients" title="Permalink to this headline"></a></h2>
+<p>So far, all our realms have ignored the <code class="docutils literal notranslate"><span class="pre">mind</span></code> argument.
+In the case of PB, the <code class="docutils literal notranslate"><span class="pre">mind</span></code> is an object supplied by
+the remote login method – usually, when it passes over the wire,
+it becomes a <code class="docutils literal notranslate"><span class="pre">pb.RemoteReference</span></code> . This object allows
+sending messages to the client as soon as the connection is established
+and authenticated.</p>
+<p>Here is a simple remote-clock application which shows the usefulness
+of the <code class="docutils literal notranslate"><span class="pre">mind</span></code> argument:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zope.interface</span> <span class="kn">import</span> <span class="n">implementer</span>
+
+<span class="k">class</span> <span class="nc">SimpleAvatar</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">Avatar</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">internet</span><span class="o">.</span><span class="n">TimerService</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">telltime</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">startService</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">client</span>
+    <span class="k">def</span> <span class="nf">telltime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">callRemote</span><span class="p">(</span><span class="s2">&quot;notifyTime&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span>
+    <span class="k">def</span> <span class="nf">perspective_setperiod</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">period</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">stopService</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s</span> <span class="o">=</span> <span class="n">internet</span><span class="o">.</span><span class="n">TimerService</span><span class="p">(</span><span class="n">period</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">telltime</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">startService</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">logout</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">stopService</span><span class="p">()</span>
+
+<span class="nd">@implementer</span><span class="p">(</span><span class="n">portal</span><span class="o">.</span><span class="n">IRealm</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Realm</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">requestAvatar</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">avatarId</span><span class="p">,</span> <span class="n">mind</span><span class="p">,</span> <span class="o">*</span><span class="n">interfaces</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">pb</span><span class="o">.</span><span class="n">IPerspective</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">interfaces</span><span class="p">:</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">SimpleAvatar</span><span class="p">(</span><span class="n">mind</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">pb</span><span class="o">.</span><span class="n">IPerspective</span><span class="p">,</span> <span class="n">p</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">logout</span>
+</pre></div>
+</div>
+<p>In more complicated situations, you might want to cache the avatars
+and give each one a set of “current clients” or something similar.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pb-usage.html" class="btn btn-neutral float-left" title="Using Perspective Broker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pb-copyable.html" class="btn btn-neutral float-right" title="PB Copyable: Passing Complex Types" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Twisted Matrix Labs. Ver 22.8.0.post0. Built on 2022-09-16.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

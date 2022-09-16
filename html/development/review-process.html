@@ -1,0 +1,403 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Code Review Process &mdash; Twisted 22.4.0.post0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Twisted Release Process" href="release-process.html" />
+    <link rel="prev" title="Development process" href="dev-process.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Twisted
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                22.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Twisted Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Twisted Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development of Twisted</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="coding-standard.html">Twisted Coding Standard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dev-process.html">Development process</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Code Review Process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#authors-before-you-get-started">Authors: Before you get started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authors-things-your-branch-or-patch-must-contain">Authors: Things your branch or patch must contain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authors-how-to-get-your-change-reviewed">Authors: How to get your change reviewed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reviewers-how-to-review-a-change">Reviewers: How to review a change</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authors-how-to-merge-the-change-to-trunk">Authors: How to merge the change to trunk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#who-can-review-a-pr">Who can review a PR?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-be-a-good-reviewer">How to be a good reviewer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="release-process.html">Twisted Release Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test-standard.html">Unit Tests in Twisted</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing-standard.html">Twisted Writing Standard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compatibility-policy.html">Twisted Compatibility Policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naming.html">Naming Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="philosophy.html">Philosophy</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Twisted</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Development of Twisted</a> &raquo;</li>
+        
+      <li>Code Review Process</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/development/review-process.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="code-review-process">
+<h1>Code Review Process<a class="headerlink" href="#code-review-process" title="Permalink to this heading">¶</a></h1>
+<p>All commits to Twisted’s trunk must follow this review process.</p>
+<p>Both authors and reviewers should be intimately familiar with all requirements on this page.</p>
+<p>Long story short for contributors / PR authors:</p>
+<ul class="simple">
+<li><p>Start by creating a GitHub Issue describing the issue or the reason a change is needed.</p></li>
+<li><p>Follow our coding standard and implement the required changes</p></li>
+<li><p>Create a GitHub Pull Request to have the changes merged in the main trunk</p></li>
+<li><p>Make sure all the PR checks are green and the changes are ready for review.</p></li>
+<li><p>Leave an explicit comment on the PR containing the <cite>please review</cite> text.
+You can use a <cite>draft PR</cite> but once ready, leave the explicit comment asking for the review.
+This will trigger the review process and the required team notifications.</p></li>
+<li><p>Wait for a review or try to find a review via IRC, mailing list or Gitter</p></li>
+<li><p>Engage in a conversation with the reviewer to get the changes approved.</p></li>
+<li><p>Once the changes from the PR are approved, the PR can be merged.</p></li>
+</ul>
+<div class="section" id="authors-before-you-get-started">
+<h2>Authors: Before you get started<a class="headerlink" href="#authors-before-you-get-started" title="Permalink to this heading">¶</a></h2>
+<p>For the most part, we’d love for you to jump right in and start writing code!
+The code review process should catch any serious problems with your contribution,
+and the continuous integration system should catch most tricky cross-platform issues.
+It’s easy to get too caught up in trying to do everything perfectly the first time and never get any code written,
+so you should usually err on the side of just trying something out rather than waiting for someone to tell you if it’s OK.
+That being said, there are a few things that you should be aware of before you write your first line of code.</p>
+<p>Make sure you have a <em>clear idea of what work needs doing</em>.
+Write down your idea first; <a class="reference external" href="https://github.com/twisted/twisted/issues/new/choose">file an issue</a> before you write a patch.
+A really good issue will give a precise description of what needs to change and why it needs changing;
+it avoids giving precise details of exactly <em>how</em> the code needs to change,
+because the patch should supply those details.
+A really <em>bad</em> issue will say “here is a patch I wrote, apply it”.
+If you’re just getting started with contributing to Twisted,
+it would be good to find an existing issue rather than come up with something yourself,
+so you have an idea how to go through the process before you start making difficult changes.
+You’ll need to have a good description of your work for other parts of the process as well (the NEWS file, the commit message) which is another reason thinking about what you’re trying to do helps.</p>
+<p><strong>If you’re filing a bug because you noticed a regression</strong> in the current pre-release,
+make sure to mark it as a regression,
+add it to the release milestone, and post something to the mailing list as well.
+It’s very important for us to spot regressions before they make it into a final release,
+so redundant communication is better in this case!</p>
+<p>Issues should be described well enough that the change is already justified and the new code should be easy enough to read that further explanations aren’t necessary to understand it, but sometimes diffs themselves can be more difficult to read than either the old or new state of the code, so comments like ‘’the implementation of foo moved from bar.py to baz.py’’ can sometimes make a reviewer’s job easier.</p>
+<p>Try <strong>not</strong> to <em>write too much code at once</em>.
+A good change needs to be under 1000 lines of diff for a reviewer to be able to deal with it before getting fatigued and missing things.
+You should be aiming for things in the neighborhood of 200 lines.
+This is for your benefit as well as the reviewer’s; we don’t want you to spend weeks on a 10,000-line monster of a feature,
+only to have it rejected because we’re not interested in having such a feature at all.</p>
+</div>
+<div class="section" id="authors-things-your-branch-or-patch-must-contain">
+<h2>Authors: Things your branch or patch must contain<a class="headerlink" href="#authors-things-your-branch-or-patch-must-contain" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Code which follows the <a class="reference internal" href="coding-standard.html"><span class="doc">coding standards</span></a>.</p></li>
+<li><p>100% unit test coverage for all modified and new code (even if it didn’t have tests before)</p></li>
+<li><p>100% API docstring coverage for all modified and new code (even if it didn’t have docs before)</p></li>
+<li><p>No <a class="reference internal" href="compatibility-policy.html"><span class="doc">backwards-incompatible</span></a> changes.
+Also be sparing when adding ‘public’ names to the API, as they must be supported in the future.
+If it can start with an underscore and not be exposed publicly, it probably should.</p></li>
+<li><p>Appropriate new or modified “End User” guide documentation (in the form of rst files in the <a class="reference external" href="https://github.com/twisted/twisted/tree/trunk/docs">docs/</a> directory)</p></li>
+<li><p>A file in all relevant “newsfragments” directories describing changes that affect users See the Newsfiles section below.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="authors-how-to-get-your-change-reviewed">
+<h2>Authors: How to get your change reviewed<a class="headerlink" href="#authors-how-to-get-your-change-reviewed" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><dl class="simple">
+<dt>There must be an issue in the Twisted Github Issue tracker describing the desired outcome.</dt><dd><p>See more info below.</p>
+</dd>
+</dl>
+</li>
+<li><p><strong>Note</strong>: For security issues, see <a class="reference internal" href="../security.html"><span class="doc">Security</span></a>.</p></li>
+<li><p>Create a GitHub Pull request</p></li>
+<li><p>Write a comment or PR description with any relevant information for the reviewer.</p></li>
+<li><p>Once the PR is ready for review,
+leave a separate comment on that PR containing the text <cite>please review</cite>.
+This will trigger the review process and will notify the review team.</p></li>
+</ul>
+</div>
+<div class="section" id="reviewers-how-to-review-a-change">
+<h2>Reviewers: How to review a change<a class="headerlink" href="#reviewers-how-to-review-a-change" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>Be familiar with the Twisted codebase, coding standard, and these review requirements.</p></li>
+<li><p>Don’t be the author of the change.
+It makes no sense to review your code, and we assume that before pushing the code to a public PR,
+you already did the first round of self-review.</p></li>
+<li><p>Make sure that all checks are <strong>green</strong>!</p></li>
+<li><p>Note any unreliable / flaky tests should have a separate issue created.</p></li>
+<li><p>Review the change, and write a detailed comment about all potential improvements to the branch (See [#Howtobeagoodreviewer below]).</p></li>
+<li><p>Use GitHub review UI to approve or request changes to the PR.</p></li>
+<li><p>If the author does not have commit access, merge the change for them or add the “needs-merge” label.</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="authors-how-to-merge-the-change-to-trunk">
+<h2>Authors: How to merge the change to trunk<a class="headerlink" href="#authors-how-to-merge-the-change-to-trunk" title="Permalink to this heading">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p>If your reviewers are happy with the changes for your PR, you can merge it.</p></li>
+<li><p>Check in the GitHub PR that all tests are green (or the failed one are just unrelated/spurious failures)</p></li>
+<li><p>Use the GitHub merge button to merge the request, using the GitHub default commit subject, and with the standard commit format required by Twisted. See below for details.</p></li>
+<li><p>Alternatively, you can use the command line and merge the change into a checkout of Twisted trunk (as a merge commit, using <cite>git merge –no-ff</cite>) and commit it.</p></li>
+</ul>
+</div></blockquote>
+<p>If this fix has implications for an ongoing pre-release in progress,
+please announce it on the mailing list so that the release manager will know.</p>
+<p>A change has implications for the release process if:</p>
+<ul class="simple">
+<li><p>a pre-release has been issued for which there is no final release</p></li>
+<li><p>this issue was a known regression and is now closed, so another pre-release should be issued</p></li>
+<li><p>this issue was in the release milestone and is now closed, so another pre-release should be issued</p></li>
+<li><p>as part of the final review, the reviewer noticed that this is fixing something that could be considered a regression.
+In general, if there’s any doubt, communicate to the mailing list.  The mailing list is fairly low traffic, and so a little extra noise about interesting developments is much better than letting an important fix slip through the cracks.  If you’re not sure whether something qualifies as a regression or not, let the release manager know so they can decide.</p></li>
+<li><p>If no regression appears, you can delete the source branch.</p></li>
+</ul>
+</div>
+<div class="section" id="who-can-review-a-pr">
+<h2>Who can review a PR?<a class="headerlink" href="#who-can-review-a-pr" title="Permalink to this heading">¶</a></h2>
+<p>Changes must be reviewed by a developer other than the author of the changes. If changes are paired on, a third party must review them.  If changes constitute the work of several people who worked independently, a non-author must review them.</p>
+<p>A reviewer need not necessarily be familiar with the specific area of Twisted being changed, but he or she should feel confident in his or her abilities to spot problems in the change.</p>
+<p>Twisted committers may review anyone’s PRs; those submitted by other committers or those submitted by non-committer contributors.  If a non-committer contributor submits a PR that is acceptable to merge, it is the committer’s responsibility to commit and merge the PR.  When a committer reviews a PR, they are responsible if there are any problems with the review.</p>
+<p>Non-committer contributors may review PRs that committers have submitted.  When a non-committer does a passing review, the committer may accept it and land their change, but they are then responsible for the adequacy of the review.  So, if a non-committer does a review you feel might be incomplete, put it back into review and explain what they might have missed - this kind of reviewing-the-review is important to make sure that more people learn how to do reviews well!</p>
+</div>
+<div class="section" id="how-to-be-a-good-reviewer">
+<h2>How to be a good reviewer<a class="headerlink" href="#how-to-be-a-good-reviewer" title="Permalink to this heading">¶</a></h2>
+<p>First, make sure all of the obvious things are accounted for.
+Check the “Things your branch or patch must contain” list above,
+and make sure each point applies to the branch.</p>
+<p>A reviewer may reject a change for various reasons, many of which are hard to quantify.
+Use your best judgment, and don’t be afraid to point out problems that don’t fit into the list of branch requirements laid out in this document.</p>
+<p>Here are some extra things to consider while reviewing a change:</p>
+<ul class="simple">
+<li><p>Is the code written in a straightforward manner that will allow it to be easily maintained in the future,
+possibly by a developer other than the author?</p></li>
+<li><p>If it introduces a new feature, is that feature generally useful and have its long-term implications been considered and accounted for?
+* Will it confuse application developers?
+* Does it encourage application code using it to be well factored and easily testable?
+* Is it similar to any existing feature offered by Twisted, such that it might make sense as an extension or modification to some other piece of code, rather than an entirely new functional unit?</p></li>
+<li><p>Does it require new documentation and examples?</p></li>
+</ul>
+<p>When you’re done with the review, always say what the next step should be: for example, if the author is a committer, can they commit after making a few minor fixes?  If your review feedback is more substantial, should they re-submit for another review?</p>
+<p>If you are officially “doing a review”, please make sure you do a complete review and look for ‘’all’’ of these things, so that the author has as much feedback as possible to work with while their ticket is out of the review state.  If you don’t have time to do a complete review, and you just notice one or two things about the ticket, just make a comment to help the future reviewer, and don’t remove the review keyword, so another reviewer might have a look.  For example, say, “I just checked for a news file and I noticed there wasn’t one”, or, “I saw some trailing whitespace in these methods”.  If you remove the PR from the review queue, you may substantially increase the amount of time that the author has to wait for a real, comprehensive review, which is very frustrating.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="release-process.html" class="btn btn-neutral float-right" title="Twisted Release Process" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="dev-process.html" class="btn btn-neutral float-left" title="Development process" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Twisted Matrix Labs. Ver 22.4.0.post0. Built on 2022-09-04.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

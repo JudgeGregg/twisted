@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historical Documents &mdash; Twisted 22.8.0.post0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Twisted Core 14.0.2 (2014-09-18)" href="NEWS.html" />
+    <link rel="prev" title="Founding Sponsors" href="../sponsors/foundingsponsors.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Twisted
+          </a>
+              <div class="version">
+                22.8
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Twisted Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Twisted Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/index.html">Development of Twisted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors of Twisted</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Historical Documents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html">Twisted Core 14.0.2 (2014-09-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-14-0-2-2014-09-18">Twisted Conch 14.0.2 (2014-09-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-14-0-2-2014-09-18">Twisted Lore 14.0.2 (2014-09-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-14-0-2-2014-09-18">Twisted Mail 14.0.2 (2014-09-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-14-0-2-2014-09-18">Twisted Names 14.0.2 (2014-09-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-news-14-0-2-2014-09-18">Twisted News 14.0.2 (2014-09-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-14-0-2-2014-09-18">Twisted Pair 14.0.2 (2014-09-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-14-0-2-2014-09-18">Twisted Runner 14.0.2 (2014-09-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-14-0-2-2014-09-18">Twisted Web 14.0.2 (2014-09-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-14-0-2-2014-09-18">Twisted Words 14.0.2 (2014-09-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-core-14-0-1-2014-09-17">Twisted Core 14.0.1 (2014-09-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-14-0-1-2014-09-17">Twisted Conch 14.0.1 (2014-09-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-14-0-1-2014-09-17">Twisted Lore 14.0.1 (2014-09-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-14-0-1-2014-09-17">Twisted Mail 14.0.1 (2014-09-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-14-0-1-2014-09-17">Twisted Names 14.0.1 (2014-09-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-news-14-0-1-2014-09-17">Twisted News 14.0.1 (2014-09-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-14-0-1-2014-09-17">Twisted Pair 14.0.1 (2014-09-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-14-0-1-2014-09-17">Twisted Runner 14.0.1 (2014-09-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-14-0-1-2014-09-17">Twisted Web 14.0.1 (2014-09-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-14-0-1-2014-09-17">Twisted Words 14.0.1 (2014-09-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-core-14-0-0-2014-05-08">Twisted Core 14.0.0 (2014-05-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-14-0-0-2014-05-08">Twisted Conch 14.0.0 (2014-05-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-14-0-0-2014-05-08">Twisted Lore 14.0.0 (2014-05-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-14-0-0-2014-05-08">Twisted Mail 14.0.0 (2014-05-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-14-0-0-2014-05-08">Twisted Names 14.0.0 (2014-05-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-news-14-0-0-2014-05-08">Twisted News 14.0.0 (2014-05-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-14-0-0-2014-05-08">Twisted Pair 14.0.0 (2014-05-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-14-0-0-2014-05-08">Twisted Runner 14.0.0 (2014-05-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-14-0-0-2014-05-08">Twisted Web 14.0.0 (2014-05-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-14-0-0-2014-05-08">Twisted Words 14.0.0 (2014-05-08)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-core-13-2-0-2013-10-29">Twisted Core 13.2.0 (2013-10-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-13-2-0-2013-10-29">Twisted Conch 13.2.0 (2013-10-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-13-2-0-2013-10-29">Twisted Lore 13.2.0 (2013-10-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-13-2-0-2013-10-29">Twisted Mail 13.2.0 (2013-10-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-13-2-0-2013-10-29">Twisted Names 13.2.0 (2013-10-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-news-13-2-0-2013-10-29">Twisted News 13.2.0 (2013-10-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-13-2-0-2013-10-29">Twisted Pair 13.2.0 (2013-10-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-13-2-0-2013-10-29">Twisted Runner 13.2.0 (2013-10-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-13-2-0-2013-10-29">Twisted Web 13.2.0 (2013-10-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-13-2-0-2013-10-29">Twisted Words 13.2.0 (2013-10-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-core-13-1-0-2013-06-23">Twisted Core 13.1.0 (2013-06-23)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-13-1-0-2013-06-23">Twisted Conch 13.1.0 (2013-06-23)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-13-1-0-2013-06-23">Twisted Lore 13.1.0 (2013-06-23)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-13-1-0-2013-06-23">Twisted Mail 13.1.0 (2013-06-23)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-13-1-0-2013-06-23">Twisted Names 13.1.0 (2013-06-23)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-news-13-1-0-2013-06-23">Twisted News 13.1.0 (2013-06-23)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-13-1-0-2013-06-23">Twisted Pair 13.1.0 (2013-06-23)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-13-1-0-2013-06-23">Twisted Runner 13.1.0 (2013-06-23)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-13-1-0-2013-06-23">Twisted Web 13.1.0 (2013-06-23)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-13-1-0-2013-06-23">Twisted Words 13.1.0 (2013-06-23)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-core-13-0-0-2013-03-19">Twisted Core 13.0.0 (2013-03-19)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-13-0-0-2013-03-19">Twisted Conch 13.0.0 (2013-03-19)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-13-0-0-2013-03-19">Twisted Lore 13.0.0 (2013-03-19)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-13-0-0-2013-03-19">Twisted Mail 13.0.0 (2013-03-19)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-13-0-0-2013-03-19">Twisted Names 13.0.0 (2013-03-19)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-news-13-0-0-2013-03-19">Twisted News 13.0.0 (2013-03-19)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-13-0-0-2013-03-19">Twisted Pair 13.0.0 (2013-03-19)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-13-0-0-2013-03-19">Twisted Runner 13.0.0 (2013-03-19)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-13-0-0-2013-03-19">Twisted Web 13.0.0 (2013-03-19)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-13-0-0-2013-03-19">Twisted Words 13.0.0 (2013-03-19)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-core-12-3-0-2012-12-20">Twisted Core 12.3.0 (2012-12-20)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-12-3-0-2012-12-20">Twisted Conch 12.3.0 (2012-12-20)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-12-3-0-2012-12-20">Twisted Lore 12.3.0 (2012-12-20)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-12-3-0-2012-12-20">Twisted Mail 12.3.0 (2012-12-20)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-12-3-0-2012-12-20">Twisted Names 12.3.0 (2012-12-20)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-news-12-3-0-2012-12-20">Twisted News 12.3.0 (2012-12-20)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-12-3-0-2012-12-20">Twisted Pair 12.3.0 (2012-12-20)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-12-3-0-2012-12-20">Twisted Runner 12.3.0 (2012-12-20)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-12-3-0-2012-12-20">Twisted Web 12.3.0 (2012-12-20)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-12-3-0-2012-12-20">Twisted Words 12.3.0 (2012-12-20)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-core-12-2-0-2012-08-26">Twisted Core 12.2.0 (2012-08-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-12-2-0-2012-08-26">Twisted Conch 12.2.0 (2012-08-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-12-2-0-2012-08-26">Twisted Lore 12.2.0 (2012-08-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-12-2-0-2012-08-26">Twisted Mail 12.2.0 (2012-08-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-12-2-0-2012-08-26">Twisted Names 12.2.0 (2012-08-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-news-12-2-0-2012-08-26">Twisted News 12.2.0 (2012-08-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-12-2-0-2012-08-26">Twisted Pair 12.2.0 (2012-08-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-12-2-0-2012-08-26">Twisted Runner 12.2.0 (2012-08-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-12-2-0-2012-08-26">Twisted Web 12.2.0 (2012-08-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-12-2-0-2012-08-26">Twisted Words 12.2.0 (2012-08-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-core-12-1-0-2012-06-02">Twisted Core 12.1.0 (2012-06-02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-12-1-0-2012-06-02">Twisted Conch 12.1.0 (2012-06-02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-12-1-0-2012-06-02">Twisted Lore 12.1.0 (2012-06-02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-12-1-0-2012-06-02">Twisted Mail 12.1.0 (2012-06-02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-12-1-0-2012-06-02">Twisted Names 12.1.0 (2012-06-02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-news-12-1-0-2012-06-02">Twisted News 12.1.0 (2012-06-02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-12-1-0-2012-06-02">Twisted Pair 12.1.0 (2012-06-02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-12-1-0-2012-06-02">Twisted Runner 12.1.0 (2012-06-02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-12-1-0-2012-06-02">Twisted Web 12.1.0 (2012-06-02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-12-1-0-2012-06-02">Twisted Words 12.1.0 (2012-06-02)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-core-12-0-0-2012-02-10">Twisted Core 12.0.0 (2012-02-10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-12-0-0-2012-02-10">Twisted Conch 12.0.0 (2012-02-10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-12-0-0-2012-02-10">Twisted Lore 12.0.0 (2012-02-10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-12-0-0-2012-02-10">Twisted Mail 12.0.0 (2012-02-10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-12-0-0-2012-02-10">Twisted Names 12.0.0 (2012-02-10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-news-12-0-0-2012-02-10">Twisted News 12.0.0 (2012-02-10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-12-0-0-2012-02-10">Twisted Pair 12.0.0 (2012-02-10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-12-0-0-2012-02-10">Twisted Runner 12.0.0 (2012-02-10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-12-0-0-2012-02-10">Twisted Web 12.0.0 (2012-02-10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-12-0-0-2012-02-10">Twisted Words 12.0.0 (2012-02-10)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-core-11-1-0-2011-11-15">Twisted Core 11.1.0 (2011-11-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-11-1-0-2011-11-15">Twisted Conch 11.1.0 (2011-11-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-11-1-0-2011-11-15">Twisted Lore 11.1.0 (2011-11-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-11-1-0-2011-11-15">Twisted Mail 11.1.0 (2011-11-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-11-1-0-2011-11-15">Twisted Names 11.1.0 (2011-11-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-news-11-1-0-2011-11-15">Twisted News 11.1.0 (2011-11-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-11-1-0-2011-11-15">Twisted Pair 11.1.0 (2011-11-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-11-1-0-2011-11-15">Twisted Runner 11.1.0 (2011-11-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-11-1-0-2011-11-15">Twisted Web 11.1.0 (2011-11-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-11-1-0-2011-11-15">Twisted Words 11.1.0 (2011-11-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-core-11-0-0-2011-04-01">Twisted Core 11.0.0 (2011-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-11-0-0-2011-04-01">Twisted Conch 11.0.0 (2011-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-11-0-0-2011-04-01">Twisted Lore 11.0.0 (2011-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-11-0-0-2011-04-01">Twisted Mail 11.0.0 (2011-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-11-0-0-2011-04-01">Twisted Names 11.0.0 (2011-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-news-11-0-0-2011-04-01">Twisted News 11.0.0 (2011-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-11-0-0-2011-04-01">Twisted Pair 11.0.0 (2011-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-11-0-0-2011-04-01">Twisted Runner 11.0.0 (2011-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-11-0-0-2011-04-01">Twisted Web 11.0.0 (2011-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-11-0-0-2011-04-01">Twisted Words 11.0.0 (2011-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-core-10-2-0-2010-11-29">Twisted Core 10.2.0 (2010-11-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-10-2-0-2010-11-29">Twisted Conch 10.2.0 (2010-11-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-10-2-0-2010-11-29">Twisted Lore 10.2.0 (2010-11-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-10-2-0-2010-11-29">Twisted Mail 10.2.0 (2010-11-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-10-2-0-2010-11-29">Twisted Names 10.2.0 (2010-11-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-news-10-2-0-2010-11-29">Twisted News 10.2.0 (2010-11-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-10-2-0-2010-11-29">Twisted Pair 10.2.0 (2010-11-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-10-2-0-2010-11-29">Twisted Runner 10.2.0 (2010-11-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-10-2-0-2010-11-29">Twisted Web 10.2.0 (2010-11-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-10-2-0-2010-11-29">Twisted Words 10.2.0 (2010-11-29)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-core-10-1-0-2010-06-27">Twisted Core 10.1.0 (2010-06-27)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-10-1-0-2010-06-27">Twisted Conch 10.1.0 (2010-06-27)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-10-1-0-2010-06-27">Twisted Lore 10.1.0 (2010-06-27)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-10-1-0-2010-06-27">Twisted Mail 10.1.0 (2010-06-27)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-10-1-0-2010-06-27">Twisted Names 10.1.0 (2010-06-27)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-news-10-1-0-2010-06-27">Twisted News 10.1.0 (2010-06-27)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-10-1-0-2010-06-27">Twisted Pair 10.1.0 (2010-06-27)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-10-1-0-2010-06-27">Twisted Runner 10.1.0 (2010-06-27)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-10-1-0-2010-06-27">Twisted Web 10.1.0 (2010-06-27)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-10-1-0-2010-06-27">Twisted Words 10.1.0 (2010-06-27)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-core-10-0-0-2010-03-01">Twisted Core 10.0.0 (2010-03-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-10-0-0-2010-03-01">Twisted Conch 10.0.0 (2010-03-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-10-0-0-2010-03-01">Twisted Lore 10.0.0 (2010-03-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-10-0-0-2010-03-01">Twisted Mail 10.0.0 (2010-03-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-10-0-0-2010-03-01">Twisted Names 10.0.0 (2010-03-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-10-0-0-2010-03-01">Twisted Pair 10.0.0 (2010-03-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-10-0-0-2010-03-01">Twisted Runner 10.0.0 (2010-03-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-10-0-0-2010-03-01">Twisted Web 10.0.0 (2010-03-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-10-0-0-2010-03-01">Twisted Words 10.0.0 (2010-03-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-core-9-0-0-2009-11-24">Twisted Core 9.0.0 (2009-11-24)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-conch-9-0-0-2009-11-24">Twisted Conch 9.0.0 (2009-11-24)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-lore-9-0-0-2009-11-24">Twisted Lore 9.0.0 (2009-11-24)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-mail-9-0-0-2009-11-24">Twisted Mail 9.0.0 (2009-11-24)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-names-9-0-0-2009-11-24">Twisted Names 9.0.0 (2009-11-24)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-news-9-0-0-2009-11-24">Twisted News 9.0.0 (2009-11-24)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-pair-9-0-0-2009-11-24">Twisted Pair 9.0.0 (2009-11-24)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-runner-9-0-0-2009-11-24">Twisted Runner 9.0.0 (2009-11-24)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-web-9-0-0-2009-11-24">Twisted Web 9.0.0 (2009-11-24)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#twisted-words-9-0-0-2009-11-24">Twisted Words 9.0.0 (2009-11-24)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#core-8-2-0-2008-12-16">Core 8.2.0 (2008-12-16)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#conch-8-2-0-2008-12-16">Conch 8.2.0 (2008-12-16)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#lore-8-2-0-2008-12-16">Lore 8.2.0 (2008-12-16)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#mail-8-2-0-2008-12-16">Mail 8.2.0 (2008-12-16)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#names-8-2-0-2008-12-16">Names 8.2.0 (2008-12-16)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#web-8-2-0-2008-12-16">Web 8.2.0 (2008-12-16)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#web2-8-2-0-2008-12-16">Web2 8.2.0 (2008-12-16)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#words-8-2-0-2008-12-16">Words 8.2.0 (2008-12-16)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#core-8-1-0-2008-05-18">Core 8.1.0 (2008-05-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#conch-8-1-0-2008-05-18">Conch 8.1.0 (2008-05-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#lore-8-1-0-2008-05-18">Lore 8.1.0 (2008-05-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#news-8-1-0-2008-05-18">News 8.1.0 (2008-05-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#web-8-1-0-2008-05-18">Web 8.1.0 (2008-05-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#words-8-1-0-2008-05-18">Words 8.1.0 (2008-05-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#mail-8-1-0-2008-05-18">Mail 8.1.0 (2008-05-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#names-8-1-0-2008-05-18">Names 8.1.0 (2008-05-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#web2-8-1-0-2008-05-18">Web2 8.1.0 (2008-05-18)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#core-8-0-1-2008-03-26">Core 8.0.1 (2008-03-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#core-8-0-0-2008-03-17">Core 8.0.0 (2008-03-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#conch-8-0-0-2008-03-17">Conch 8.0.0 (2008-03-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#lore-8-0-0-2008-03-17">Lore 8.0.0 (2008-03-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#news-8-0-0-2008-03-17">News 8.0.0 (2008-03-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#runner-8-0-0-2008-03-17">Runner 8.0.0 (2008-03-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#web-8-0-0-2008-03-17">Web 8.0.0 (2008-03-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#words-8-0-0-2008-03-17">Words 8.0.0 (2008-03-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#mail-8-0-0-2008-03-17">Mail 8.0.0 (2008-03-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="NEWS.html#names-8-0-0-2008-03-17">Names 8.0.0 (2008-03-17)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">2003</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-community-conference">Python Community Conference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#previously">Previously</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Twisted</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Historical Documents</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/historic/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="historical-documents">
+<h1>Historical Documents<a class="headerlink" href="#historical-documents" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>Here are documents which contain no pertinent information or documentation.
+People from the Twisted team have published them, and they serve as interesting land marks and thoughts.
+Please don’t look here for documentation – however, if you are interested in the history of Twisted, or want to quote from these documents, feel free.
+Remember, however – the documents here may contain wrong information – they are not updated as Twisted is, to keep their historical value intact.</p>
+<section id="id1">
+<h2>2003<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<section id="python-community-conference">
+<h3>Python Community Conference<a class="headerlink" href="#python-community-conference" title="Permalink to this headline"></a></h3>
+<p>These papers were part of the <a class="reference external" href="http://python.org/pycon/">Python Community Conference</a> (PyCon) in March of 2003.</p>
+<p><a class="reference external" href="2003/pycon/deferex.html">Generalization of Deferred Execution in Python</a></p>
+<blockquote>
+<div><p>A deceptively simple architectural challenge faced by many
+multi-tasking applications is gracefully doing nothing.  Systems that
+must wait for the results of a long-running process, network message, or
+database query while continuing to perform other tasks must establish
+conventions for the semantics of waiting.  The simplest of these is
+blocking in a thread, but it has significant scalability problems.  In
+asynchronous frameworks, the most common approach is for long-running
+methods to accept a callback that will be executed when the command
+completes.  These callbacks will have different signatures depending on
+the nature of the data being requested, and often, a great deal of code
+is necessary to glue one portion of an asynchronous networking system to
+another.  Matters become even more complicated when a developer wants to
+wait for two different events to complete, requiring the developer to
+“juggle” the callbacks and create a third, mutually incompatible
+callback type to handle the final result.</p>
+<p>This paper describes the mechanism used by the Twisted framework for
+waiting for the results of long-running operations.  This mechanism,
+the <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> , handles the often-neglected problems of
+error handling, callback juggling, inter-system communication and code
+readability.</p>
+</div></blockquote>
+<p><a class="reference external" href="2003/pycon/applications/applications.html">Applications of the Twisted Framework</a></p>
+<blockquote>
+<div><p>Two projects developed using the Twisted framework are described;
+one, Twisted.names, which is included as part of the Twisted
+distribution, a domain name server and client API, and one, Pynfo, which
+is packaged separately, a network information robot.</p>
+</div></blockquote>
+<p><a class="reference external" href="2003/pycon/conch/conch.html">Twisted Conch: SSH in Python with Twisted</a></p>
+<blockquote>
+<div><p>Conch is an implementation of the Secure Shell Protocol (currently
+in the IETF standarization process). Secure Shell (or SSH) is a popular
+protocol for remote shell access, file management and port forwarding
+protected by military-grade security. SSH supports multiple encryption and
+compression protocols for the wire transports, and a flexible system of
+multiplexed channels on top. Conch uses the Twisted networking framework
+to supply a library which can be used to implement both SSH clients and
+servers. In addition, it also contains several ready made client programs,
+including a drop-in replacement for the OpenSSH program from the OpenBSD
+project.</p>
+</div></blockquote>
+<p><a class="reference external" href="2003/pycon/lore/lore.html">The Lore Document Generation Framework</a></p>
+<blockquote>
+<div><p>Lore is a documentation generation system which uses a limited
+subset of XHTML, together with some class attributes, as its source
+format. This allows for lower barrier of entry than many other similar
+systems, since HTML authoring tools are plentiful as is knowledge of
+HTML writing. As an added advantage, the source format is viewable
+directly, so that even if Lore is not available the documentation is
+useful. It currently outputs LaTeX and HTML, which allows for most
+use-cases.</p>
+</div></blockquote>
+<p><a class="reference external" href="2003/pycon/pb/pb.html">Perspective Broker: “Translucent”  Remote Method calls in Twisted</a></p>
+<blockquote>
+<div><p>One of the core services provided by the Twisted networking
+framework is “Perspective Broker” , which provides a clean, secure,
+easy-to-use Remote Procedure Call (RPC) mechanism. This paper explains the
+novel features of PB, describes the security model and its implementation,
+and provides brief examples of usage.</p>
+</div></blockquote>
+<p><a class="reference external" href="2003/pycon/releasing/releasing.html">Managing the Release of a Large Python Project</a></p>
+<blockquote>
+<div><p>Twisted is a Python networking framework. At last count, the
+project contains nearly 60,000 lines of effective code (not comments or
+blank lines). When preparing a release, many details must be checked, and
+many steps must be followed. We describe here the technologies and tools
+we use, and explain how we built tools on top of them which help us make
+releasing as painless as possible.</p>
+</div></blockquote>
+<p><a class="reference external" href="2003/pycon/twisted-reality/twisted-reality.html">Twisted Reality: A Flexible Framework for Virtual Worlds</a></p>
+<blockquote>
+<div><p>Flexibly modelling virtual worlds in object-oriented languages has
+historically been difficult; the issues arising from multiple
+inheritance and order-of-execution resolution have limited the
+sophistication of existing object-oriented simulations. Twisted
+Reality avoids these problems by reifying both actions and
+relationships, and avoiding inheritance in favor of automated
+composition through adapters and interfaces.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="previously">
+<h2>Previously<a class="headerlink" href="#previously" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="ipc10paper.html">The paper Glyph and Moshe presented in IPC10</a></p></li>
+<li><p><a class="reference external" href="ipc10errata.html">The errata published in IPC10 against the paper.</a></p></li>
+<li><p><a class="reference external" href="twisted-debian.html">A paper Moshe wrote about Twisted and Debian.</a></p></li>
+<li><p><a class="reference internal" href="NEWS.html"><span class="doc">NEWS, -2014</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../sponsors/foundingsponsors.html" class="btn btn-neutral float-left" title="Founding Sponsors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="NEWS.html" class="btn btn-neutral float-right" title="Twisted Core 14.0.2 (2014-09-18)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Twisted Matrix Labs. Ver 22.8.0.post0. Built on 2022-09-16.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

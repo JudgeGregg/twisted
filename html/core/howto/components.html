@@ -1,0 +1,639 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Components: Interfaces and Adapters &mdash; Twisted 22.4.0.post0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Cred: Pluggable Authentication" href="cred.html" />
+    <link rel="prev" title="Getting Connected with Endpoints" href="endpoints.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Twisted
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                22.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Twisted Core</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Developer Guides</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="vision.html">The Vision For Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="servers.html">Writing Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clients.html">Writing Clients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trial.html">Test-driven development with Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/index.html">Twisted from Scratch, or The Evolution of Finger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/intro.html">The Evolution of Finger: building a simple finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/protocol.html">The Evolution of Finger: adding features to the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/style.html">The Evolution of Finger: cleaning up the finger code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/components.html">The Evolution of Finger: moving to a component based architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/backends.html">The Evolution of Finger: pluggable backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/web.html">The Evolution of Finger: a web frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/pb.html">The Evolution of Finger: Twisted client support using Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/factory.html">The Evolution of Finger: using a single factory for multiple protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/client.html">The Evolution of Finger: a Twisted finger client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/library.html">The Evolution of Finger: making a finger library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/configuration.html">The Evolution of Finger: configuration of the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quotes.html">Setting up the TwistedQuotes application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html">Designing Twisted Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="internet-overview.html">Overview of Twisted Internet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reactor-basics.html">Reactor Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ssl.html">Using TLS in Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udp.html">UDP Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">Using Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer-intro.html">Introduction to Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer.html">Deferred Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gendefer.html">Generating Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time.html">Scheduling tasks for the future</a></li>
+<li class="toctree-l3"><a class="reference internal" href="threading.html">Using Threads in Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="producers.html">Producers and Consumers: Efficient High-Volume Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="choosing-reactor.html">Choosing a Reactor and GUI Toolkit Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="endpoints.html">Getting Connected with Endpoints</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Components: Interfaces and Adapters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#interfaces-and-components-in-twisted-code">Interfaces and Components in Twisted code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="cred.html">Cred: Pluggable Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugin.html">The Twisted Plugin System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html">The Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application.html">Using the Twisted Application Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tap.html">Writing a twistd Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="systemd.html">Deploying Twisted with systemd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logger.html">Logging with twisted.logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging.html">Twisted’s Legacy Logging System: <code class="docutils literal notranslate"><span class="pre">twisted.python.log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="constants.html">Symbolic Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rdbms.html">twisted.enterprise.adbapi: Twisted RDBMS support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="options.html">Parsing command-lines with usage.Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dirdbm.html">DirDBM: Directory-based Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html">Writing tests for Twisted code using Trial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sendmsg.html">Extremely Low-Level Socket Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="amp.html">Asynchronous Messaging Protocol Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb.html">Overview of Twisted Spread</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-intro.html">Introduction to Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-usage.html">Using Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-clients.html">Managing Clients of Perspectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-copyable.html">PB Copyable: Passing Complex Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-cred.html">Authentication with Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-limits.html">PB Limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python3.html">Porting to Python 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="positioning.html">Twisted Positioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glossary.html">Twisted Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="debug-with-emacs.html">Debugging Python(Twisted) with Emacs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../specifications/index.html">Specifications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Twisted Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development of Twisted</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Twisted</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Twisted Core</a> &raquo;</li>
+        
+          <li><a href="index.html">Developer Guides</a> &raquo;</li>
+        
+      <li>Components: Interfaces and Adapters</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/core/howto/components.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="components-interfaces-and-adapters">
+<h1>Components: Interfaces and Adapters<a class="headerlink" href="#components-interfaces-and-adapters" title="Permalink to this heading">¶</a></h1>
+<p>Object oriented programming languages allow programmers to reuse portions of existing code by creating new “classes” of objects which subclass another class.
+When a class subclasses another, it is said to <em>inherit</em> all of its behaviour.
+The subclass can then “override” and “extend” the behavior provided to it by the superclass.
+Inheritance is very useful in many situations, but because it is so convenient to use, often becomes abused in large software systems, especially when multiple inheritance is involved.
+One solution is to use <em>delegation</em> instead of “inheritance” where appropriate.
+Delegation is simply the act of asking <em>another</em> object to perform a task for an object.
+To support this design pattern, which is often referred to as the <em>components</em> pattern because it involves many small interacting components, <em>interfaces</em> and <em>adapters</em> were created by the Zope 3 team.</p>
+<p>“Interfaces” are simply markers which objects can use to say “I implement this interface”.
+Other objects may then make requests like “Please give me an object which implements interface X for object type Y”.
+Objects which implement an interface for another object type are called “adapters”.</p>
+<p>The superclass-subclass relationship is said to be an <em>is-a</em> relationship.
+When designing object hierarchies, object modellers use subclassing when they can say that the subclass <em>is</em> the same class as the superclass.
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Shape</span><span class="p">:</span>
+    <span class="n">sideLength</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">getSideLength</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sideLength</span>
+
+    <span class="k">def</span> <span class="nf">setSideLength</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sideLength</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sideLength</span> <span class="o">=</span> <span class="n">sideLength</span>
+
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Subclasses must implement area&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Triangle</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sideLength</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sideLength</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">Shape</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sideLength</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sideLength</span>
+</pre></div>
+</div>
+<p>In the above example, a Triangle <em>is-a</em> Shape, so it subclasses Shape, and a Square <em>is-a</em> Shape, so it also subclasses Shape.</p>
+<p>However, subclassing can get complicated, especially when Multiple Inheritance enters the picture.
+Multiple Inheritance allows a class to inherit from more than one base class.
+Software which relies heavily on inheritance often ends up having both very wide and very deep inheritance trees, meaning that one class inherits from many superclasses spread throughout the system.
+Since subclassing with Multiple Inheritance means <em>implementation inheritance</em>, locating a method’s actual implementation and ensuring the correct method is actually being invoked becomes a challenge.
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Area</span><span class="p">:</span>
+    <span class="n">sideLength</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">def</span> <span class="nf">getSideLength</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sideLength</span>
+
+    <span class="k">def</span> <span class="nf">setSideLength</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sideLength</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sideLength</span> <span class="o">=</span> <span class="n">sideLength</span>
+
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Subclasses must implement area&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Color</span><span class="p">:</span>
+    <span class="n">color</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">def</span> <span class="nf">setColor</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">color</span><span class="p">):</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
+
+    <span class="k">def</span> <span class="nf">getColor</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">color</span>
+
+<span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">Area</span><span class="p">,</span> <span class="n">Color</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">area</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sideLength</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">sideLength</span>
+</pre></div>
+</div>
+<p>The reason programmers like using implementation inheritance is because it makes code easier to read since the implementation details of Area are in a separate place than the implementation details of Color.
+This is nice, because conceivably an object could have a color but not an area, or an area but not a color.
+The problem, though, is that Square is not really an Area or a Color, but has an area and color.
+Thus, we should really be using another object oriented technique called <em>composition</em>, which relies on delegation rather than inheritance to break code into small reusable chunks.
+Let us continue with the Multiple Inheritance example, though, because it is often used in practice.</p>
+<p>What if both the Color and the Area base class defined the same method, perhaps <code class="docutils literal notranslate"><span class="pre">calculate</span></code>?
+Where would the implementation come from?
+The implementation that is located for <code class="docutils literal notranslate"><span class="pre">Square().calculate()</span></code> depends on the method resolution order, or MRO, and can change when programmers change seemingly unrelated things by refactoring classes in other parts of the system, causing obscure bugs.
+Our first thought might be to change the calculate method name to avoid name clashes, to perhaps <code class="docutils literal notranslate"><span class="pre">calculateArea</span></code> and <code class="docutils literal notranslate"><span class="pre">calculateColor</span></code>.
+While explicit, this change could potentially require a large number of changes throughout a system, and is error-prone, especially when attempting to integrate two systems which you didn’t write.</p>
+<p>Let’s imagine another example. We have an electric appliance, say a hair dryer.
+The hair dryer is American voltage.
+We have two electric sockets, one of them an American 120 Volt socket, and one of them a United Kingdom 240 Volt socket.
+If we plug the hair dryer into the 240 Volt socket, it is going to expect 120 Volt current and errors will result.
+Going back and changing the hair dryer to support both <code class="docutils literal notranslate"><span class="pre">plug120Volt</span></code> and <code class="docutils literal notranslate"><span class="pre">plug240Volt</span></code> methods would be tedious, and what if we decided we needed to plug the hair dryer into yet another type of socket?
+For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HairDryer</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">plug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">socket</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">socket</span><span class="o">.</span><span class="n">voltage</span><span class="p">()</span> <span class="o">==</span> <span class="mi">120</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I was plugged in properly and am operating.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I was plugged in improperly and &quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;now you have no hair dryer any more.&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">AmericanSocket</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">120</span>
+
+<span class="k">class</span> <span class="nc">UKSocket</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">240</span>
+</pre></div>
+</div>
+<p>Given these classes, the following operations can be performed:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hd</span> <span class="o">=</span> <span class="n">HairDryer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">am</span> <span class="o">=</span> <span class="n">AmericanSocket</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hd</span><span class="o">.</span><span class="n">plug</span><span class="p">(</span><span class="n">am</span><span class="p">)</span>
+<span class="go">I was plugged in properly and am operating.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">uk</span> <span class="o">=</span> <span class="n">UKSocket</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hd</span><span class="o">.</span><span class="n">plug</span><span class="p">(</span><span class="n">uk</span><span class="p">)</span>
+<span class="go">I was plugged in improperly and</span>
+<span class="go">now you have no hair dryer any more.</span>
+</pre></div>
+</div>
+<p>We are going to attempt to solve this problem by writing an Adapter for the <code class="docutils literal notranslate"><span class="pre">UKSocket</span></code> which converts the voltage for use with an American hair dryer.
+An Adapter is a class which is constructed with one and only one argument, the “adaptee” or “original” object.
+In this example, we will show all code involved for clarity:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AdaptToAmericanSocket</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">original</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">original</span> <span class="o">=</span> <span class="n">original</span>
+
+    <span class="k">def</span> <span class="nf">voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">original</span><span class="o">.</span><span class="n">voltage</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Now, we can use it as so:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">hd</span> <span class="o">=</span> <span class="n">HairDryer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">uk</span> <span class="o">=</span> <span class="n">UKSocket</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">adapted</span> <span class="o">=</span> <span class="n">AdaptToAmericanSocket</span><span class="p">(</span><span class="n">uk</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hd</span><span class="o">.</span><span class="n">plug</span><span class="p">(</span><span class="n">adapted</span><span class="p">)</span>
+<span class="go">I was plugged in properly and am operating.</span>
+</pre></div>
+</div>
+<p>So, as you can see, an adapter can ‘override’ the original implementation.
+It can also ‘extend’ the interface of the original object by providing methods the original object did not have.
+Note that an Adapter must explicitly delegate any method calls it does not wish to modify to the original, otherwise the Adapter cannot be used in places where the original is expected.
+Usually this is not a problem, as an Adapter is created to conform an object to a particular interface and then discarded.</p>
+<div class="section" id="interfaces-and-components-in-twisted-code">
+<h2>Interfaces and Components in Twisted code<a class="headerlink" href="#interfaces-and-components-in-twisted-code" title="Permalink to this heading">¶</a></h2>
+<p>Adapters are a useful way of using multiple classes to factor code into discrete chunks.
+However, they are not very interesting without some more infrastructure.
+If each piece of code which wished to use an adapted object had to explicitly construct the adapter itself, the coupling between components would be too tight.
+We would like to achieve “loose coupling”, and this is where <code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.python.components</span></code> comes in.</p>
+<p>First, we need to discuss Interfaces in more detail.
+As we mentioned earlier, an Interface is nothing more than a class which is used as a marker.
+Interfaces should be subclasses of <code class="docutils literal notranslate"><span class="pre">zope.interface.Interface</span></code>, and have a very odd look to python programmers not used to them:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zope.interface</span> <span class="kn">import</span> <span class="n">Interface</span>
+
+<span class="k">class</span> <span class="nc">IAmericanSocket</span><span class="p">(</span><span class="n">Interface</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">voltage</span><span class="p">():</span>
+      <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      Return the voltage produced by this socket object, as an integer.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+</pre></div>
+</div>
+<p>Notice how it looks just like a regular class definition, other than inheriting from <code class="docutils literal notranslate"><span class="pre">Interface</span></code>?
+However, the method definitions inside the class block do not have any method body!
+Since Python does not have any native language-level support for Interfaces like Java does, this is what distinguishes an Interface definition from a Class.</p>
+<p>Now that we have a defined Interface, we can talk about objects using terms like this:
+“The <code class="docutils literal notranslate"><span class="pre">AmericanSocket</span></code> class implements the <code class="docutils literal notranslate"><span class="pre">IAmericanSocket</span></code> interface” and “Please give me an object which adapts <code class="docutils literal notranslate"><span class="pre">UKSocket</span></code> to the <code class="docutils literal notranslate"><span class="pre">IAmericanSocket</span></code> interface”.
+We can make <em>declarations</em> about what interfaces a certain class implements, and we can request adapters which implement a certain interface for a specific class.</p>
+<p>Let’s look at how we declare that a class implements an interface:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zope.interface</span> <span class="kn">import</span> <span class="n">implementer</span>
+
+<span class="nd">@implementer</span><span class="p">(</span><span class="n">IAmericanSocket</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">AmericanSocket</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">120</span>
+</pre></div>
+</div>
+<p>So, to declare that a class implements an interface, we simply decorate it with <code class="docutils literal notranslate"><span class="pre">zope.interface.implementer</span></code>.</p>
+<p>Now, let’s say we want to rewrite the <code class="docutils literal notranslate"><span class="pre">AdaptToAmericanSocket</span></code> class as a real adapter.
+In this case we also specify it as implementing <code class="docutils literal notranslate"><span class="pre">IAmericanSocket</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zope.interface</span> <span class="kn">import</span> <span class="n">implementer</span>
+
+<span class="nd">@implementer</span><span class="p">(</span><span class="n">IAmericanSocket</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">AdaptToAmericanSocket</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">original</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Pass the original UKSocket object as original</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">original</span> <span class="o">=</span> <span class="n">original</span>
+
+    <span class="k">def</span> <span class="nf">voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">original</span><span class="o">.</span><span class="n">voltage</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Notice how we placed the implements declaration on this adapter class.
+So far, we have not achieved anything by using components other than requiring us to type more.
+In order for components to be useful, we must use the <em>component registry</em>.
+Since <code class="docutils literal notranslate"><span class="pre">AdaptToAmericanSocket</span></code> implements <code class="docutils literal notranslate"><span class="pre">IAmericanSocket</span></code> and regulates the voltage of a <code class="docutils literal notranslate"><span class="pre">UKSocket</span></code> object, we can register <code class="docutils literal notranslate"><span class="pre">AdaptToAmericanSocket</span></code> as an <code class="docutils literal notranslate"><span class="pre">IAmericanSocket</span></code> adapter for the <code class="docutils literal notranslate"><span class="pre">UKSocket</span></code> class.
+It is easier to see how this is done in code than to describe it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zope.interface</span> <span class="kn">import</span> <span class="n">Interface</span><span class="p">,</span> <span class="n">implementer</span>
+<span class="kn">from</span> <span class="nn">twisted.python</span> <span class="kn">import</span> <span class="n">components</span>
+
+<span class="k">class</span> <span class="nc">IAmericanSocket</span><span class="p">(</span><span class="n">Interface</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">voltage</span><span class="p">():</span>
+      <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">      Return the voltage produced by this socket object, as an integer.</span>
+<span class="sd">      &quot;&quot;&quot;</span>
+
+<span class="nd">@implementer</span><span class="p">(</span><span class="n">IAmericanSocket</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">AmericanSocket</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">120</span>
+
+<span class="k">class</span> <span class="nc">UKSocket</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">240</span>
+
+<span class="nd">@implementer</span><span class="p">(</span><span class="n">IAmericanSocket</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">AdaptToAmericanSocket</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">original</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">original</span> <span class="o">=</span> <span class="n">original</span>
+
+    <span class="k">def</span> <span class="nf">voltage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">original</span><span class="o">.</span><span class="n">voltage</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="n">components</span><span class="o">.</span><span class="n">registerAdapter</span><span class="p">(</span>
+    <span class="n">AdaptToAmericanSocket</span><span class="p">,</span>
+    <span class="n">UKSocket</span><span class="p">,</span>
+    <span class="n">IAmericanSocket</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, if we run this script in the interactive interpreter, we can discover a little more about how to use components.
+The first thing we can do is discover whether an object implements an interface or not:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">IAmericanSocket</span><span class="o">.</span><span class="n">implementedBy</span><span class="p">(</span><span class="n">AmericanSocket</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IAmericanSocket</span><span class="o">.</span><span class="n">implementedBy</span><span class="p">(</span><span class="n">UKSocket</span><span class="p">)</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">am</span> <span class="o">=</span> <span class="n">AmericanSocket</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">uk</span> <span class="o">=</span> <span class="n">UKSocket</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IAmericanSocket</span><span class="o">.</span><span class="n">providedBy</span><span class="p">(</span><span class="n">am</span><span class="p">)</span>
+<span class="go">True</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IAmericanSocket</span><span class="o">.</span><span class="n">providedBy</span><span class="p">(</span><span class="n">uk</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+<p>As you can see, the <code class="docutils literal notranslate"><span class="pre">AmericanSocket</span></code> instance claims to implement <code class="docutils literal notranslate"><span class="pre">IAmericanSocket</span></code>, but the <code class="docutils literal notranslate"><span class="pre">UKSocket</span></code> does not.
+If we wanted to use the <code class="docutils literal notranslate"><span class="pre">HairDryer</span></code> with the <code class="docutils literal notranslate"><span class="pre">AmericanSocket</span></code>, we could know that it would be safe to do so by checking whether it implements <code class="docutils literal notranslate"><span class="pre">IAmericanSocket</span></code>.
+However, if we decide we want to use <code class="docutils literal notranslate"><span class="pre">HairDryer</span></code> with a <code class="docutils literal notranslate"><span class="pre">UKSocket</span></code> instance, we must <em>adapt</em> it to <code class="docutils literal notranslate"><span class="pre">IAmericanSocket</span></code> before doing so.
+We use the interface object to do this:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">IAmericanSocket</span><span class="p">(</span><span class="n">uk</span><span class="p">)</span>
+<span class="go">&lt;__main__.AdaptToAmericanSocket instance at 0x1a5120&gt;</span>
+</pre></div>
+</div>
+<p>When calling an interface with an object as an argument, the interface looks in the adapter registry for an adapter which implements the interface for the given instance’s class.
+If it finds one, it constructs an instance of the Adapter class, passing the constructor the original instance, and returns it.
+Now the <code class="docutils literal notranslate"><span class="pre">HairDryer</span></code> can safely be used with the adapted  <code class="docutils literal notranslate"><span class="pre">UKSocket</span></code> .
+But what happens if we attempt to adapt an object which already implements <code class="docutils literal notranslate"><span class="pre">IAmericanSocket</span></code>?
+We simply get back the original instance:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">IAmericanSocket</span><span class="p">(</span><span class="n">am</span><span class="p">)</span>
+<span class="go">&lt;__main__.AmericanSocket instance at 0x36bff0&gt;</span>
+</pre></div>
+</div>
+<p>So, we could write a new “smart” <code class="docutils literal notranslate"><span class="pre">HairDryer</span></code> which automatically looked up an adapter for the socket you tried to plug it into:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">HairDryer</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">plug</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">socket</span><span class="p">):</span>
+        <span class="n">adapted</span> <span class="o">=</span> <span class="n">IAmericanSocket</span><span class="p">(</span><span class="n">socket</span><span class="p">)</span>
+        <span class="k">assert</span> <span class="n">adapted</span><span class="o">.</span><span class="n">voltage</span><span class="p">()</span> <span class="o">==</span> <span class="mi">120</span><span class="p">,</span> <span class="s2">&quot;BOOM&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I was plugged in properly and am operating&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, if we create an instance of our new “smart” <code class="docutils literal notranslate"><span class="pre">HairDryer</span></code> and attempt to plug it in to various sockets, the <code class="docutils literal notranslate"><span class="pre">HairDryer</span></code> will adapt itself automatically depending on the type of socket it is plugged in to:</p>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">am</span> <span class="o">=</span> <span class="n">AmericanSocket</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">uk</span> <span class="o">=</span> <span class="n">UKSocket</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hd</span> <span class="o">=</span> <span class="n">HairDryer</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hd</span><span class="o">.</span><span class="n">plug</span><span class="p">(</span><span class="n">am</span><span class="p">)</span>
+<span class="go">I was plugged in properly and am operating</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">hd</span><span class="o">.</span><span class="n">plug</span><span class="p">(</span><span class="n">uk</span><span class="p">)</span>
+<span class="go">I was plugged in properly and am operating</span>
+</pre></div>
+</div>
+<p>Voila; the magic of components.</p>
+<div class="section" id="components-and-inheritance">
+<h3>Components and Inheritance<a class="headerlink" href="#components-and-inheritance" title="Permalink to this heading">¶</a></h3>
+<p>If you inherit from a class which implements some interface, and your new subclass declares that it implements another interface, the implements will be inherited by default.</p>
+<p>For example, <code class="xref py py-class docutils literal notranslate"><span class="pre">pb.Root</span></code> is a class which implements <code class="xref py py-class docutils literal notranslate"><span class="pre">IPBRoot</span></code>.
+This interface indicates that an object has remotely-invokable methods and can be used as the initial object served by a new Broker instance.
+It has an <code class="docutils literal notranslate"><span class="pre">implements</span></code> setting like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zope.interface</span> <span class="kn">import</span> <span class="n">implementer</span>
+
+<span class="nd">@implementer</span><span class="p">(</span><span class="n">IPBRoot</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">Root</span><span class="p">(</span><span class="n">Referenceable</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Suppose you have your own class which implements your <code class="docutils literal notranslate"><span class="pre">IMyInterface</span></code> interface:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">zope.interface</span> <span class="kn">import</span> <span class="n">implementer</span><span class="p">,</span> <span class="n">Interface</span>
+
+<span class="k">class</span> <span class="nc">IMyInterface</span><span class="p">(</span><span class="n">Interface</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nd">@implementer</span><span class="p">(</span><span class="n">IMyInterface</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">MyThing</span><span class="p">:</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Now if you want to make this class inherit from <code class="docutils literal notranslate"><span class="pre">pb.Root</span></code>, the interfaces code will automatically determine that it also implements <code class="docutils literal notranslate"><span class="pre">IPBRoot</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.spread</span> <span class="kn">import</span> <span class="n">pb</span>
+<span class="kn">from</span> <span class="nn">zope.interface</span> <span class="kn">import</span> <span class="n">implementer</span><span class="p">,</span> <span class="n">Interface</span>
+
+<span class="k">class</span> <span class="nc">IMyInterface</span><span class="p">(</span><span class="n">Interface</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nd">@implementer</span><span class="p">(</span><span class="n">IMyInterface</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">MyThing</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">Root</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">twisted.spread.flavors</span> <span class="kn">import</span> <span class="n">IPBRoot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IPBRoot</span><span class="o">.</span><span class="n">implementedBy</span><span class="p">(</span><span class="n">MyThing</span><span class="p">)</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>If you want <code class="docutils literal notranslate"><span class="pre">MyThing</span></code> to inherit from <code class="docutils literal notranslate"><span class="pre">pb.Root</span></code> but <em>not</em> implement <code class="docutils literal notranslate"><span class="pre">IPBRoot</span></code> like <code class="docutils literal notranslate"><span class="pre">pb.Root</span></code> does, use <code class="docutils literal notranslate"><span class="pre">&#64;implementer_only</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.spread</span> <span class="kn">import</span> <span class="n">pb</span>
+<span class="kn">from</span> <span class="nn">zope.interface</span> <span class="kn">import</span> <span class="n">implementer_only</span><span class="p">,</span> <span class="n">Interface</span>
+
+<span class="k">class</span> <span class="nc">IMyInterface</span><span class="p">(</span><span class="n">Interface</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="nd">@implementer_only</span><span class="p">(</span><span class="n">IMyInterface</span><span class="p">)</span>
+<span class="k">class</span> <span class="nc">MyThing</span><span class="p">(</span><span class="n">pb</span><span class="o">.</span><span class="n">Root</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<div class="highlight-pycon notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">twisted.spread.pb</span> <span class="kn">import</span> <span class="n">IPBRoot</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">IPBRoot</span><span class="o">.</span><span class="n">implementedBy</span><span class="p">(</span><span class="n">MyThing</span><span class="p">)</span>
+<span class="go">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="cred.html" class="btn btn-neutral float-right" title="Cred: Pluggable Authentication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="endpoints.html" class="btn btn-neutral float-left" title="Getting Connected with Endpoints" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Twisted Matrix Labs. Ver 22.4.0.post0. Built on 2022-09-04.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

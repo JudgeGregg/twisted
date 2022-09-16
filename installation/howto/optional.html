@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Installing Optional Dependencies &mdash; Twisted 22.8.0.post0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Twisted Core" href="../../core/index.html" />
+    <link rel="prev" title="Installing Twisted" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Twisted
+          </a>
+              <div class="version">
+                22.8
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Installing Twisted</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installing Optional Dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Twisted Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Twisted Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development of Twisted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors of Twisted</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Twisted</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Installing Twisted</a> &raquo;</li>
+      <li>Installing Optional Dependencies</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/installation/howto/optional.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="installing-optional-dependencies">
+<h1>Installing Optional Dependencies<a class="headerlink" href="#installing-optional-dependencies" title="Permalink to this headline"></a></h1>
+<p>This document describes the optional dependencies that Twisted supports.
+The dependencies are python packages that Twisted’s developers have found useful either for developing Twisted itself or for developing Twisted applications.</p>
+<p>The intended audience of this document is someone who is familiar with installing optional dependencies using <a class="reference external" href="https://pip.pypa.io/en/latest/quickstart.html">pip</a>.</p>
+<p>If you are unfamiliar with the installation of optional dependencies, the <a class="reference external" href="https://packaging.python.org/en/latest/installing.html#examples">python packaging tutorial</a> can show you how.
+For a deeper explanation of what optional dependencies are and how they are declared, please see the <a class="reference external" href="https://pythonhosted.org/setuptools/setuptools.html#declaring-extras-optional-features-with-their-own-dependencies">setuptools documentation</a>.</p>
+<p>The following optional dependencies are supported:</p>
+<ul class="simple">
+<li><p><strong>dev</strong> - packages that aid in the development of Twisted itself.</p>
+<ul>
+<li><p><a class="reference external" href="https://pypi.python.org/pypi/pyflakes">pyflakes</a></p></li>
+<li><p><a class="reference external" href="https://pypi.python.org/pypi/twisted-dev-tools">twisted-dev-tools</a></p></li>
+<li><p><a class="reference external" href="https://pypi.python.org/pypi/python-subunit">python-subunit</a></p></li>
+<li><p><a class="reference external" href="https://pypi.python.org/pypi/Sphinx/1.3b1">Sphinx</a></p></li>
+<li><p><a class="reference external" href="https://pypi.python.org/pypi/TwistedChecker">TwistedChecker</a>, only available on python2</p></li>
+<li><p><a class="reference external" href="https://pypi.python.org/pypi/pydoctor">pydoctor</a>, only available on python2</p></li>
+</ul>
+</li>
+<li><p><strong>tls</strong> - packages that are needed to work with TLS.</p>
+<ul>
+<li><p><a class="reference external" href="https://pypi.python.org/pypi/pyOpenSSL">pyOpenSSL</a></p></li>
+<li><p><a class="reference external" href="https://pypi.python.org/pypi/service_identity">service_identity</a></p></li>
+<li><p><a class="reference external" href="https://pypi.python.org/pypi/idna">idna</a></p></li>
+</ul>
+</li>
+<li><p><strong>conch</strong> - packages for working with conch/SSH.</p>
+<ul>
+<li><p><a class="reference external" href="https://pypi.python.org/pypi/pyasn1">pyasn1</a></p></li>
+<li><p><a class="reference external" href="https://pypi.python.org/pypi/cryptography">cryptography</a></p></li>
+</ul>
+</li>
+<li><p><strong>conch_nacl</strong> - <strong>conch</strong> options and <a class="reference external" href="https://pypi.python.org/pypi/PyNaCl">PyNaCl</a> to support Ed25519 keys on systems with OpenSSL &lt; 1.1.1b.</p></li>
+<li><p><strong>soap</strong> - the <a class="reference external" href="https://pypi.python.org/pypi/SOAPpy">SOAPpy</a> package to work with SOAP.</p></li>
+<li><p><strong>serial</strong> - the <a class="reference external" href="https://pypi.python.org/pypi/pyserial">pyserial</a> package to work with serial data.</p></li>
+<li><p><strong>all_non_platform</strong> - installs <strong>tls</strong>, <strong>conch</strong>, <strong>soap</strong>, and <strong>serial</strong> options.</p></li>
+<li><p><strong>macos_platform</strong> - <strong>all_non_platform</strong> options and <a class="reference external" href="https://pypi.python.org/pypi/pyobjc">pyobjc</a> to work with Objective-C apis.</p></li>
+<li><p><strong>windows_platform</strong> - <strong>all_non_platform</strong> options and <a class="reference external" href="https://pypi.python.org/pypi/pywin32">pywin32</a> to work with Windows’s apis.</p></li>
+<li><p><strong>http2</strong> - packages needed for http2 support.</p>
+<ul>
+<li><p><a class="reference external" href="https://pypi.python.org/pypi/h2">h2</a></p></li>
+<li><p><a class="reference external" href="https://pypi.python.org/pypi/priority">priority</a></p></li>
+</ul>
+</li>
+<li><p><strong>contextvars</strong> - the <a class="reference external" href="https://pypi.org/project/contextvars/">contextvars</a> backport package to provide contextvars support for Python versions before 3.7.</p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Installing Twisted" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../core/index.html" class="btn btn-neutral float-right" title="Twisted Core" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Twisted Matrix Labs. Ver 22.8.0.post0. Built on 2022-09-16.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

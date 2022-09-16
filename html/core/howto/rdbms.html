@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>twisted.enterprise.adbapi: Twisted RDBMS support &mdash; Twisted 22.4.0.post0 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Parsing command-lines with usage.Options" href="options.html" />
+    <link rel="prev" title="Symbolic Constants" href="constants.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Twisted
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                22.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Twisted Core</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Developer Guides</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="vision.html">The Vision For Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="servers.html">Writing Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clients.html">Writing Clients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trial.html">Test-driven development with Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/index.html">Twisted from Scratch, or The Evolution of Finger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/intro.html">The Evolution of Finger: building a simple finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/protocol.html">The Evolution of Finger: adding features to the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/style.html">The Evolution of Finger: cleaning up the finger code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/components.html">The Evolution of Finger: moving to a component based architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/backends.html">The Evolution of Finger: pluggable backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/web.html">The Evolution of Finger: a web frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/pb.html">The Evolution of Finger: Twisted client support using Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/factory.html">The Evolution of Finger: using a single factory for multiple protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/client.html">The Evolution of Finger: a Twisted finger client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/library.html">The Evolution of Finger: making a finger library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/configuration.html">The Evolution of Finger: configuration of the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quotes.html">Setting up the TwistedQuotes application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html">Designing Twisted Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="internet-overview.html">Overview of Twisted Internet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reactor-basics.html">Reactor Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ssl.html">Using TLS in Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udp.html">UDP Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">Using Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer-intro.html">Introduction to Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer.html">Deferred Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gendefer.html">Generating Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time.html">Scheduling tasks for the future</a></li>
+<li class="toctree-l3"><a class="reference internal" href="threading.html">Using Threads in Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="producers.html">Producers and Consumers: Efficient High-Volume Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="choosing-reactor.html">Choosing a Reactor and GUI Toolkit Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="endpoints.html">Getting Connected with Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="components.html">Components: Interfaces and Adapters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cred.html">Cred: Pluggable Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugin.html">The Twisted Plugin System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html">The Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application.html">Using the Twisted Application Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tap.html">Writing a twistd Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="systemd.html">Deploying Twisted with systemd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logger.html">Logging with twisted.logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging.html">Twisted’s Legacy Logging System: <code class="docutils literal notranslate"><span class="pre">twisted.python.log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="constants.html">Symbolic Constants</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">twisted.enterprise.adbapi: Twisted RDBMS support</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#abstract">Abstract</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-you-should-already-know">What you should already know</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quick-overview">Quick Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-i-use-adbapi">How do I use adbapi?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples-of-various-database-adapters">Examples of various database adapters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#and-that-s-it">And that’s it!</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="options.html">Parsing command-lines with usage.Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dirdbm.html">DirDBM: Directory-based Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html">Writing tests for Twisted code using Trial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sendmsg.html">Extremely Low-Level Socket Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="amp.html">Asynchronous Messaging Protocol Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb.html">Overview of Twisted Spread</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-intro.html">Introduction to Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-usage.html">Using Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-clients.html">Managing Clients of Perspectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-copyable.html">PB Copyable: Passing Complex Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-cred.html">Authentication with Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-limits.html">PB Limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python3.html">Porting to Python 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="positioning.html">Twisted Positioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glossary.html">Twisted Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="debug-with-emacs.html">Debugging Python(Twisted) with Emacs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../specifications/index.html">Specifications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Twisted Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development of Twisted</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Twisted</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Twisted Core</a> &raquo;</li>
+        
+          <li><a href="index.html">Developer Guides</a> &raquo;</li>
+        
+      <li>twisted.enterprise.adbapi: Twisted RDBMS support</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/core/howto/rdbms.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="twisted-enterprise-adbapi-twisted-rdbms-support">
+<h1>twisted.enterprise.adbapi: Twisted RDBMS support<a class="headerlink" href="#twisted-enterprise-adbapi-twisted-rdbms-support" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">¶</a></h2>
+<p>Twisted is an asynchronous networking framework, but most database API implementations unfortunately have blocking interfaces – for this reason, <code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.enterprise.adbapi</span></code> was created.
+It is a non-blocking interface to the standardized DB-API 2.0 API, which allows you to access a number of different RDBMSes.</p>
+</div>
+<div class="section" id="what-you-should-already-know">
+<h2>What you should already know<a class="headerlink" href="#what-you-should-already-know" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Python :-)</p></li>
+<li><p>How to write a simple Twisted Server (see <a class="reference internal" href="servers.html"><span class="doc">this tutorial</span></a> to learn how)</p></li>
+<li><p>Familiarity with using database interfaces (see <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">the documentation for DBAPI 2.0</a>)</p></li>
+</ul>
+</div>
+<div class="section" id="quick-overview">
+<h2>Quick Overview<a class="headerlink" href="#quick-overview" title="Permalink to this heading">¶</a></h2>
+<p>Twisted is an asynchronous framework.
+This means standard database modules cannot be used directly, as they typically work something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create connection...</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">dbmodule</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;mydb&#39;</span><span class="p">,</span> <span class="s1">&#39;andrew&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">)</span>
+<span class="c1"># ...which blocks for an unknown amount of time</span>
+
+<span class="c1"># Create a cursor</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># Do a query...</span>
+<span class="n">resultset</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;SELECT * FROM table WHERE ...&#39;</span><span class="p">)</span>
+<span class="c1"># ...which could take a long time, perhaps even minutes.</span>
+</pre></div>
+</div>
+<p>Those delays are unacceptable when using an asynchronous framework such as Twisted.
+For this reason, Twisted provides <code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.enterprise.adbapi</span></code>, an asynchronous wrapper for any <a class="reference external" href="http://www.python.org/dev/peps/pep-0249/">DB-API 2.0</a>-compliant module.</p>
+<p><code class="xref py py-mod docutils literal notranslate"><span class="pre">adbapi</span></code> will do blocking database operations in separate threads, which trigger callbacks in the originating thread when they complete.
+In the meantime, the original thread can continue doing normal work, like servicing other requests.</p>
+</div>
+<div class="section" id="how-do-i-use-adbapi">
+<h2>How do I use adbapi?<a class="headerlink" href="#how-do-i-use-adbapi" title="Permalink to this heading">¶</a></h2>
+<p>Rather than creating a database connection directly, use the <code class="xref py py-class docutils literal notranslate"><span class="pre">adbapi.ConnectionPool</span></code> class to manage a connections for you.
+This allows <code class="xref py py-mod docutils literal notranslate"><span class="pre">adbapi</span></code> to use multiple connections, one per thread. This is easy:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using the &quot;dbmodule&quot; from the previous example, create a ConnectionPool</span>
+<span class="kn">from</span> <span class="nn">twisted.enterprise</span> <span class="kn">import</span> <span class="n">adbapi</span>
+<span class="n">dbpool</span> <span class="o">=</span> <span class="n">adbapi</span><span class="o">.</span><span class="n">ConnectionPool</span><span class="p">(</span><span class="s2">&quot;dbmodule&quot;</span><span class="p">,</span> <span class="s1">&#39;mydb&#39;</span><span class="p">,</span> <span class="s1">&#39;andrew&#39;</span><span class="p">,</span> <span class="s1">&#39;password&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Things to note about doing this:</p>
+<ul class="simple">
+<li><p>There is no need to import dbmodule directly.
+You just pass the name to <code class="xref py py-class docutils literal notranslate"><span class="pre">adbapi.ConnectionPool</span></code>’s constructor.</p></li>
+<li><p>The parameters you would pass to dbmodule.connect are passed as extra arguments to <code class="xref py py-class docutils literal notranslate"><span class="pre">adbapi.ConnectionPool</span></code>’s constructor.
+Keyword parameters work as well.</p></li>
+</ul>
+<p>Now we can do a database query:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># equivalent of cursor.execute(statement), return cursor.fetchall():</span>
+<span class="k">def</span> <span class="nf">getAge</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">dbpool</span><span class="o">.</span><span class="n">runQuery</span><span class="p">(</span><span class="s2">&quot;SELECT age FROM users WHERE name = ?&quot;</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">printResult</span><span class="p">(</span><span class="n">l</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">l</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;years old&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No such user&quot;</span><span class="p">)</span>
+
+<span class="n">getAge</span><span class="p">(</span><span class="s2">&quot;joe&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">printResult</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is straightforward, except perhaps for the return value of <code class="docutils literal notranslate"><span class="pre">getAge</span></code>.
+It returns a <code class="xref py py-class docutils literal notranslate"><span class="pre">Deferred</span></code>, which allows arbitrary callbacks to be called upon completion (or upon failure).
+More documentation on Deferred is available <a class="reference internal" href="defer.html"><span class="doc">here</span></a>.</p>
+<p>In addition to <code class="docutils literal notranslate"><span class="pre">runQuery</span></code>, there is also <code class="docutils literal notranslate"><span class="pre">runOperation</span></code> and <code class="docutils literal notranslate"><span class="pre">runInteraction</span></code> that gets called with a callable (e.g. a function).
+The function will be called in the thread with a <code class="xref py py-class docutils literal notranslate"><span class="pre">adbapi.Transaction</span></code>, which basically mimics a DB-API cursor.
+In all cases a database transaction will be committed after your database usage is finished, unless an exception is raised in which case it will be rolled back.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_getAge</span><span class="p">(</span><span class="n">txn</span><span class="p">,</span> <span class="n">user</span><span class="p">):</span>
+    <span class="c1"># this will run in a thread, we can use blocking calls</span>
+    <span class="n">txn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM foo&quot;</span><span class="p">)</span>
+    <span class="c1"># ... other cursor commands called on txn ...</span>
+    <span class="n">txn</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT age FROM users WHERE name = ?&quot;</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">txn</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">result</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<span class="k">def</span> <span class="nf">getAge</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">dbpool</span><span class="o">.</span><span class="n">runInteraction</span><span class="p">(</span><span class="n">_getAge</span><span class="p">,</span> <span class="n">user</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">printResult</span><span class="p">(</span><span class="n">age</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">age</span> <span class="o">!=</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">age</span><span class="p">,</span> <span class="s2">&quot;years old&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No such user&quot;</span><span class="p">)</span>
+
+<span class="n">getAge</span><span class="p">(</span><span class="s2">&quot;joe&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">printResult</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Also worth noting is that these examples assumes that dbmodule uses the “qmarks” paramstyle (see the DB-API specification).
+If your dbmodule uses a different paramstyle (e.g. pyformat) then use that.
+Twisted doesn’t attempt to offer any sort of magic parameter munging – <code class="docutils literal notranslate"><span class="pre">runQuery(query,</span> <span class="pre">params,</span> <span class="pre">...)</span></code> maps directly onto <code class="docutils literal notranslate"><span class="pre">cursor.execute(query,</span> <span class="pre">params,</span> <span class="pre">...)</span></code>.</p>
+</div>
+<div class="section" id="examples-of-various-database-adapters">
+<h2>Examples of various database adapters<a class="headerlink" href="#examples-of-various-database-adapters" title="Permalink to this heading">¶</a></h2>
+<p>Notice that the first argument is the module name you would usually import and get <code class="docutils literal notranslate"><span class="pre">connect(...)</span></code> from, and that following arguments are whatever arguments you’d call <code class="docutils literal notranslate"><span class="pre">connect(...)</span></code> with.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.enterprise</span> <span class="kn">import</span> <span class="n">adbapi</span>
+
+<span class="c1"># PostgreSQL PyPgSQL</span>
+<span class="n">cp</span> <span class="o">=</span> <span class="n">adbapi</span><span class="o">.</span><span class="n">ConnectionPool</span><span class="p">(</span><span class="s2">&quot;pyPgSQL.PgSQL&quot;</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+
+<span class="c1"># MySQL</span>
+<span class="n">cp</span> <span class="o">=</span> <span class="n">adbapi</span><span class="o">.</span><span class="n">ConnectionPool</span><span class="p">(</span><span class="s2">&quot;MySQLdb&quot;</span><span class="p">,</span> <span class="n">db</span><span class="o">=</span><span class="s2">&quot;test&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="and-that-s-it">
+<h2>And that’s it!<a class="headerlink" href="#and-that-s-it" title="Permalink to this heading">¶</a></h2>
+<p>That’s all you need to know to use a database from within Twisted.
+You probably should read the adbapi module’s documentation to get an idea of the other functions it has, but hopefully this document presents the core ideas.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="options.html" class="btn btn-neutral float-right" title="Parsing command-lines with usage.Options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="constants.html" class="btn btn-neutral float-left" title="Symbolic Constants" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2022, Twisted Matrix Labs. Ver 22.4.0.post0. Built on 2022-09-04.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

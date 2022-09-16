@@ -1,0 +1,9 @@
+Sponsors of Twisted
+===================
+
+.. toctree::
+   :maxdepth: 1
+
+   sponsors
+   tsf
+   foundingsponsors

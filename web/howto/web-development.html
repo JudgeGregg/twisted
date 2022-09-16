@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Application Development &mdash; Twisted 22.8.0.post0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="HTML Templating with twisted.web.template" href="twisted-templates.html" />
+    <link rel="prev" title="Configuring and Using the Twisted Web Server" href="using-twistedweb.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Twisted
+          </a>
+              <div class="version">
+                22.8
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Twisted Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Twisted Web</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Developer Guides</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="web-overview.html">Overview of Twisted Web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using-twistedweb.html">Configuring and Using the Twisted Web Server</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Web Application Development</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#code-layout">Code layout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#web-application-deployment">Web application deployment</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#understanding-resource-scripts-rpy-files">Understanding resource scripts (<code class="docutils literal notranslate"><span class="pre">.rpy</span></code>  files)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="twisted-templates.html">HTML Templating with twisted.web.template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="xmlrpc.html">Creating XML-RPC Servers and Clients with Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="web-in-60/index.html">Twisted Web In 60 Seconds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="resource-templates.html">Light Weight Templating With Resource Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="client.html">Using the Twisted Web Client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development of Twisted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors of Twisted</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Twisted</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Twisted Web</a> &raquo;</li>
+          <li><a href="index.html">Developer Guides</a> &raquo;</li>
+      <li>Web Application Development</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/web/howto/web-development.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="web-application-development">
+<h1>Web Application Development<a class="headerlink" href="#web-application-development" title="Permalink to this headline"></a></h1>
+<section id="code-layout">
+<h2>Code layout<a class="headerlink" href="#code-layout" title="Permalink to this headline"></a></h2>
+<p>The development of a Twisted Web application should be orthogonal to its
+deployment.  This means is that if you are developing a web application, it
+should be a resource with children, and internal links.  Some of the children
+might use <a class="reference external" href="https://launchpad.net/nevow">Nevow</a> , some
+might be resources manually using <code class="docutils literal notranslate"><span class="pre">.write</span></code> , and so on.  Regardless,
+the code should be in a Python module, or package, <em>outside</em> the web
+tree.</p>
+<p>You will probably want to test your application as you develop it.  There are
+many ways to test, including dropping an <code class="docutils literal notranslate"><span class="pre">.rpy</span></code> which looks
+like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mypackage</span> <span class="kn">import</span> <span class="n">toplevel</span>
+<span class="n">resource</span> <span class="o">=</span> <span class="n">toplevel</span><span class="o">.</span><span class="n">Resource</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;foo/bar&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>into a directory, and then running:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">% </span>twistd web --path<span class="o">=</span>/directory
+</pre></div>
+</div>
+<p>You can also write a Python script like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env python</span>
+
+<span class="kn">from</span> <span class="nn">twisted.web</span> <span class="kn">import</span> <span class="n">server</span>
+<span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span><span class="p">,</span> <span class="n">endpoints</span>
+<span class="kn">from</span> <span class="nn">mypackage</span> <span class="kn">import</span> <span class="n">toplevel</span>
+
+<span class="n">endpoint</span> <span class="o">=</span> <span class="n">endpoints</span><span class="o">.</span><span class="n">TCP4ServerEndpoint</span><span class="p">(</span><span class="n">reactor</span><span class="p">,</span> <span class="mi">8080</span><span class="p">)</span>
+<span class="n">endpoint</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">Site</span><span class="p">(</span><span class="n">toplevel</span><span class="o">.</span><span class="n">Resource</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="s2">&quot;foo/bar&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)))</span>
+<span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="web-application-deployment">
+<h2>Web application deployment<a class="headerlink" href="#web-application-deployment" title="Permalink to this headline"></a></h2>
+<p>Which one of these development strategies you use is not terribly important,
+since (and this is the important part) deployment is <em>orthogonal</em> .
+Later, when you want users to actually <em>use</em> your code, you should worry
+about what to do – or rather, don’t.  Users may have widely different needs.
+Some may want to run your code in a different process, so they’ll use
+distributed web (<code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.web.distrib</span></code> ).  Some may be
+using the <code class="docutils literal notranslate"><span class="pre">twisted-web</span></code> Debian package, and will drop in:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">% </span>cat &gt; /etc/local.d/99addmypackage.py
+<span class="go">from mypackage import toplevel</span>
+<span class="go">default.putChild(b&quot;mypackage&quot;, toplevel.Resource(file=&quot;foo/bar&quot;, color=&quot;blue&quot;))</span>
+<span class="go">^D</span>
+</pre></div>
+</div>
+<p>If you want to be friendly to your users, you can supply many examples in
+your package, like the above <code class="docutils literal notranslate"><span class="pre">.rpy</span></code> and the Debian-package drop-in.
+But the <em>ultimate</em> friendliness is to write a useful resource which does
+not have deployment assumptions built in.</p>
+</section>
+<section id="understanding-resource-scripts-rpy-files">
+<h2>Understanding resource scripts (<code class="docutils literal notranslate"><span class="pre">.rpy</span></code>  files)<a class="headerlink" href="#understanding-resource-scripts-rpy-files" title="Permalink to this headline"></a></h2>
+<p>Twisted Web is not PHP – it has better tools for organizing code Python
+modules and packages, so use them.  In PHP, the only tool for organizing code is
+a web page, which leads to silly things like PHP pages full of functions that
+other pages import, and so on.  If you were to write your code this way with
+Twisted Web, you would do web development using many <code class="docutils literal notranslate"><span class="pre">.rpy</span></code> files,
+all importing some Python module. This is a <em>bad idea</em> – it mashes
+deployment with development, and makes sure your users will be <em>tied</em> to
+the file-system.</p>
+<p>We have <code class="docutils literal notranslate"><span class="pre">.rpy</span></code> s because they are useful and necessary.
+But using them incorrectly leads to horribly unmaintainable
+applications.  The best way to ensure you are using them correctly is
+to not use them at all, until you are on your <em>final</em>
+deployment stages.  You should then find your <code class="docutils literal notranslate"><span class="pre">.rpy</span></code> files
+will be less than 10 lines, because you will not <em>have</em> more
+than 10 lines to write.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="using-twistedweb.html" class="btn btn-neutral float-left" title="Configuring and Using the Twisted Web Server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="twisted-templates.html" class="btn btn-neutral float-right" title="HTML Templating with twisted.web.template" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Twisted Matrix Labs. Ver 22.8.0.post0. Built on 2022-09-16.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

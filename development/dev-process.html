@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Development process &mdash; Twisted 22.8.0.post0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Code Review Process" href="review-process.html" />
+    <link rel="prev" title="Twisted Coding Standard" href="coding-standard.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Twisted
+          </a>
+              <div class="version">
+                22.8
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Twisted Core</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../web/index.html">Twisted Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Development of Twisted</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="coding-standard.html">Twisted Coding Standard</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Development process</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#checkout-and-initial-dev-virtual-environment">Checkout and initial dev virtual environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-tests">Running tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#building-docs">Building docs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#committing-and-pre-commit-hooks">Committing and pre-commit hooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#release-notes-management">Release notes management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#review-process">Review process</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reverting-a-change">Reverting a change</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="review-process.html">Code Review Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="release-process.html">Twisted Release Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test-standard.html">Unit Tests in Twisted</a></li>
+<li class="toctree-l2"><a class="reference internal" href="writing-standard.html">Twisted Writing Standard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compatibility-policy.html">Twisted Compatibility Policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="naming.html">Naming Conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="philosophy.html">Philosophy</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../sponsors/index.html">Sponsors of Twisted</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Twisted</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Development of Twisted</a> &raquo;</li>
+      <li>Development process</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/development/dev-process.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="development-process">
+<h1>Development process<a class="headerlink" href="#development-process" title="Permalink to this headline"></a></h1>
+<p>This page described the process that should be followed for contributing to Twisted.</p>
+<p>If you’re going to be doing development on Twisted itself,
+or if you want to take advantage of bleeding-edge features (or bug fixes) that are not yet available in a numbered release,
+you’ll probably want to check out a tree from the Twisted Git repository.</p>
+<p>The <cite>trunk</cite> is the main branch and is where all current development takes place.</p>
+<section id="checkout-and-initial-dev-virtual-environment">
+<h2>Checkout and initial dev virtual environment<a class="headerlink" href="#checkout-and-initial-dev-virtual-environment" title="Permalink to this headline"></a></h2>
+<p>Twisted uses Git to track code changes.
+Git tutorials can be found elsewhere,
+see in particular <a class="reference external" href="https://help.github.com/articles/good-resources-for-learning-git-and-github/">Git and GitHub learning resources</a> :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>git clone https://github.com/twisted/twisted twisted
+<span class="gp">$ </span>python3 -m venv ./venv
+<span class="gp">$ </span>. venv/bin/activate
+<span class="gp">$ </span>pip install -e .<span class="o">[</span>dev<span class="o">]</span>
+<span class="gp">$ </span>pip install pre-commit
+</pre></div>
+</div>
+<p>Please note that all subsequent commands in this document assume that your Twisted virtual environment is active.  (However, we will not assume you’ve put it in <cite>./venv</cite>; feel free to use whatever Python environment manager you are comfortable with.)</p>
+<p>The output of <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">blame</span></code> <a class="reference external" href="https://github.com/psf/black#migrating-your-code-style-without-ruining-git-blame">will be better</a> if you configure it to use our ignore file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">cd</span> twisted
+<span class="gp">$ </span>git config blame.ignoreRevsFile .git-blame-ignore-revs
+</pre></div>
+</div>
+</section>
+<section id="running-tests">
+<h2>Running tests<a class="headerlink" href="#running-tests" title="Permalink to this headline"></a></h2>
+<p>The tests are handled by the <cite>trial</cite> testing framework.
+It knows about deferred and any other good stuff provided by Twisted.
+To run the full unit-test suite, do:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">trial twisted</span>
+</pre></div>
+</div>
+<p>To run a single test file (like <code class="docutils literal notranslate"><span class="pre">twisted/test/test_defer.py</span></code> ), do one of:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">trial twisted.test.test_defer</span>
+<span class="gp"># </span>or
+<span class="go">trial twisted/test/test_defer.py</span>
+</pre></div>
+</div>
+<p>To run any tests that are related to a code file, like <code class="docutils literal notranslate"><span class="pre">twisted/protocols/imap4.py</span></code> , do:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">trial --testmodule twisted/mail/imap4.py</span>
+</pre></div>
+</div>
+<p>This depends upon the <code class="docutils literal notranslate"><span class="pre">.py</span></code> file having an appropriate “test-case-name” tag that indicates which test cases provide coverage.
+See the <a class="reference internal" href="test-standard.html"><span class="doc">Test Standards</span></a> document for
+details about using “test-case-name”.
+In this example, the <code class="docutils literal notranslate"><span class="pre">twisted.mail.test.test_imap</span></code> test will be run.</p>
+<p>Some tests create temporary files in <cite>./_trial_temp</cite>, which you can inspect for debugging purposes, but this directory will be deleted on each subsequent test run, so if you’re debugging some filesystem code you may want to move it aside first.</p>
+</section>
+<section id="building-docs">
+<h2>Building docs<a class="headerlink" href="#building-docs" title="Permalink to this headline"></a></h2>
+<p>Twisted’s narrative documentation — i.e. the documentation sourced from <cite>.rst</cite> files in <cite>./docs/</cite> — is generated by <a class="reference external" href="https://sphinx-doc.org/">Sphinx</a>.
+Its API reference documentation — i.e. the documentation sourced from docstrings in <cite>.py</cite> files — is generated by <a class="reference external" href="https://pydoctor.readthedocs.io/">pydoctor</a>.</p>
+<p>To build the HTML form of the docs into the <code class="docutils literal notranslate"><span class="pre">doc/</span></code> directory, do the following.
+This will trigger a full build including the API docs:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">tox -e narrativedocs</span>
+<span class="go">firefox docs/_build/index.html</span>
+</pre></div>
+</div>
+</section>
+<section id="committing-and-pre-commit-hooks">
+<h2>Committing and pre-commit hooks<a class="headerlink" href="#committing-and-pre-commit-hooks" title="Permalink to this headline"></a></h2>
+<p>When submitting a PR, create a GitHub issue first, and prefix the name of the for the PR branch with the associated GitHub issue number, so that we can easily cross-reference them.
+For example, use <cite>1234-some-brach-name</cite> as the name of the branch working to fix issue <cite>1234</cite>.</p>
+<p>To speed up acceptance of your PR, you may want to make sure it passes our pre-commit code style checks locally.
+If you skip this step, you may find some reformatting commits generated by the service we use, <a class="reference external" href="https://pre-commit.com/">pre-commit</a> . We don’t mind, so feel free to let the computer do the job instead, but it may extend the amount of time you’re waiting for automated tests to run.</p>
+<p>To set up <cite>git</cite> to run these checks automatically every time you commit code,
+run this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span> <span class="n">install</span>
+</pre></div>
+</div>
+<p>Or to manually trigger the checks before each commit, run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span><span class="o">-</span><span class="n">commit</span>
+</pre></div>
+</div>
+</section>
+<section id="release-notes-management">
+<h2>Release notes management<a class="headerlink" href="#release-notes-management" title="Permalink to this headline"></a></h2>
+<p>It is up to the authors of individual changes to write high-level descriptions for their changes.
+They are not a commit or a merge message.
+These descriptions will be aggregated into the release notes distributed with Twisted releases.
+They should be written in such a way to help other users decide whether or not they need to upgrade,
+or whether a certain defect is fixed in a release.</p>
+<p>During development, to avoid generating commit conflicts, we use the <a class="reference external" href="https://pypi.python.org/pypi/towncrier">towncrier</a> tool to manage separate news fragments for each change.
+At the release time, all these “release fragments” are aggregated into our single <a class="reference external" href="https://github.com/twisted/twisted/blob/trunk/NEWS.rst">NEWS</a> release file.</p>
+<p>Changes must be accompanied by a file whose content describes that change in at least one <cite>newsfragments</cite> directory.
+There are <cite>newsfragments</cite> directories for each subproject and one root directory for core Twisted changes.
+If a change affects multiple areas of Twisted, then each affected area can have a newsfragments entry to detail the relevant changes.
+An entry must be a file named <cite>&lt;issue number&gt;.&lt;change type&gt;</cite> (eg. <cite>1234.bugfix</cite>).
+You should replace <cite>&lt;issue number&gt;</cite> with the issue number which is being resolved by the change (if multiple issues are resolved, multiple files with the same contents should be added).
+The <cite>&lt;change type&gt;</cite> extension is replaced by one of the following literal strings:</p>
+<ul class="simple">
+<li><p><strong>feature</strong> - Issues which are adding a new feature</p></li>
+<li><p><strong>bugfix</strong> - Issues which are fixing a bug</p></li>
+<li><p><strong>doc</strong> - Issues primarily about fixing or improving documentation (any variety)</p></li>
+<li><p><strong>removal</strong> - Issues which are deprecating something or removing something which was already deprecated</p></li>
+<li><p><strong>misc</strong> - Issues which are very minor and not worth summarizing outside of the git changelog.  These should be empty (their contents will be ignored)</p></li>
+</ul>
+<p>To get a sense of how the text in these files is presented to users, take a look at <a class="reference external" href="[https://github.com/twisted/twisted/blob/trunk/NEWS.rst">NEWS.rst</a> the real overall news file].
+The goal when writing the content for one of these files is to produce text that will fit well into the overall news files.</p>
+<p>Here are a few which should help you write good news fragments:</p>
+<ul class="simple">
+<li><p>The entry SHOULD contain a high-level description of the change suitable for end users.</p></li>
+<li><p>When the changes touch Python code, the grammatical subject of the sentence SHOULD be a Python class/method/function/interface/variable/etc, and the verb SHOULD be something that the object does. The verb MAY be prefixed with “now”.</p></li>
+<li><p>For bugfix, it MAY contain a reference to the version in which the bug was introduced.</p></li>
+</ul>
+<p>Here are some examples.</p>
+<p>Features:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">twisted</span><span class="o">.</span><span class="n">protocols</span><span class="o">.</span><span class="n">amp</span> <span class="n">now</span> <span class="n">raises</span> <span class="n">InvalidSignature</span> <span class="n">when</span> <span class="n">bad</span> <span class="n">arguments</span> <span class="n">are</span> <span class="n">passed</span> <span class="n">to</span> <span class="n">Command</span><span class="o">.</span><span class="n">makeArguments</span>
+
+<span class="n">The</span> <span class="n">new</span> <span class="n">module</span> <span class="n">twisted</span><span class="o">.</span><span class="n">internet</span><span class="o">.</span><span class="n">endpoints</span> <span class="n">provides</span> <span class="n">an</span> <span class="n">interface</span> <span class="k">for</span> <span class="n">specifying</span> <span class="n">address</span> <span class="n">families</span> <span class="n">separately</span> <span class="kn">from</span> <span class="nn">socket</span> <span class="n">types</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Bugfix:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">twisted</span><span class="o">.</span><span class="n">internet</span><span class="o">.</span><span class="n">ssl</span><span class="o">.</span><span class="n">Certificate</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">getPublicKey</span><span class="p">()</span><span class="o">.</span><span class="n">keyHash</span><span class="p">()</span> <span class="n">now</span> <span class="n">produces</span> <span class="n">a</span> <span class="n">stable</span> <span class="n">value</span> <span class="n">regardless</span> <span class="n">of</span> <span class="n">OpenSSL</span> <span class="n">version</span><span class="o">.</span> <span class="n">Unfortunately</span> <span class="n">this</span> <span class="n">means</span> <span class="n">that</span> <span class="n">it</span> <span class="ow">is</span> <span class="n">different</span> <span class="n">than</span> <span class="n">the</span> <span class="n">value</span> <span class="n">produced</span> <span class="n">by</span> <span class="n">older</span> <span class="n">Twisted</span> <span class="n">versions</span><span class="o">.</span>
+
+<span class="n">twisted</span><span class="o">.</span><span class="n">names</span><span class="o">.</span><span class="n">secondary</span><span class="o">.</span><span class="n">SecondaryAuthority</span> <span class="n">can</span> <span class="n">now</span> <span class="n">answer</span> <span class="n">queries</span> <span class="n">again</span> <span class="p">(</span><span class="n">broken</span> <span class="n">since</span> <span class="mf">13.2.0</span><span class="p">)</span><span class="o">.</span>
+
+<span class="n">The</span> <span class="n">SSL</span> <span class="n">server</span> <span class="n">string</span> <span class="n">endpoint</span> <span class="n">parser</span> <span class="p">(</span><span class="n">twisted</span><span class="o">.</span><span class="n">internet</span><span class="o">.</span><span class="n">endpoints</span><span class="o">.</span><span class="n">serverFromString</span><span class="p">)</span> <span class="n">now</span> <span class="n">constructs</span> <span class="n">endpoints</span> <span class="n">which</span><span class="p">,</span> <span class="n">by</span> <span class="n">default</span><span class="p">,</span> <span class="n">disable</span> <span class="n">the</span> <span class="n">insecure</span> <span class="n">SSLv3</span> <span class="n">protocol</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Deprecations:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">twisted</span><span class="o">.</span><span class="n">trial</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">findObject</span> <span class="ow">is</span> <span class="n">now</span> <span class="n">deprecated</span><span class="o">.</span>
+
+<span class="n">twisted</span><span class="o">.</span><span class="n">conch</span><span class="o">.</span><span class="n">insults</span><span class="o">.</span><span class="n">colors</span> <span class="ow">is</span> <span class="n">now</span> <span class="n">deprecated</span> <span class="ow">in</span> <span class="n">favor</span> <span class="n">of</span> <span class="n">twisted</span><span class="o">.</span><span class="n">conch</span><span class="o">.</span><span class="n">insults</span><span class="o">.</span><span class="n">helper</span><span class="o">.</span>
+
+<span class="n">twisted</span><span class="o">.</span><span class="n">runner</span><span class="o">.</span><span class="n">procmon</span><span class="o">.</span><span class="n">ProcessMonitor</span><span class="s1">&#39;s active, consistency, and consistencyDelay attributes are now deprecated.</span>
+</pre></div>
+</div>
+<p>Removals:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">twisted</span><span class="o">.</span><span class="n">internet</span><span class="o">.</span><span class="n">interfaces</span><span class="o">.</span><span class="n">IReactorTime</span><span class="o">.</span><span class="n">cancelCallLater</span><span class="p">,</span> <span class="n">deprecated</span> <span class="n">since</span> <span class="n">Twisted</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">has</span> <span class="n">been</span> <span class="n">removed</span><span class="o">.</span>
+
+<span class="n">Support</span> <span class="k">for</span> <span class="n">versions</span> <span class="n">of</span> <span class="n">pyOpenSSL</span> <span class="n">older</span> <span class="n">than</span> <span class="mf">0.10</span> <span class="n">has</span> <span class="n">been</span> <span class="n">removed</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Documentation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>The documentation for twisted.internet.defer.DeferredSemaphore now describes the actual usage for `limit` and `tokens` instance attributes.
+
+The docstring for twisted.conch.ssh.userauth.SSHUserAuthClient is now clearer on how the preferredOrder instance variable is handled.
+
+twisted.mail.alias now has full API documentation.
+
+The howto document page of Deferred now has documentation about the cancellation.
+</pre></div>
+</div>
+<p>You don’t need to worry about newlines in the file; the contents will be rewrapped when added to the NEWS files.</p>
+</section>
+<section id="review-process">
+<h2>Review process<a class="headerlink" href="#review-process" title="Permalink to this headline"></a></h2>
+<p>Any change to be accepted into the main branch must pass the review process.</p>
+<p>See <a class="reference internal" href="review-process.html"><span class="doc">the dedicated review process page</span></a> for more details.</p>
+</section>
+<section id="reverting-a-change">
+<h2>Reverting a change<a class="headerlink" href="#reverting-a-change" title="Permalink to this headline"></a></h2>
+<p>If a change set somehow introduces a test suite regression or is otherwise found to be undesirable,
+it is to be reverted.</p>
+<p>Any developer may revert a commit that introduces a test suite regression on a supported platform.
+The revert message should be as explicit as possible.
+If it’s a failure,
+put the message of the error in the commit message, possible with more details about the test environment.
+If there are too many failures,
+it can be put in the issue tracker,
+with a reference in the message.</p>
+<p>Use the “Reopens” tag in the commit message to reference the relevant issue:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Revert</span> <span class="n">revision</span><span class="o">-</span><span class="n">sha</span><span class="p">:</span> <span class="n">Brief</span> <span class="n">description</span>
+
+<span class="n">A</span> <span class="n">description</span> <span class="n">of</span> <span class="n">the</span> <span class="n">problem</span><span class="p">,</span> <span class="ow">or</span> <span class="n">a</span> <span class="n">traceback</span> <span class="k">if</span> <span class="n">pertinent</span>
+
+<span class="n">Reopens</span><span class="p">:</span> <span class="c1">#issue-number</span>
+</pre></div>
+</div>
+<p>Reverted branches are to be reviewed again before being merged.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="coding-standard.html" class="btn btn-neutral float-left" title="Twisted Coding Standard" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="review-process.html" class="btn btn-neutral float-right" title="Code Review Process" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Twisted Matrix Labs. Ver 22.8.0.post0. Built on 2022-09-16.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

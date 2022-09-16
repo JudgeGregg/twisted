@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using Threads in Twisted &mdash; Twisted 22.8.0.post0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/js/custom.js"></script>
+        <script src="https://sidecar.gitter.im/dist/sidecar.v1.js" defer hack=""></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Producers and Consumers: Efficient High-Volume Streaming" href="producers.html" />
+    <link rel="prev" title="Scheduling tasks for the future" href="time.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Twisted
+          </a>
+              <div class="version">
+                22.8
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installing Twisted</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Twisted Core</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Developer Guides</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="vision.html">The Vision For Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="servers.html">Writing Servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clients.html">Writing Clients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trial.html">Test-driven development with Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/index.html">Twisted from Scratch, or The Evolution of Finger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/intro.html">The Evolution of Finger: building a simple finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/protocol.html">The Evolution of Finger: adding features to the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/style.html">The Evolution of Finger: cleaning up the finger code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/components.html">The Evolution of Finger: moving to a component based architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/backends.html">The Evolution of Finger: pluggable backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/web.html">The Evolution of Finger: a web frontend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/pb.html">The Evolution of Finger: Twisted client support using Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/factory.html">The Evolution of Finger: using a single factory for multiple protocols</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/client.html">The Evolution of Finger: a Twisted finger client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/library.html">The Evolution of Finger: making a finger library</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/configuration.html">The Evolution of Finger: configuration of the finger service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quotes.html">Setting up the TwistedQuotes application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="design.html">Designing Twisted Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="internet-overview.html">Overview of Twisted Internet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reactor-basics.html">Reactor Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ssl.html">Using TLS in Twisted</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udp.html">UDP Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="process.html">Using Processes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer-intro.html">Introduction to Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="defer.html">Deferred Reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gendefer.html">Generating Deferreds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time.html">Scheduling tasks for the future</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using Threads in Twisted</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-twisted-uses-threads-itself">How Twisted Uses Threads Itself</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#invoking-twisted-from-other-threads">Invoking Twisted From Other Threads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#running-code-in-threads">Running Code In Threads</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getting-results">Getting Results</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#managing-the-reactor-thread-pool">Managing the Reactor Thread Pool</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="producers.html">Producers and Consumers: Efficient High-Volume Streaming</a></li>
+<li class="toctree-l3"><a class="reference internal" href="choosing-reactor.html">Choosing a Reactor and GUI Toolkit Integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="endpoints.html">Getting Connected with Endpoints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="components.html">Components: Interfaces and Adapters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cred.html">Cred: Pluggable Authentication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="plugin.html">The Twisted Plugin System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="basics.html">The Basics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application.html">Using the Twisted Application Framework</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tap.html">Writing a twistd Plugin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="systemd.html">Deploying Twisted with systemd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logger.html">Logging with twisted.logger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging.html">Twisted’s Legacy Logging System: <code class="docutils literal notranslate"><span class="pre">twisted.python.log</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="constants.html">Symbolic Constants</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rdbms.html">twisted.enterprise.adbapi: Twisted RDBMS support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="options.html">Parsing command-lines with usage.Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dirdbm.html">DirDBM: Directory-based Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="testing.html">Writing tests for Twisted code using Trial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sendmsg.html">Extremely Low-Level Socket Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="amp.html">Asynchronous Messaging Protocol Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb.html">Overview of Twisted Spread</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-intro.html">Introduction to Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-usage.html">Using Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-clients.html">Managing Clients of Perspectives</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-copyable.html">PB Copyable: Passing Complex Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-cred.html">Authentication with Perspective Broker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pb-limits.html">PB Limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python3.html">Porting to Python 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="positioning.html">Twisted Positioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="glossary.html">Twisted Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="debug-with-emacs.html">Debugging Python(Twisted) with Emacs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../specifications/index.html">Specifications</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../conch/index.html">Twisted Conch (SSH and Telnet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../mail/index.html">Twisted Mail (SMTP, POP, and IMAP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../names/index.html">Twisted Names (DNS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pair/index.html">Twisted Pair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../web/index.html">Twisted Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../words/index.html">Twisted Words (IRC and XMPP)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/index.html">Development of Twisted</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sponsors/index.html">Sponsors of Twisted</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../historic/index.html">Historical Documents</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Quick links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html">Report a security issue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-procedure-for-developers">Security Procedure for Developers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../security.html#security-audit">Security Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../community.html">Twisted Community</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api/index.html">API Reference</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/twisted/twisted">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://pypi.org/project/twisted">PyPI</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Twisted</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Twisted Core</a> &raquo;</li>
+          <li><a href="index.html">Developer Guides</a> &raquo;</li>
+      <li>Using Threads in Twisted</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/core/howto/threading.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-threads-in-twisted">
+<h1>Using Threads in Twisted<a class="headerlink" href="#using-threads-in-twisted" title="Permalink to this headline"></a></h1>
+<section id="how-twisted-uses-threads-itself">
+<h2>How Twisted Uses Threads Itself<a class="headerlink" href="#how-twisted-uses-threads-itself" title="Permalink to this headline"></a></h2>
+<p>All callbacks registered with the reactor — for example, <code class="docutils literal notranslate"><span class="pre">dataReceived</span></code>, <code class="docutils literal notranslate"><span class="pre">connectionLost</span></code>, or any higher-level method that comes from these, such as <code class="docutils literal notranslate"><span class="pre">render_GET</span></code> in twisted.web, or a callback added to a <code class="docutils literal notranslate"><span class="pre">Deferred</span></code> — are called from <code class="docutils literal notranslate"><span class="pre">reactor.run</span></code>.
+The terminology around this is that we say these callbacks are run in the “main thread”, or “reactor thread” or “I/O thread”.</p>
+<p>Therefore, internally, Twisted makes very little use of threads.
+This is not to say that it makes <em>no</em> use of threads; there are plenty of APIs which have no non-blocking equivalent, so when Twisted needs to call those, it calls them in a thread.
+One prominent example of this is system hostname resolution: unless you have configured Twisted to use its own DNS client in <code class="docutils literal notranslate"><span class="pre">twisted.names</span></code>, it will have to use your operating system’s blocking APIs to map host names to IP addresses, in the reactor’s thread pool.
+However, this is something you only need to know about for resource-tuning purposes, like setting the number of threads to use; otherwise, it is an implementation detail you can ignore.</p>
+<p>It is a common mistake to think that because Twisted can manage multiple connections at once, things are happening in multiple threads, and so you need to carefully manage locks.
+Lucky for you, Twisted does most things in one thread!
+This document explains how to interact with existing APIs which need to be run within their own threads because they block.
+If you’re just using Twisted’s own APIs, the rule for threads is simply “don’t use them”.</p>
+</section>
+<section id="invoking-twisted-from-other-threads">
+<h2>Invoking Twisted From Other Threads<a class="headerlink" href="#invoking-twisted-from-other-threads" title="Permalink to this headline"></a></h2>
+<p>Methods within Twisted may only be invoked from the reactor thread unless otherwise noted.
+Very few things within Twisted are thread-safe.
+For example, writing data to a transport from a protocol is not thread-safe.
+This means that if you start a thread and call a Twisted method, you might get correct behavior… or you might get hangs, crashes, or corrupted data.
+So don’t do it.</p>
+<p>The right way to call methods on the reactor from another thread, and therefore any objects which might call methods on the reactor, is to give a function to the reactor to execute within its own thread.
+This can be done using the function <code class="xref py py-meth docutils literal notranslate"><span class="pre">callFromThread</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span>
+<span class="k">def</span> <span class="nf">notThreadSafe</span><span class="p">(</span><span class="n">someProtocol</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+    <span class="n">someProtocol</span><span class="o">.</span><span class="n">transport</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;a message: &quot;</span> <span class="o">+</span> <span class="n">message</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">callFromWhateverThreadYouWant</span><span class="p">():</span>
+    <span class="n">reactor</span><span class="o">.</span><span class="n">callFromThread</span><span class="p">(</span><span class="n">notThreadSafe</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this example, <code class="docutils literal notranslate"><span class="pre">callFromWhateverThreadYouWant</span></code> is thread-safe and can be invoked by any thread, but <code class="docutils literal notranslate"><span class="pre">notThreadSafe</span></code> should only ever be called by code running in the thread where <code class="docutils literal notranslate"><span class="pre">reactor.run</span></code> is running.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are many objects within Twisted that represent values — for example, <code class="xref py py-class docutils literal notranslate"><span class="pre">FilePath</span></code> and <code class="xref py py-class docutils literal notranslate"><span class="pre">URLPath</span></code> — which you may construct yourself.
+These may be safely constructed and used within a non-reactor thread as long as they are not shared with other threads.
+However, you should be sure that these objects do not share any state, especially not with the reactor.
+One good rule of thumb is that any object whose methods return <code class="docutils literal notranslate"><span class="pre">Deferred</span></code>s is almost certainly touching the reactor at some point, and should never be accessed from a non-reactor thread.</p>
+</div>
+</section>
+<section id="running-code-in-threads">
+<h2>Running Code In Threads<a class="headerlink" href="#running-code-in-threads" title="Permalink to this headline"></a></h2>
+<p>Sometimes we may want to run code in a non-reactor thread, to avoid blocking the reactor.
+Twisted provides a low-level API for doing so, the <code class="xref py py-meth docutils literal notranslate"><span class="pre">callInThread</span></code> method on the reactor.</p>
+<p>For example, to run a method in a non-reactor thread we can do:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span>
+
+<span class="k">def</span> <span class="nf">aSillyBlockingMethod</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">time</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">reactor</span><span class="o">.</span><span class="n">callInThread</span><span class="p">(</span><span class="n">aSillyBlockingMethod</span><span class="p">,</span> <span class="s2">&quot;2 seconds have passed&quot;</span><span class="p">)</span>
+<span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">callInThread</span></code> will put your code into a queue, to be run by the next available thread in the reactor’s thread pool.
+This means that depending on what other work has been submitted to the pool, your method may not run immediately.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Keep in mind that <code class="docutils literal notranslate"><span class="pre">callInThread</span></code> can only concurrently run a fixed maximum number of tasks, and all users of the reactor are sharing that limit.
+Therefore, you should not submit <em>tasks which depend on other tasks in order to complete</em> to be executed by <code class="docutils literal notranslate"><span class="pre">callInThread</span></code>.
+An example of such a task would be something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">q</span> <span class="o">=</span> <span class="n">Queue</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">blocker</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">()</span> <span class="o">+</span> <span class="n">q</span><span class="o">.</span><span class="n">get</span><span class="p">())</span>
+
+<span class="k">def</span> <span class="nf">unblocker</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+    <span class="n">q</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In this case, <code class="docutils literal notranslate"><span class="pre">blocker</span></code> will block <em>forever</em> unless <code class="docutils literal notranslate"><span class="pre">unblocker</span></code> can successfully run to give it inputs; similarly, <code class="docutils literal notranslate"><span class="pre">unblocker</span></code> might block forever if <code class="docutils literal notranslate"><span class="pre">blocker</span></code> is not run to consume its outputs.
+So if you had a threadpool of maximum size X, and you ran <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">each</span> <span class="pre">in</span> <span class="pre">range(X):</span> <span class="pre">reactor.callInThread(blocker)</span></code>, the reactor threadpool would be wedged forever, unable to process more work or even shut down.</p>
+<p>See “Managing the Reactor Thread Pool” below to tune these limits.</p>
+</div>
+</section>
+<section id="getting-results">
+<h2>Getting Results<a class="headerlink" href="#getting-results" title="Permalink to this headline"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">callInThread</span></code> and <code class="docutils literal notranslate"><span class="pre">callFromThread</span></code> allow you to move the execution of your code out of and into the reactor thread, respectively, but that isn’t always enough.</p>
+<p>When we run some code, we often want to know what its result was.
+For this, Twisted provides two methods:
+<code class="xref py py-func docutils literal notranslate"><span class="pre">deferToThread</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">blockingCallFromThread</span></code>,
+defined in the <code class="xref py py-mod docutils literal notranslate"><span class="pre">twisted.internet.threads</span></code> module.</p>
+<p>To get a result from some blocking code back into the reactor thread,
+we can use <code class="xref py py-func docutils literal notranslate"><span class="pre">deferToThread</span></code> to execute it instead of <code class="docutils literal notranslate"><span class="pre">callFromThread</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span><span class="p">,</span> <span class="n">threads</span>
+
+<span class="k">def</span> <span class="nf">doLongCalculation</span><span class="p">():</span>
+    <span class="c1"># .... do long calculation here ...</span>
+    <span class="k">return</span> <span class="mi">3</span>
+
+<span class="k">def</span> <span class="nf">printResult</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># run method in thread and get result as defer.Deferred</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">threads</span><span class="o">.</span><span class="n">deferToThread</span><span class="p">(</span><span class="n">doLongCalculation</span><span class="p">)</span>
+<span class="n">d</span><span class="o">.</span><span class="n">addCallback</span><span class="p">(</span><span class="n">printResult</span><span class="p">)</span>
+<span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Similarly, if you want some code running in a non-reactor thread to invoke some code in the reactor thread and get its result,
+you can use <code class="xref py py-func docutils literal notranslate"><span class="pre">blockingCallFromThread</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">threads</span><span class="p">,</span> <span class="n">reactor</span><span class="p">,</span> <span class="n">defer</span>
+<span class="kn">from</span> <span class="nn">twisted.web.client</span> <span class="kn">import</span> <span class="n">Agent</span>
+<span class="kn">from</span> <span class="nn">twisted.web.error</span> <span class="kn">import</span> <span class="n">Error</span>
+
+<span class="k">def</span> <span class="nf">inThread</span><span class="p">():</span>
+    <span class="n">agent</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="n">reactor</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">threads</span><span class="o">.</span><span class="n">blockingCallFromThread</span><span class="p">(</span>
+            <span class="n">reactor</span><span class="p">,</span>
+            <span class="n">agent</span><span class="o">.</span><span class="n">request</span><span class="p">,</span>
+            <span class="sa">b</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span>
+            <span class="sa">b</span><span class="s2">&quot;https://twistedmatrix.com/&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">exc</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+    <span class="n">reactor</span><span class="o">.</span><span class="n">callFromThread</span><span class="p">(</span><span class="n">reactor</span><span class="o">.</span><span class="n">stop</span><span class="p">)</span>
+
+<span class="n">reactor</span><span class="o">.</span><span class="n">callInThread</span><span class="p">(</span><span class="n">inThread</span><span class="p">)</span>
+<span class="n">reactor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">blockingCallFromThread</span></code> will return the object or raise the exception returned or raised by the function passed to it.
+If the function passed to it returns a <code class="xref py py-class docutils literal notranslate"><span class="pre">Deferred</span></code>, it will return the value the deferred is fired with or raise the exception it is failed with.</p>
+</section>
+<section id="managing-the-reactor-thread-pool">
+<h2>Managing the Reactor Thread Pool<a class="headerlink" href="#managing-the-reactor-thread-pool" title="Permalink to this headline"></a></h2>
+<p>We may want to modify the size of the thread pool, increasing or decreasing the number of threads in use.
+We can do this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">twisted.internet</span> <span class="kn">import</span> <span class="n">reactor</span>
+
+<span class="n">reactor</span><span class="o">.</span><span class="n">suggestThreadPoolSize</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The default size of the thread pool depends on the reactor being used; the default reactor uses a minimum size of 0 and a maximum size of 10.</p>
+<p>The reactor thread pool is implemented by <code class="xref py py-class docutils literal notranslate"><span class="pre">ThreadPool</span></code>.
+To access methods on this object for more advanced tuning and monitoring (see the API documentation for details) you can get the thread pool with <code class="xref py py-meth docutils literal notranslate"><span class="pre">getThreadPool</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="time.html" class="btn btn-neutral float-left" title="Scheduling tasks for the future" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="producers.html" class="btn btn-neutral float-right" title="Producers and Consumers: Efficient High-Volume Streaming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Twisted Matrix Labs. Ver 22.8.0.post0. Built on 2022-09-16.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
